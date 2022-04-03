@@ -7,32 +7,8 @@ let tour = [];
 
 
 Shiny.addCustomMessageHandler('docent-init', (opts) => {
-  console.log("init");
-  tour[opts.id] = new Shepherd.Tour({
-    useModalOverlay: true,
-    defaultStepOptions: {
-        popperOptions: {
-          modifiers: [{ name: 'offset', options: { offset: [0, 12] } }]
-        },
-        buttons: [
-          {
-            action() {
-              return this.back();
-            },
-            classes: 'shepherd-button-secondary',
-            text: 'Before'
-          },
-          {
-            action() {
-              return this.next();
-            },
-            text: 'Next'
-          }
-        ]
-      }
-  });
+  tour[opts.id] = new Shepherd.Tour(opts.globals);
 
-  console.log(opts.steps);
   if(opts.steps) {
     opts.steps.forEach((step) => {
       tour[opts.id].addStep(step)
@@ -42,6 +18,11 @@ Shiny.addCustomMessageHandler('docent-init', (opts) => {
 })
 
 Shiny.addCustomMessageHandler('docent-start', (opts) => {
-  console.log("start");
   tour[opts.id].start();
+})
+
+Shiny.addCustomMessageHandler('docent-isActive', (opts) => {
+  Shiny.setInputValue(
+    'docent_is_active', tour[opts.id].isActive(), {priority: "event"}
+  );
 })
