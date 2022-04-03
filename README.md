@@ -4,6 +4,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+> [ A docent is] someone whose job is to show people around a museum, zoo, etc. and tell them about the things in it.
+>
+> -- <cite>Cambridge dictionary</cite>
+
 The goal of docent is to ...
 
 ## Installation
