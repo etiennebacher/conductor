@@ -28,9 +28,11 @@ Docent <- R6::R6Class(
 
     initialize = function(exitOnEsc = TRUE, keyboardNavigation = TRUE,
                           useModalOverlay = TRUE, classPrefix = NULL,
-                          tourName = NULL, defaultStepOptions = NULL,
-                          stepsContainer = NULL, modalContainer = NULL,
-                          confirmCancel = FALSE, confirmCancelMessage = NULL) {
+                          tourName = NULL, stepsContainer = NULL,
+                          modalContainer = NULL, confirmCancel = FALSE,
+                          confirmCancelMessage = NULL,
+                          defaultStepOptions = NULL) {
+
       private$globals <- list(
         exitOnEsc = exitOnEsc,
         keyboardNavigation = keyboardNavigation,
@@ -69,8 +71,8 @@ Docent <- R6::R6Class(
     },
 
     step = function(el = NULL, title = NULL, text = NULL, position = NULL,
-                    arrow = TRUE, is_id = TRUE, can_click_target = TRUE,
-                    advance_on = NULL, scroll = TRUE) {
+                    arrow = TRUE, is_id = TRUE, canClickTarget = TRUE,
+                    advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -79,10 +81,17 @@ Docent <- R6::R6Class(
         arrow <- FALSE
       }
 
-      if (!is.null(advance_on)) {
-        if (!is.list(advance_on) | (is.list(advance_on) &
-                                    length(advance_on) != 2)) {
-          warning("Argument `advance_on` must be a list of a two elements.",
+      if (!is.null(advanceOn)) {
+        if (!is.list(advanceOn) | (is.list(advanceOn) &
+                                    length(advanceOn) != 2)) {
+          warning("Argument `advanceOn` must be a list of a two elements.",
+                  call. = TRUE)
+        }
+      }
+
+      if (!is.null(cancelIcon)) {
+        if (!is.list(cancelIcon)) {
+          warning("Argument `cancelIcon` must be a list.",
                   call. = TRUE)
         }
       }
@@ -103,13 +112,21 @@ Docent <- R6::R6Class(
       }
       if(!is.null(title)) popover$title <- as.character(title)
       if(!is.null(text)) popover$text <- as.character(text)
-      popover$canClickTarget <- can_click_target
+      popover$canClickTarget <- canClickTarget
       popover$arrow <- arrow
-      popover$scrollTo <- scroll
-      popover$advanceOn <- list(
-        selector = advance_on[[1]],
-        event = advance_on[[2]]
-      )
+      popover$scrollTo <- scrollTo
+      if (!is.null(cancelIcon)) {
+        popover$cancelIcon <- list(
+          enabled = cancelIcon[[1]],
+          label = cancelIcon[[2]]
+        )
+      }
+      if (!is.null(advanceOn)) {
+        popover$advanceOn <- list(
+          selector = advanceOn[[1]],
+          event = advanceOn[[2]]
+        )
+      }
 
       private$steps <- append(private$steps, list(popover))
       invisible(self)
