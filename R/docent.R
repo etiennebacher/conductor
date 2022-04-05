@@ -31,7 +31,7 @@ Docent <- R6::R6Class(
                           tourName = NULL, stepsContainer = NULL,
                           modalContainer = NULL, confirmCancel = FALSE,
                           confirmCancelMessage = NULL,
-                          defaultStepOptions = NULL) {
+                          defaultStepOptions = NULL, mathjax = FALSE) {
 
       private$globals <- list(
         exitOnEsc = exitOnEsc,
@@ -45,6 +45,9 @@ Docent <- R6::R6Class(
         confirmCancel = confirmCancel,
         confirmCancelMessage = confirmCancelMessage
       )
+
+      private$mathjax <- mathjax
+      invisible(self)
     },
 
     init = function(session = NULL) {
@@ -72,7 +75,8 @@ Docent <- R6::R6Class(
 
     step = function(el = NULL, title = NULL, text = NULL, position = NULL,
                     arrow = TRUE, is_id = TRUE, canClickTarget = TRUE,
-                    advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL) {
+                    advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
+                    when = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -127,6 +131,14 @@ Docent <- R6::R6Class(
           event = advanceOn[[2]]
         )
       }
+
+      # if(private$mathjax) {
+      #   popover$when <- paste0("function(element){setTimeout(function(){
+      #     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+      #   }, 300);", when, "}")
+      # } else {
+      #   if(!is.null(when)) popover$when <- when
+      # }
 
       private$steps <- append(private$steps, list(popover))
       invisible(self)

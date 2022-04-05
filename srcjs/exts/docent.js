@@ -33,11 +33,17 @@ Shiny.addCustomMessageHandler('docent-init', (opts) => {
 
   tour[opts.id] = new Shepherd.Tour(opts.globals);
 
-  if(opts.steps) {
-    opts.steps.forEach((step) => {
-      tour[opts.id].addStep(step)
-    });
-  }
+
+  opts.steps.forEach((step, index) => {
+    opts.steps[index].when = {
+      show: function(element){setTimeout(function(){
+          MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+        }, 300);
+      }
+    }
+    tour[opts.id].addStep(step)
+  });
+
 
 })
 
