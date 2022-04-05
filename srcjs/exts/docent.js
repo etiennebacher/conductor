@@ -12,21 +12,23 @@ Shiny.addCustomMessageHandler('docent-init', (opts) => {
   if (opts.globals.defaultStepOptions == null) {
     opts.globals.defaultStepOptions = {}
   }
+
   if (opts.globals.defaultStepOptions.buttons === undefined) {
-    opts.globals.defaultStepOptions.buttons =  [{
-          action() {
-            return this.back();
-          },
-          classes: 'shepherd-button-secondary',
-          text: 'Previous'
-        },
-        {
-          action() {
-            return this.next();
-          },
-          text: 'Next'
-        }
+    opts.globals.defaultStepOptions.buttons =  [
+      {
+        action: function() {return this.back();},
+        secondary: true,
+        text: 'Previous'
+      },
+      {
+        action: function() {return this.next();},
+        text: 'Next'
+      }
     ]
+  }
+
+  opts.globals.defaultStepOptions.popperOptions = {
+    modifiers: [{ name: 'offset', options: { offset: [0, 12] } }]
   }
 
   tour[opts.id] = new Shepherd.Tour(opts.globals);
