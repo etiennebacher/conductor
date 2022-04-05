@@ -7,6 +7,28 @@ let tour = [];
 
 
 Shiny.addCustomMessageHandler('docent-init', (opts) => {
+
+  // Put default buttons
+  if (opts.globals.defaultStepOptions == null) {
+    opts.globals.defaultStepOptions = {}
+  }
+  if (opts.globals.defaultStepOptions.buttons === undefined) {
+    opts.globals.defaultStepOptions.buttons =  [{
+          action() {
+            return this.back();
+          },
+          classes: 'shepherd-button-secondary',
+          text: 'Previous'
+        },
+        {
+          action() {
+            return this.next();
+          },
+          text: 'Next'
+        }
+    ]
+  }
+
   tour[opts.id] = new Shepherd.Tour(opts.globals);
 
   if(opts.steps) {
