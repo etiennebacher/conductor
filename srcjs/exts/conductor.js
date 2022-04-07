@@ -6,7 +6,7 @@ import 'shepherd.js/dist/css/shepherd.css';
 let tour = [];
 
 
-Shiny.addCustomMessageHandler('docent-init', (opts) => {
+Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
   // Put default buttons
   if (opts.globals.defaultStepOptions == null) {
@@ -47,12 +47,12 @@ Shiny.addCustomMessageHandler('docent-init', (opts) => {
 
 })
 
-Shiny.addCustomMessageHandler('docent-start', (opts) => {
+Shiny.addCustomMessageHandler('conductor-start', (opts) => {
   tour[opts.id].start();
 })
 
-Shiny.addCustomMessageHandler('docent-isActive', (opts) => {
+Shiny.addCustomMessageHandler('conductor-isActive', (opts) => {
   Shiny.setInputValue(
-    'docent_is_active', tour[opts.id].isActive(), {priority: "event"}
+    'conductor_is_active', tour[opts.id].isActive(), {priority: "event"}
   );
 })

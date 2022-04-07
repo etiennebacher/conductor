@@ -5,19 +5,19 @@
 #' @importFrom shiny singleton tags
 #' @importFrom htmltools htmlDependency
 #' @export
-useDocent <- function(){
+useConductor <- function(){
   htmlDependency(
-    "docent",
-    version = utils::packageVersion("docent"),
-    package = "docent",
+    "conductor",
+    version = utils::packageVersion("conductor"),
+    package = "conductor",
     src = "packer",
-    script = "docent.js"
+    script = "conductor.js"
   )
 }
 
 #' @export
-Docent <- R6::R6Class(
-  "Docent",
+Conductor <- R6::R6Class(
+  "Conductor",
   private = list(
     id = paste0(sample(letters, 26), collapse = ""),
     steps = list(),
@@ -55,7 +55,7 @@ Docent <- R6::R6Class(
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "docent-init",
+        "conductor-init",
         list(
           id = private$id,
           steps = private$steps,
@@ -69,7 +69,7 @@ Docent <- R6::R6Class(
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      session$sendCustomMessage("docent-start", list(id = private$id))
+      session$sendCustomMessage("conductor-start", list(id = private$id))
       invisible(self)
     },
 
@@ -148,7 +148,7 @@ Docent <- R6::R6Class(
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      session$sendCustomMessage("docent-isActive", list(id = private$id))
+      session$sendCustomMessage("conductor-isActive", list(id = private$id))
       invisible(self)
     },
 

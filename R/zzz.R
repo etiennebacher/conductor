@@ -1,4 +1,4 @@
 .onLoad <- function(libname, pkgname){
-  path <- system.file("packer", package = "docent")
-  shiny::addResourcePath('docent-assets', path)
+  path <- system.file("packer", package = "conductor")
+  shiny::addResourcePath('conductor-assets', path)
 }

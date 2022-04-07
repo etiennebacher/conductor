@@ -1,22 +1,18 @@
 
-# docent
+# conductor
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-> [ A docent is] someone whose job is to show people around a museum, zoo, etc. and tell them about the things in it.
->
-> -- <cite>Cambridge dictionary</cite>
-
-The goal of docent is to ...
+The goal of conductor is to ...
 
 ## Installation
 
-You can install the development version of docent from [GitHub](https://github.com/) with:
+You can install the development version of conductor from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("etiennebacher/docent")
+devtools::install_github("etiennebacher/conductor")
 ```
 
 ## Similar packages
@@ -28,5 +24,5 @@ This is not at all the first package to enable tours in Shiny applications. Simi
 
 ## Acknowledgements
 
-The structure and the code of `docent` are copied from [`cicerone`](), by [John Coene]().
+The structure and the code of `conductor` are copied from [`cicerone`](), by [John Coene]().
 
