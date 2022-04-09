@@ -2,6 +2,7 @@ import 'shiny';
 import 'jquery';
 import Shepherd from 'shepherd.js';
 import 'shepherd.js/dist/css/shepherd.css';
+import './custom.css';
 
 let tour = [];
 
@@ -35,10 +36,12 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
 
   opts.steps.forEach((step, index) => {
-    opts.steps[index].when = {
-      show: function(element){setTimeout(function(){
-          MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-        }, 300);
+    if (opts.mathjax) {
+      opts.steps[index].when = {
+        show: function(element){setTimeout(function(){
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          }, 100);
+        }
       }
     }
     tour[opts.id].addStep(step)
