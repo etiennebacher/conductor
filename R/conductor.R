@@ -31,7 +31,10 @@ Conductor <- R6::R6Class(
                           tourName = NULL, stepsContainer = NULL,
                           modalContainer = NULL, confirmCancel = FALSE,
                           confirmCancelMessage = NULL,
-                          defaultStepOptions = NULL, mathjax = FALSE) {
+                          defaultStepOptions = NULL, mathjax = FALSE,
+                          onComplete = NULL, onCancel = NULL, onHide = NULL,
+                          onShow = NULL, onStart = NULL,
+                          onActive = NULL, onInactive = NULL) {
 
       private$globals <- list(
         exitOnEsc = exitOnEsc,
@@ -43,7 +46,14 @@ Conductor <- R6::R6Class(
         stepsContainer = stepsContainer,
         modalContainer = modalContainer,
         confirmCancel = confirmCancel,
-        confirmCancelMessage = confirmCancelMessage
+        confirmCancelMessage = confirmCancelMessage,
+        onComplete = onComplete,
+        onCancel = onCancel,
+        onHide = onHide,
+        onShow = onShow,
+        onStart = onStart,
+        onActive = onActive,
+        onInactive = onInactive
       )
 
       private$mathjax <- mathjax
@@ -59,7 +69,8 @@ Conductor <- R6::R6Class(
         list(
           id = private$id,
           steps = private$steps,
-          globals = private$globals
+          globals = private$globals,
+          mathjax = private$mathjax
         )
       )
       invisible(self)

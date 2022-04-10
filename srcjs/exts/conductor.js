@@ -5,6 +5,17 @@ import 'shepherd.js/dist/css/shepherd.css';
 import './custom.css';
 
 let tour = [];
+let events = ["complete", "cancel", "start", "hide", "show", "active", "inactive"];
+
+// https://stackoverflow.com/a/196991/11598948
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}
 
 
 Shiny.addCustomMessageHandler('conductor-init', (opts) => {
@@ -34,6 +45,12 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
   tour[opts.id] = new Shepherd.Tour(opts.globals);
 
+  // Run code when tour is complete, cancelled, etc.
+  events.forEach(event => tour[opts.id].on(event, () => {
+    if (opts.globals["on" + toTitleCase(event)]) {
+      new Function("return " + opts.globals["on" + toTitleCase(event)])()
+    }
+  }))
 
   opts.steps.forEach((step, index) => {
     if (opts.mathjax) {
