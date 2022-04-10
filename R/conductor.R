@@ -87,7 +87,7 @@ Conductor <- R6::R6Class(
     step = function(el = NULL, title = NULL, text = NULL, position = NULL,
                     arrow = TRUE, is_id = TRUE, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
-                    when = NULL) {
+                    when = NULL, showOn = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -130,6 +130,7 @@ Conductor <- R6::R6Class(
       popover$canClickTarget <- canClickTarget
       popover$arrow <- arrow
       popover$scrollTo <- scrollTo
+      popover$showOn <- showOn
       if (!is.null(cancelIcon)) {
         popover$cancelIcon <- list(
           enabled = cancelIcon[[1]],

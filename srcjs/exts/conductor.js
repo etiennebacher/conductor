@@ -5,7 +5,8 @@ import 'shepherd.js/dist/css/shepherd.css';
 import './custom.css';
 
 let tour = [];
-let events = ["complete", "cancel", "start", "hide", "show", "active", "inactive"];
+let tourEvents = ["complete", "cancel", "start", "hide", "show", "active", "inactive"];
+let stepEvents = ["before-show", "show", "before-hide", "hide", "complete", "cancel", "destroy"];
 
 // https://stackoverflow.com/a/196991/11598948
 function toTitleCase(str) {
@@ -46,7 +47,7 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
   tour[opts.id] = new Shepherd.Tour(opts.globals);
 
   // Run code when tour is complete, cancelled, etc.
-  events.forEach(event => tour[opts.id].on(event, () => {
+  tourEvents.forEach(event => tour[opts.id].on(event, () => {
     if (opts.globals["on" + toTitleCase(event)]) {
       new Function("return " + opts.globals["on" + toTitleCase(event)])()
     }
@@ -61,9 +62,16 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
         }
       }
     }
-    tour[opts.id].addStep(step)
+
+    if (typeof opts.steps[index].showOn != undefined) {
+      if (typeof opts.steps[index].showOn == "boolean") {
+        opts.steps[index].showOn = "() => {return " + opts.steps[index].showOn.toString() + "}"
+      }
+      opts.steps[index].showOn = new Function("return " + opts.steps[index].showOn)()
+    }
   });
 
+  tour[opts.id].addSteps(opts.steps)
 
 })
 
