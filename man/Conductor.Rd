@@ -4,9 +4,8 @@
 \alias{Conductor}
 \title{Create a "conductor" tour}
 \description{
-Create a "conductor" tour
-
-Create a "conductor" tour
+In addition to this page, you can also directly access the documentation
+of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 }
 \section{Methods}{
 \subsection{Public methods}{

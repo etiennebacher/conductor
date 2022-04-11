@@ -18,6 +18,9 @@ useConductor <- function(){
 
 #' Create a "conductor" tour
 #'
+#' In addition to this page, you can also directly access the documentation
+#' of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
+#'
 #' @export
 Conductor <- R6::R6Class(
   "Conductor",
