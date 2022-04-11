@@ -137,8 +137,10 @@ Conductor <- R6::R6Class(
 
     #' Add a step in a `Conductor` tour
     #'
-    #' @param el The id of the element to highlight. If `NULL` (default), the
-    #' popover will appear in the center of the page.
+    #' @param el The element to highlight. It can be an id (for example `#mynav`),
+    #' a class (for instance `.navbar`), or a general tag (for example `button`).
+    #' If `NULL` (default) or if the selector is not found, the popover will appear
+    #' in the center of the page.
     #' @param title Title of the popover.
     #' @param text Text of the popover.
     #' @param position Position of the popover relative to the element. Possible
@@ -147,7 +149,6 @@ Conductor <- R6::R6Class(
     #' 'left', 'left-start', 'left-end'.
     #' @param arrow Add an arrow pointing towards the highlighted element? Default
     #' is `TRUE`.
-    #' @param is_id
     #' @param canClickTarget Allow the highlighted element to be clicked? Default is
     #' `TRUE`.
     #' @param advanceOn
@@ -191,9 +192,6 @@ Conductor <- R6::R6Class(
       popover <- list()
 
       if(!is.null(el)) {
-        if (isTRUE(is_id)) {
-          el <- paste0("#", el)
-        }
         if (is.null(position)) {
           position <- "auto"
         }

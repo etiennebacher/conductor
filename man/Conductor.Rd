@@ -164,8 +164,10 @@ Add a step in a \code{Conductor} tour
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{el}}{The id of the element to highlight. If \code{NULL} (default), the
-popover will appear in the center of the page.}
+\item{\code{el}}{The element to highlight. It can be an id (for example \verb{#mynav}),
+a class (for instance \code{.navbar}), or a general tag (for example \code{button}).
+If \code{NULL} (default) or if the selector is not found, the popover will appear
+in the center of the page.}
 
 \item{\code{title}}{Title of the popover.}
 
