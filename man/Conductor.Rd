@@ -49,23 +49,30 @@ Create a "conductor" tour
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{exitOnEsc}}{Allow closing the tour by pressing "Escape". Default is \code{TRUE}.}
+\item{\code{exitOnEsc}}{Allow closing the tour by pressing "Escape". Default is
+\code{TRUE}.}
 
-\item{\code{keyboardNavigation}}{Allow navigating the tour with keyboard arrows. Default is \code{TRUE}.}
+\item{\code{keyboardNavigation}}{Allow navigating the tour with keyboard arrows.
+Default is \code{TRUE}.}
 
-\item{\code{useModalOverlay}}{Highlight the tour popover and the element (if specified). Default is \code{TRUE}.}
+\item{\code{useModalOverlay}}{Highlight the tour popover and the element (if
+specified). Default is \code{TRUE}.}
 
-\item{\code{classPrefix}}{Add a prefix to the classes of the tour. This allows having different CSS for each tour.}
+\item{\code{classPrefix}}{Add a prefix to the classes of the tour. This allows
+having different CSS for each tour.}
 
 \item{\code{tourName}}{An (optional) id to give to the tour.}
 
 \item{\code{confirmCancel}}{Ask confirmation to cancel the tour. Default is \code{FALSE}.}
 
-\item{\code{confirmCancelMessage}}{Message in the popup that ask confirmation to close the tour (only works if \code{confirmCancel = TRUE}).}
+\item{\code{confirmCancelMessage}}{Message in the popup that ask confirmation to
+close the tour (only works if \code{confirmCancel = TRUE}).}
 
-\item{\code{defaultStepOptions}}{A nested list of options to apply to the entire tour. See \code{Details}.}
+\item{\code{defaultStepOptions}}{A nested list of options to apply to the entire
+tour. See \code{Details}.}
 
-\item{\code{mathjax}}{Enable MathJax? Default is \code{FALSE}. This requires importing MathJax, for example with \code{shiny::withMathJax()}.}
+\item{\code{mathjax}}{Enable MathJax? Default is \code{FALSE}. This requires importing
+MathJax, for example with \code{shiny::withMathJax()}.}
 
 \item{\code{onComplete}}{A JavaScript code to run when the tour is completed.}
 
@@ -102,7 +109,8 @@ A \code{Conductor} object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -122,7 +130,8 @@ Initialise \code{Conductor}.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -156,21 +165,30 @@ Add a step in a \code{Conductor} tour
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{el}}{The id of the element to highlight. If \code{NULL} (default), the popover will appear in the center of the page.}
+\item{\code{el}}{The id of the element to highlight. If \code{NULL} (default), the
+popover will appear in the center of the page.}
 
 \item{\code{title}}{Title of the popover.}
 
 \item{\code{text}}{Text of the popover.}
 
-\item{\code{position}}{Position of the popover relative to the element. Possible values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end', 'left', 'left-start', 'left-end'.}
+\item{\code{position}}{Position of the popover relative to the element. Possible
+values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
+'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
+'left', 'left-start', 'left-end'.}
 
-\item{\code{arrow}}{Add an arrow pointing towards the highlighted element? Default is \code{TRUE}.}
+\item{\code{arrow}}{Add an arrow pointing towards the highlighted element? Default
+is \code{TRUE}.}
 
-\item{\code{canClickTarget}}{Allow the highlighted element to be clicked? Default is \code{TRUE}.}
+\item{\code{canClickTarget}}{Allow the highlighted element to be clicked? Default is
+\code{TRUE}.}
 
-\item{\code{cancelIcon}}{A list of two elements: \code{enabled} is a boolean indicating whether a "close" icon should be displayed (default is \code{TRUE}); \code{label} is the label to add for \code{aria-label}.}
+\item{\code{cancelIcon}}{A list of two elements: \code{enabled} is a boolean indicating
+whether a "close" icon should be displayed (default is \code{TRUE}); \code{label} is
+the label to add for \code{aria-label}.}
 
-\item{\code{showOn}}{Either a boolean or a JavaScript expression that returns \code{true} or \code{false}. It indicates whether the step should be displayed in the tour.}
+\item{\code{showOn}}{Either a boolean or a JavaScript expression that returns \code{true}
+or \code{false}. It indicates whether the step should be displayed in the tour.}
 }
 \if{html}{\out{</div>}}
 }

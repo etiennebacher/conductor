@@ -22,7 +22,6 @@ useConductor <- function(){
 Conductor <- R6::R6Class(
   "Conductor",
   private = list(
-    id = paste0(sample(letters, 26), collapse = ""),
     steps = list(),
     globals = list(),
     mathjax = FALSE
@@ -36,17 +35,24 @@ Conductor <- R6::R6Class(
   #' @return A `Conductor` object.
   public = list(
 
-    #' @param exitOnEsc Allow closing the tour by pressing "Escape". Default is `TRUE`.
-    #' @param keyboardNavigation Allow navigating the tour with keyboard arrows. Default is `TRUE`.
-    #' @param useModalOverlay Highlight the tour popover and the element (if specified). Default is `TRUE`.
-    #' @param classPrefix Add a prefix to the classes of the tour. This allows having different CSS for each tour.
+    #' @param exitOnEsc Allow closing the tour by pressing "Escape". Default is
+    #' `TRUE`.
+    #' @param keyboardNavigation Allow navigating the tour with keyboard arrows.
+    #' Default is `TRUE`.
+    #' @param useModalOverlay Highlight the tour popover and the element (if
+    #' specified). Default is `TRUE`.
+    #' @param classPrefix Add a prefix to the classes of the tour. This allows
+    #' having different CSS for each tour.
     #' @param tourName An (optional) id to give to the tour.
     #' @param stepsContainer
     #' @param modalContainer
     #' @param confirmCancel Ask confirmation to cancel the tour. Default is `FALSE`.
-    #' @param confirmCancelMessage Message in the popup that ask confirmation to close the tour (only works if `confirmCancel = TRUE`).
-    #' @param defaultStepOptions A nested list of options to apply to the entire tour. See `Details`.
-    #' @param mathjax Enable MathJax? Default is `FALSE`. This requires importing MathJax, for example with `shiny::withMathJax()`.
+    #' @param confirmCancelMessage Message in the popup that ask confirmation to
+    #' close the tour (only works if `confirmCancel = TRUE`).
+    #' @param defaultStepOptions A nested list of options to apply to the entire
+    #' tour. See `Details`.
+    #' @param mathjax Enable MathJax? Default is `FALSE`. This requires importing
+    #' MathJax, for example with `shiny::withMathJax()`.
     #' @param onComplete A JavaScript code to run when the tour is completed.
     #' @param onCancel A JavaScript code to run when the tour is cancelled
     #' @param onHide A JavaScript code to run when the tour is hidden
@@ -90,7 +96,8 @@ Conductor <- R6::R6Class(
     },
 
 
-    #' @param session A valid Shiny session. If `NULL` (default), the function attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #'
     #' @details
     #' Initialise `Conductor`.
@@ -111,7 +118,8 @@ Conductor <- R6::R6Class(
     },
 
 
-    #' @param session A valid Shiny session. If `NULL` (default), the function attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #'
     #' @details
     #' Start `Conductor`.
@@ -126,18 +134,27 @@ Conductor <- R6::R6Class(
 
     #' Add a step in a `Conductor` tour
     #'
-    #' @param el The id of the element to highlight. If `NULL` (default), the popover will appear in the center of the page.
+    #' @param el The id of the element to highlight. If `NULL` (default), the
+    #' popover will appear in the center of the page.
     #' @param title Title of the popover.
     #' @param text Text of the popover.
-    #' @param position Position of the popover relative to the element. Possible values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end', 'left', 'left-start', 'left-end'.
-    #' @param arrow Add an arrow pointing towards the highlighted element? Default is `TRUE`.
+    #' @param position Position of the popover relative to the element. Possible
+    #' values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
+    #' 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
+    #' 'left', 'left-start', 'left-end'.
+    #' @param arrow Add an arrow pointing towards the highlighted element? Default
+    #' is `TRUE`.
     #' @param is_id
-    #' @param canClickTarget Allow the highlighted element to be clicked? Default is `TRUE`.
+    #' @param canClickTarget Allow the highlighted element to be clicked? Default is
+    #' `TRUE`.
     #' @param advanceOn
     #' @param scrollTo
-    #' @param cancelIcon A list of two elements: `enabled` is a boolean indicating whether a "close" icon should be displayed (default is `TRUE`); `label` is the label to add for `aria-label`.
+    #' @param cancelIcon A list of two elements: `enabled` is a boolean indicating
+    #' whether a "close" icon should be displayed (default is `TRUE`); `label` is
+    #' the label to add for `aria-label`.
     #' @param when
-    #' @param showOn Either a boolean or a JavaScript expression that returns `true` or `false`. It indicates whether the step should be displayed in the tour.
+    #' @param showOn Either a boolean or a JavaScript expression that returns `true`
+    #' or `false`. It indicates whether the step should be displayed in the tour.
     #'
     #' @details
 
