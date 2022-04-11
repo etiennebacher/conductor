@@ -63,6 +63,16 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
       }
     }
 
+    if (typeof opts.steps[index].tabId !== "undefined") {
+      opts.steps[index].when = {
+        show: function(element){
+          var tabs = $('#' + opts.steps[index].tabId);
+          console.log(tabs);
+          Shiny.inputBindings.bindingNames['shiny.bootstrapTabInput'].binding.setValue(tabs, opts.steps[index].tab);
+        }
+      }
+    }
+
     if (typeof opts.steps[index].showOn != undefined) {
       if (typeof opts.steps[index].showOn == "boolean") {
         opts.steps[index].showOn = "() => {return " + opts.steps[index].showOn.toString() + "}"

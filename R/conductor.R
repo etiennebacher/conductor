@@ -159,13 +159,16 @@ Conductor <- R6::R6Class(
     #' @param when
     #' @param showOn Either a boolean or a JavaScript expression that returns `true`
     #' or `false`. It indicates whether the step should be displayed in the tour.
+    #' @param buttons
+    #' @param tabId Id of the `tabsetPanel()`.
+    #' @param tab Name of the tab that contains the element.
     #'
     #' @details
 
     step = function(el = NULL, title = NULL, text = NULL, position = NULL,
-                    arrow = TRUE, is_id = TRUE, canClickTarget = TRUE,
+                    arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
-                    when = NULL, showOn = NULL) {
+                    when = NULL, showOn = NULL, buttons = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -206,6 +209,8 @@ Conductor <- R6::R6Class(
       popover$arrow <- arrow
       popover$scrollTo <- scrollTo
       popover$showOn <- showOn
+      popover$tab <- tab
+      popover$tabId <- tabId
       if (!is.null(cancelIcon)) {
         popover$cancelIcon <- list(
           enabled = cancelIcon[[1]],
