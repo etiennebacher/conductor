@@ -1,11 +1,15 @@
 Package: conductor
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Create Tours in 'Shiny' Apps Using 'Shepherd.js'.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: c(
+    person(given = "Etienne",
+           family = "Bacher",
+           role = c("aut", "cre"),
+           email = "etienne.bacher@protonmail.com")
+    )
+Description: Enable the use of 'Shepherd.js' to create tours in 'Shiny' 
+    applications.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
