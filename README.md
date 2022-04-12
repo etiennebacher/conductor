@@ -12,7 +12,7 @@ You can install the development version of `conductor` from [GitHub](https://git
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("etiennebacher/`conductor`")
+devtools::install_github("etiennebacher/conductor")
 ```
 
 ## How to use 
