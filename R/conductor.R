@@ -49,9 +49,10 @@ Conductor <- R6::R6Class(
     #' @param tourName An (optional) id to give to the tour.
     #' @param stepsContainer
     #' @param modalContainer
-    #' @param confirmCancel Ask confirmation to cancel the tour. Default is `FALSE`.
+    #' @param confirmCancel Ask confirmation to cancel the tour. Default is
+    #' `FALSE`.
     #' @param confirmCancelMessage Message in the popup that ask confirmation to
-    #' close the tour (only works if `confirmCancel = TRUE`).
+    #' close the tour (works only if `confirmCancel = TRUE`).
     #' @param defaultStepOptions A nested list of options to apply to the entire
     #' tour. See `Details`.
     #' @param mathjax Enable MathJax? Default is `FALSE`. This requires importing
@@ -147,10 +148,10 @@ Conductor <- R6::R6Class(
     #' values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
     #' 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
     #' 'left', 'left-start', 'left-end'.
-    #' @param arrow Add an arrow pointing towards the highlighted element? Default
+    #' @param arrow Add an arrow pointing towards the highlighted element. Default
     #' is `TRUE`.
-    #' @param canClickTarget Allow the highlighted element to be clicked? Default is
-    #' `TRUE`.
+    #' @param canClickTarget Allow the highlighted element to be clicked. Default
+    #' is `TRUE`.
     #' @param advanceOn
     #' @param scrollTo
     #' @param cancelIcon A list of two elements: `enabled` is a boolean indicating

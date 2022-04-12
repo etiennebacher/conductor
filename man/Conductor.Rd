@@ -62,10 +62,11 @@ having different CSS for each tour.}
 
 \item{\code{tourName}}{An (optional) id to give to the tour.}
 
-\item{\code{confirmCancel}}{Ask confirmation to cancel the tour. Default is \code{FALSE}.}
+\item{\code{confirmCancel}}{Ask confirmation to cancel the tour. Default is
+\code{FALSE}.}
 
 \item{\code{confirmCancelMessage}}{Message in the popup that ask confirmation to
-close the tour (only works if \code{confirmCancel = TRUE}).}
+close the tour (works only if \code{confirmCancel = TRUE}).}
 
 \item{\code{defaultStepOptions}}{A nested list of options to apply to the entire
 tour. See \code{Details}.}
@@ -151,13 +152,15 @@ Add a step in a \code{Conductor} tour
   text = NULL,
   position = NULL,
   arrow = TRUE,
-  is_id = TRUE,
+  tabId = NULL,
+  tab = NULL,
   canClickTarget = TRUE,
   advanceOn = NULL,
   scrollTo = TRUE,
   cancelIcon = NULL,
   when = NULL,
-  showOn = NULL
+  showOn = NULL,
+  buttons = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -180,6 +183,10 @@ values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
 
 \item{\code{arrow}}{Add an arrow pointing towards the highlighted element? Default
 is \code{TRUE}.}
+
+\item{\code{tabId}}{Id of the \code{tabsetPanel()}.}
+
+\item{\code{tab}}{Name of the tab that contains the element.}
 
 \item{\code{canClickTarget}}{Allow the highlighted element to be clicked? Default is
 \code{TRUE}.}
