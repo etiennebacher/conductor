@@ -196,6 +196,10 @@ Conductor <- R6::R6Class(
       popover <- list()
 
       if(!is.null(el)) {
+        el_in_module <- grepl("^ns\\(", deparse(sys.call()[[2]]))
+        if (el_in_module) {
+          el <- paste0("#", el)
+        }
         if (is.null(position)) {
           position <- "auto"
         }
