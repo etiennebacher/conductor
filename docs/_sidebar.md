@@ -5,7 +5,7 @@
   * [Basic options](basic-options.md)
   * [Customize the tour](customize.md)
   
-* More advanced
+* Advanced
 
   * [Use in modules](use-modules.md)
   * [JavaScript functions](javascript.md)
