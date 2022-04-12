@@ -166,7 +166,7 @@ Conductor <- R6::R6Class(
     #'
     #' @details
 
-    step = function(el = NULL, title = NULL, text = NULL, position = NULL,
+    step = function(title = NULL, text = NULL, el = NULL, position = NULL,
                     arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
                     when = NULL, showOn = NULL, buttons = NULL) {
@@ -196,7 +196,7 @@ Conductor <- R6::R6Class(
       popover <- list()
 
       if(!is.null(el)) {
-        el_in_module <- grepl("^ns\\(", deparse(sys.call()[[2]]))
+        el_in_module <- grepl("^ns\\(", deparse(sys.call()[[4]]))
         if (el_in_module) {
           el <- paste0("#", el)
         }

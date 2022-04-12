@@ -147,9 +147,9 @@ Add a step in a \code{Conductor} tour
 \subsection{Method \code{step()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$step(
-  el = NULL,
   title = NULL,
   text = NULL,
+  el = NULL,
   position = NULL,
   arrow = TRUE,
   tabId = NULL,
@@ -167,29 +167,29 @@ Add a step in a \code{Conductor} tour
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{title}}{Title of the popover.}
+
+\item{\code{text}}{Text of the popover.}
+
 \item{\code{el}}{The element to highlight. It can be an id (for example \verb{#mynav}),
 a class (for instance \code{.navbar}), or a general tag (for example \code{button}).
 If \code{NULL} (default) or if the selector is not found, the popover will appear
 in the center of the page.}
-
-\item{\code{title}}{Title of the popover.}
-
-\item{\code{text}}{Text of the popover.}
 
 \item{\code{position}}{Position of the popover relative to the element. Possible
 values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
 'left', 'left-start', 'left-end'.}
 
-\item{\code{arrow}}{Add an arrow pointing towards the highlighted element? Default
+\item{\code{arrow}}{Add an arrow pointing towards the highlighted element. Default
 is \code{TRUE}.}
 
 \item{\code{tabId}}{Id of the \code{tabsetPanel()}.}
 
 \item{\code{tab}}{Name of the tab that contains the element.}
 
-\item{\code{canClickTarget}}{Allow the highlighted element to be clicked? Default is
-\code{TRUE}.}
+\item{\code{canClickTarget}}{Allow the highlighted element to be clicked. Default
+is \code{TRUE}.}
 
 \item{\code{cancelIcon}}{A list of two elements: \code{enabled} is a boolean indicating
 whether a "close" icon should be displayed (default is \code{TRUE}); \code{label} is
