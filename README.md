@@ -73,5 +73,5 @@ This is not at all the first package to enable tours in Shiny applications. Simi
 
 ## Acknowledgements
 
-The structure and the code of `conductor` are copied from [`cicerone`](https://github.com/JohnCoene/cicerone), by [John Coene](https://john-coene.com/).
+The structure of the package, the code and the docs of `conductor` are copied or largely inspired from [`cicerone`](https://github.com/JohnCoene/cicerone), by [John Coene](https://john-coene.com/).
 
