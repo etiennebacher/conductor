@@ -1,8 +1,26 @@
 # Your first tour
 
+## A simple Shiny app
+
+First, let's create a simple Shiny app that will serve as a demo:
+```r
+library(shiny)
+
+ui <- fluidPage(
+  actionButton("mybutton", "Test"),
+  br(),
+  div(class = "to-highlight", p("Hello, I'm the first p tag")),
+  div(class = "to-highlight", p("Hi, I'm the second p tag"))
+)
+
+server <- function(input, output, session){}
+
+shinyApp(ui, server)
+```
+
 ## Create a conductor
 
-First, create a `Conductor` with:
+Then, create a `Conductor` with:
 ```r
 library(conductor)
 
@@ -38,7 +56,7 @@ conductor <- Conductor$
 
 ## Call the conductor
 
-Then, call `useConductor()` in the `ui` and call `conductor$init()$start()` anywhere in the `server`.
+Finally, call `useConductor()` in the `ui` and call `conductor$init()$start()` anywhere in the `server`.
 
 ```r
 library(shiny)
