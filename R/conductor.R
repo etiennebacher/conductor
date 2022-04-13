@@ -194,10 +194,16 @@ Conductor <- R6::R6Class(
         }
       }
 
+      call <- sys.call()
+
       popover <- list()
 
       if(!is.null(el)) {
-        el_in_module <- grepl("^ns\\(", deparse(sys.call()[[4]]))
+        if ("el" %in% names(call)) {
+          el_in_module <- grepl("^ns\\(", deparse(sys.call()[["el"]]))
+        } else {
+          el_in_module <- grepl("^ns\\(", deparse(sys.call()[[4]]))
+        }
         if (el_in_module) {
           el <- paste0("#", el)
         }
