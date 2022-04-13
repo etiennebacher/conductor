@@ -152,7 +152,7 @@ the session with `shiny::getDefaultReactiveDomain()`.
 
 ##### Details
 
-Start `Conductor`. Add a step in a `Conductor` tour
+Start `Conductor`.
 
 ------------------------------------------------------------------------
 
@@ -163,9 +163,9 @@ Start `Conductor`. Add a step in a `Conductor` tour
 ##### Usage
 
     Conductor$step(
-      el = NULL,
       title = NULL,
       text = NULL,
+      el = NULL,
       position = NULL,
       arrow = TRUE,
       tabId = NULL,
@@ -181,17 +181,17 @@ Start `Conductor`. Add a step in a `Conductor` tour
 
 ##### Arguments
 
-`el`  
-The element to highlight. It can be an id (for example `#mynav`), a
-class (for instance `.navbar`), or a general tag (for example `button`).
-If `NULL` (default) or if the selector is not found, the popover will
-appear in the center of the page.
-
 `title`  
 Title of the popover.
 
 `text`  
 Text of the popover.
+
+`el`  
+The element to highlight. It can be an id (for example `#mynav`), a
+class (for instance `.navbar`), or a general tag (for example `button`).
+If `NULL` (default) or if the selector is not found, the popover will
+appear in the center of the page.
 
 `position`  
 Position of the popover relative to the element. Possible values are:
@@ -200,7 +200,7 @@ Position of the popover relative to the element. Possible values are:
 'right-end', 'left', 'left-start', 'left-end'.
 
 `arrow`  
-Add an arrow pointing towards the highlighted element? Default is
+Add an arrow pointing towards the highlighted element. Default is
 `TRUE`.
 
 `tabId`  
@@ -210,7 +210,7 @@ Id of the `tabsetPanel()`.
 Name of the tab that contains the element.
 
 `canClickTarget`  
-Allow the highlighted element to be clicked? Default is `TRUE`.
+Allow the highlighted element to be clicked. Default is `TRUE`.
 
 `cancelIcon`  
 A list of two elements: `enabled` is a boolean indicating whether a
@@ -220,6 +220,10 @@ label to add for `aria-label`.
 `showOn`  
 Either a boolean or a JavaScript expression that returns `true` or
 `false`. It indicates whether the step should be displayed in the tour.
+
+##### Details
+
+Add a step in a `Conductor` tour.
 
 ------------------------------------------------------------------------
 

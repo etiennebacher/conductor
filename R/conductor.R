@@ -136,8 +136,8 @@ Conductor <- R6::R6Class(
     },
 
 
-    #' Add a step in a `Conductor` tour
-    #'
+
+
     #' @param el The element to highlight. It can be an id (for example `#mynav`),
     #' a class (for instance `.navbar`), or a general tag (for example `button`).
     #' If `NULL` (default) or if the selector is not found, the popover will appear
@@ -165,6 +165,7 @@ Conductor <- R6::R6Class(
     #' @param tab Name of the tab that contains the element.
     #'
     #' @details
+    #' Add a step in a `Conductor` tour.
 
     step = function(title = NULL, text = NULL, el = NULL, position = NULL,
                     arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,

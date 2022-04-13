@@ -137,7 +137,6 @@ attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \subsection{Details}{
 Start \code{Conductor}.
-Add a step in a \code{Conductor} tour
 }
 
 }
@@ -200,6 +199,10 @@ or \code{false}. It indicates whether the step should be displayed in the tour.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Details}{
+Add a step in a \code{Conductor} tour.
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-is_active"></a>}}
