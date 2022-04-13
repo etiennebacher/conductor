@@ -2,7 +2,7 @@
 
 Using [Shiny modules](https://shiny.rstudio.com/articles/modules.html) is common in large Shiny apps. In modules, input names must be wrapped in `ns()` to avoid namespace collision.
 
-To use `conductor` with inputs defined in modules, you can first define your `Conductor` outside of the app and then use `$step()` in the server part of the module:
+To use `conductor` with inputs defined in modules, you can first define your `Conductor` outside of the app and then use `$step()` in the server part of the module, while still wrapping the `el` argument in `ns()`:
 
 ```r
 library(shiny)
