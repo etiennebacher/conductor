@@ -2,6 +2,7 @@
 
 export(Conductor)
 export(useConductor)
+export(use_conductor)
 importFrom(htmltools,htmlDependency)
 importFrom(shiny,singleton)
 importFrom(shiny,tags)

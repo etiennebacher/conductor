@@ -2,6 +2,7 @@
 #'
 #' Include dependencies, place anywhere in the shiny UI.
 #'
+#' @rdname use_conductor
 #' @importFrom shiny singleton tags
 #' @importFrom htmltools htmlDependency
 #' @export
@@ -14,6 +15,10 @@ useConductor <- function(){
     script = "conductor.js"
   )
 }
+
+#' @rdname use_conductor
+#' @export
+use_conductor <- useConductor
 
 
 #' Create a "conductor" tour

@@ -254,7 +254,7 @@ Whether to make a deep clone.
 
 
 ---
-## UseConductor
+## Use conductor
 
 ### Description
 
@@ -263,6 +263,8 @@ Include dependencies, place anywhere in the shiny UI.
 ### Usage
 
     useConductor()
+
+    use_conductor()
 
 
 ---
