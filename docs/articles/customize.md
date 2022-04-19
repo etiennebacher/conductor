@@ -1,192 +1,141 @@
 # Customize the tour
 
-In this section, we will see how to customize the different elements of a tour with CSS.
+In this section, we will see how to customize the different elements of a tour with CSS. We will use the following example app throughout this article (except for the *Arrow* section, where I will add a simple button):
 
-## Title
+```r
+library(shiny)
+library(conductor)
 
-## Content 
+guide <- Conductor$new()$
+  step(
+    "hello welcome on this tour",
+    "This is the content of the modal"
+  )
 
-## Buttons
+ui <- fluidPage(
+  useConductor()
+)
+
+server <- function(input, output, session){
+  guide$init()$start()
+}
+
+shinyApp(ui, server)
+```
+You will only have to add the following code in `fluidPage()` to test the CSS:
+```r
+tags$head(
+    tags$style(
+        HTML("<CSS code here>")
+    )
+)
+```
+
+## Title & content
+
+<!-- panels:start -->
+<!-- div:left-panel -->
+
+The classes `shepherd-header`, `shepherd-element`, `shepherd-title`, and `shepherd-text` control the style for the title and the content of the modal.
+
+<img src="articles/assets/title_and_content.png">
+<!-- div:right-panel -->
+
+```css
+.shepherd-header {
+    background-color: red !important;
+}
+.shepherd-element {
+    background-color: black;
+}
+.shepherd-title {
+    color: white
+}
+.shepherd-text {
+    color: white
+}
+```
+<!-- panels:end -->
+
+
+
+## Buttons & footer
+
+<!-- panels:start -->
+<!-- div:left-panel -->
+
+The classes `shepherd-button` and `shepherd-button-secondary` control the style for the two buttons of the modal. The first one is for the button *Next* and the second one for the button *Previous*. 
+
+You can also modify the entire footer with the class `shepherd-footer`, for instance to center the buttons.
+
+<img src="articles/assets/buttons.png">
+<!-- div:right-panel -->
+
+```css
+.shepherd-button {
+    background-color: red 
+}
+
+.shepherd-button-secondary {
+    background-color: green !important;
+    color: white !important;
+}
+
+.shepherd-footer {
+	  display: flex;
+	  justify-content: center;
+}
+```
+<!-- panels:end -->
 
 ## Arrow
 
-## General
+<!-- panels:start -->
+<!-- div:left-panel -->
 
+The style of the arrow can be modified with the class `shepherd-arrow`.
 
-```
-.shepherd-button {
-    background: #3288e6;
-    border: 0;
-    border-radius: 3px;
-    color: hsla(0, 0%, 100%, 0.75);
-    cursor: pointer;
-    margin-right: 0.5rem;
-    padding: 0.5rem 1.5rem;
-    transition: all 0.5s ease;
-}
-.shepherd-button:not(:disabled):hover {
-    background: #196fcc;
-    color: hsla(0, 0%, 100%, 0.75);
-}
-.shepherd-button.shepherd-button-secondary {
-    background: #f1f2f3;
-    color: rgba(0, 0, 0, 0.75);
-}
-.shepherd-button.shepherd-button-secondary:not(:disabled):hover {
-    background: #d6d9db;
-    color: rgba(0, 0, 0, 0.75);
-}
-.shepherd-button:disabled {
-    cursor: not-allowed;
-}
-.shepherd-footer {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 0.75rem 0.75rem;
-}
-.shepherd-footer .shepherd-button:last-child {
-    margin-right: 0;
-}
-.shepherd-cancel-icon {
-    background: transparent;
-    border: none;
-    color: hsla(0, 0%, 50%, 0.75);
-    cursor: pointer;
-    font-size: 2em;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    transition: color 0.5s ease;
-}
-.shepherd-cancel-icon:hover {
-    color: rgba(0, 0, 0, 0.75);
-}
-.shepherd-has-title .shepherd-content .shepherd-cancel-icon {
-    color: hsla(0, 0%, 50%, 0.75);
-}
-.shepherd-has-title .shepherd-content .shepherd-cancel-icon:hover {
-    color: rgba(0, 0, 0, 0.75);
-}
-.shepherd-title {
-    color: rgba(0, 0, 0, 0.75);
-    display: flex;
-    flex: 1 0 auto;
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
+<img src="articles/assets/arrow.png">
+<!-- div:right-panel -->
+
+```css
+.shepherd-element {
+    background-color: black;
 }
 .shepherd-header {
-    align-items: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-    line-height: 2em;
-    padding: 0.75rem 0.75rem 0;
+    background-color: black !important;
 }
-.shepherd-has-title .shepherd-content .shepherd-header {
-    background: #e6e6e6;
-    padding: 1em;
-}
-.shepherd-text {
-    color: rgba(0, 0, 0, 0.75);
-    font-size: 1rem;
-    line-height: 1.3em;
-    padding: 0.75em;
-}
-.shepherd-text p {
-    margin-top: 0;
-}
-.shepherd-text p:last-child {
-    margin-bottom: 0;
-}
-.shepherd-content {
-    border-radius: 5px;
-    outline: none;
-    padding: 0;
-}
-.shepherd-element {
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    opacity: 0;
-    outline: none;
-    transition: opacity 0.3s, visibility 0.3s;
-    visibility: hidden;
-    width: 100%;
-    z-index: 9999;
-}
-.shepherd-enabled.shepherd-element {
-    opacity: 1;
-    visibility: visible;
-}
-.shepherd-element[data-popper-reference-hidden]:not(.shepherd-centered) {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-}
-.shepherd-element,
-.shepherd-element *,
-.shepherd-element :after,
-.shepherd-element :before {
-    box-sizing: border-box;
-}
-.shepherd-arrow,
-.shepherd-arrow:before {
-    height: 16px;
-    position: absolute;
-    width: 16px;
-    z-index: -1;
+.shepherd-title, .shepherd-text {
+    color: white
 }
 .shepherd-arrow:before {
-    background: #fff;
-    content: "";
-    transform: rotate(45deg);
-}
-.shepherd-element[data-popper-placement^="top"] > .shepherd-arrow {
-    bottom: -8px;
-}
-.shepherd-element[data-popper-placement^="bottom"] > .shepherd-arrow {
-    top: -8px;
-}
-.shepherd-element[data-popper-placement^="left"] > .shepherd-arrow {
-    right: -8px;
-}
-.shepherd-element[data-popper-placement^="right"] > .shepherd-arrow {
-    left: -8px;
-}
-.shepherd-element.shepherd-centered > .shepherd-arrow {
-    opacity: 0;
-}
-.shepherd-element.shepherd-has-title[data-popper-placement^="bottom"] > .shepherd-arrow:before {
-    background-color: #e6e6e6;
-}
-.shepherd-target-click-disabled.shepherd-enabled.shepherd-target,
-.shepherd-target-click-disabled.shepherd-enabled.shepherd-target * {
-    pointer-events: none;
-}
-.shepherd-modal-overlay-container {
-    height: 0;
-    left: 0;
-    opacity: 0;
-    overflow: hidden;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    transition: all 0.3s ease-out, height 0ms 0.3s, opacity 0.3s 0ms;
-    width: 100vw;
-    z-index: 9997;
-}
-.shepherd-modal-overlay-container.shepherd-modal-is-visible {
-    height: 100vh;
-    opacity: 0.5;
-    transition: all 0.3s ease-out, height 0s 0s, opacity 0.3s 0s;
-}
-.shepherd-modal-overlay-container.shepherd-modal-is-visible path {
-    pointer-events: all;
+	  background-color: black !important;
 }
 ```
+<!-- panels:end -->
+
+## Cancel icon & other
+
+<!-- panels:start -->
+<!-- div:left-panel -->
+
+The cancel icon can be customized with the class `shepherd-cancel-icon`. Finally, you can simply start from the default CSS file and modify it as you want. The default CSS can be found here: https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/9.0.0/css/shepherd.css
+
+<img src="articles/assets/cancel-icon.png">
+
+<!-- div:right-panel -->
+
+```css
+.shepherd-title {
+    padding-left: 2.5rem
+}
+
+.shepherd-cancel-icon > span {
+    border-radius: 50%;
+    background-color: #bfbfbf;
+    opacity: 0.8;
+    display: block;
+    width: 2.8rem !important;
+}
+```
+<!-- panels:end -->
