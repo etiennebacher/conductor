@@ -43,16 +43,18 @@ conductor <- Conductor$
     text = "This popover is displayed in the center of the screen."
   )$
   step(
-    el = "#mybutton",
     "This is a button",
-    "This button has no purpose. Its only goal is to serve as support for demo."
+    "This button has no purpose. Its only goal is to serve as support for demo.",
+    "#mybutton"
   )$
   step(
-    el = ".to-highlight",
+    ".to-highlight",
     title = "This is some text",
     text = "Only the first p tag is highlighted."
   )
 ```
+
+!> If the arguments in `$step()` are unnamed, they should follow the order "title", "text", "el". 
 
 ## Call the conductor
 
