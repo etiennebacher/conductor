@@ -100,3 +100,13 @@ shinyApp(ui, server)
 ```
 
 The full list of step options is available with `?conductor::Conductor`, at "Method step()".
+
+?> If you want to apply some step options to every step, you can use `defaultStepOptions` in `$step()`. For example, if you want to add a cancel icon to all steps, you can do:
+```r
+Conductor$
+  new(
+    defaultStepOptions = list(
+      cancelIcon = list(enabled = TRUE, NULL)
+    )
+  )
+```
