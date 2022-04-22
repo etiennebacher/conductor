@@ -30,6 +30,7 @@ use_conductor <- useConductor
 Conductor <- R6::R6Class(
   "Conductor",
   private = list(
+    id = paste(sample(letters, length(letters)), collapse = ""),
     steps = list(),
     globals = list(),
     mathjax = FALSE
@@ -143,12 +144,13 @@ Conductor <- R6::R6Class(
 
 
 
+    #' @param title Title of the popover.
+    #' @param text Text of the popover.
     #' @param el The element to highlight. It can be an id (for example `#mynav`),
     #' a class (for instance `.navbar`), or a general tag (for example `button`).
     #' If `NULL` (default) or if the selector is not found, the popover will appear
     #' in the center of the page.
-    #' @param title Title of the popover.
-    #' @param text Text of the popover.
+    #' @param id Name of the step (optional).
     #' @param position Position of the popover relative to the element. Possible
     #' values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
     #' 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
@@ -175,7 +177,7 @@ Conductor <- R6::R6Class(
     step = function(title = NULL, text = NULL, el = NULL, position = NULL,
                     arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
-                    when = NULL, showOn = NULL, buttons = NULL) {
+                    when = NULL, showOn = NULL, id = NULL, buttons = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -228,6 +230,7 @@ Conductor <- R6::R6Class(
       popover$showOn <- showOn
       popover$tab <- tab
       popover$tabId <- tabId
+      popover$id <- id
       if (!is.null(cancelIcon)) {
         popover$cancelIcon <- list(
           enabled = cancelIcon[[1]],
@@ -253,13 +256,27 @@ Conductor <- R6::R6Class(
       invisible(self)
     },
 
-    is_active = function(session = NULL) {
+    show = function(step = NULL, session = NULL) {
+      if (is.null(step)) {
+        stop("Method `show()` needs a specific step.")
+      }
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      # JS indexing starts at 0
+      if (is.numeric(step)) step <- step - 1
+      session$sendCustomMessage(
+        "conductor-showStep", list(id = private$id, step = step)
+      )
+      invisible(self)
+    },
+
+    isActive = function(session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage("conductor-isActive", list(id = private$id))
-      invisible(self)
+      session$input[[paste0(private$id, "_is_active")]]
     }
-
   )
 )

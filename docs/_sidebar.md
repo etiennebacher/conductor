@@ -11,5 +11,9 @@
   * [Use in modules](articles/use-modules.md)
   * [JavaScript functions](articles/javascript.md)
   
+* Misc
+
+  * [Misc](articles/misc.md)
+  
 * [Reference](reference.md)
 * [License](LICENSE.md)
