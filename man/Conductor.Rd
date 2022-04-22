@@ -14,7 +14,14 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 \item \href{#method-init}{\code{Conductor$init()}}
 \item \href{#method-start}{\code{Conductor$start()}}
 \item \href{#method-step}{\code{Conductor$step()}}
-\item \href{#method-is_active}{\code{Conductor$is_active()}}
+\item \href{#method-show}{\code{Conductor$show()}}
+\item \href{#method-remove}{\code{Conductor$remove()}}
+\item \href{#method-moveNext}{\code{Conductor$moveNext()}}
+\item \href{#method-moveBack}{\code{Conductor$moveBack()}}
+\item \href{#method-cancel}{\code{Conductor$cancel()}}
+\item \href{#method-hide}{\code{Conductor$hide()}}
+\item \href{#method-getCurrentStep}{\code{Conductor$getCurrentStep()}}
+\item \href{#method-isActive}{\code{Conductor$isActive()}}
 \item \href{#method-clone}{\code{Conductor$clone()}}
 }
 }
@@ -159,6 +166,7 @@ Start \code{Conductor}.
   cancelIcon = NULL,
   when = NULL,
   showOn = NULL,
+  id = NULL,
   buttons = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -196,6 +204,8 @@ the label to add for \code{aria-label}.}
 
 \item{\code{showOn}}{Either a boolean or a JavaScript expression that returns \code{true}
 or \code{false}. It indicates whether the step should be displayed in the tour.}
+
+\item{\code{id}}{Name of the step (optional).}
 }
 \if{html}{\out{</div>}}
 }
@@ -205,11 +215,165 @@ Add a step in a \code{Conductor} tour.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-is_active"></a>}}
-\if{latex}{\out{\hypertarget{method-is_active}{}}}
-\subsection{Method \code{is_active()}}{
+\if{html}{\out{<a id="method-show"></a>}}
+\if{latex}{\out{\hypertarget{method-show}{}}}
+\subsection{Method \code{show()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Conductor$is_active(session = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$show(step = NULL, session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{step}}{Either the id of the step to show (defined in \verb{$step()}) or
+its number.}
+
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Show a specific step.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-remove"></a>}}
+\if{latex}{\out{\hypertarget{method-remove}{}}}
+\subsection{Method \code{remove()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$remove(step = NULL, session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{step}}{A character vector with the id(s) of the step(s) to remove
+(defined in \verb{$step()}).}
+
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Remove specific step(s).
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-moveNext"></a>}}
+\if{latex}{\out{\hypertarget{method-moveNext}{}}}
+\subsection{Method \code{moveNext()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$moveNext(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Advances the tour to the next step.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-moveBack"></a>}}
+\if{latex}{\out{\hypertarget{method-moveBack}{}}}
+\subsection{Method \code{moveBack()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$moveBack(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Shows the previous step.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-cancel"></a>}}
+\if{latex}{\out{\hypertarget{method-cancel}{}}}
+\subsection{Method \code{cancel()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$cancel(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Cancels the tour.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-hide"></a>}}
+\if{latex}{\out{\hypertarget{method-hide}{}}}
+\subsection{Method \code{hide()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$hide(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Hides the current step.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getCurrentStep"></a>}}
+\if{latex}{\out{\hypertarget{method-getCurrentStep}{}}}
+\subsection{Method \code{getCurrentStep()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$getCurrentStep(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Get the id of the current step. If no \code{id} was specified in \verb{$step()},
+a random id is generated.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isActive"></a>}}
+\if{latex}{\out{\hypertarget{method-isActive}{}}}
+\subsection{Method \code{isActive()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$isActive(session = NULL)}\if{html}{\out{</div>}}
 }
 
 }

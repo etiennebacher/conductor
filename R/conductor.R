@@ -256,6 +256,15 @@ Conductor <- R6::R6Class(
       invisible(self)
     },
 
+
+    #' @param step Either the id of the step to show (defined in `$step()`) or
+    #' its number.
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Show a specific step.
+    #' @export
+
     show = function(step = NULL, session = NULL) {
       if (is.null(step)) {
         stop("Method `show()` needs a specific step.")
@@ -263,13 +272,127 @@ Conductor <- R6::R6Class(
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      # JS indexing starts at 0
       if (is.numeric(step)) step <- step - 1
       session$sendCustomMessage(
         "conductor-showStep", list(id = private$id, step = step)
       )
       invisible(self)
     },
+
+
+    #' @param step A character vector with the id(s) of the step(s) to remove
+    #' (defined in `$step()`).
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #'
+    #' @details
+    #' Remove specific step(s).
+    #' @export
+
+    remove = function(step = NULL, session = NULL) {
+      if (is.null(step)) {
+        stop("Method `remove()` needs a specific step.")
+      } else if (is.numeric(step)) {
+        stop("Method `remove()` only works with character.")
+      }
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-removeStep", list(id = private$id, step = step)
+      )
+      invisible(self)
+    },
+
+
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Advances the tour to the next step.
+    #' @export
+
+    moveNext = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-next", list(id = private$id)
+      )
+      invisible(self)
+    },
+
+
+
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Shows the previous step.
+    #' @export
+
+    moveBack = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-back", list(id = private$id)
+      )
+      invisible(self)
+    },
+
+
+
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Cancels the tour.
+    #' @export
+
+    cancel = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-cancel", list(id = private$id)
+      )
+      invisible(self)
+    },
+
+
+
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Hides the current step.
+    #' @export
+
+    hide = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-hide", list(id = private$id)
+      )
+      invisible(self)
+    },
+
+
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Get the id of the current step. If no `id` was specified in `$step()`,
+    #' a random id is generated.
+    #' @export
+    getCurrentStep = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-getCurrentStep", list(id = private$id)
+      )
+      session$input[[paste0(private$id, "_current_step")]]
+    },
+
+
 
     isActive = function(session = NULL) {
       if(is.null(session)) {
