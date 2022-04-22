@@ -19,7 +19,21 @@ of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
 
 -   [`Conductor$step()`](#method-step)
 
--   [`Conductor$is_active()`](#method-is_active)
+-   [`Conductor$show()`](#method-show)
+
+-   [`Conductor$remove()`](#method-remove)
+
+-   [`Conductor$moveNext()`](#method-moveNext)
+
+-   [`Conductor$moveBack()`](#method-moveBack)
+
+-   [`Conductor$cancel()`](#method-cancel)
+
+-   [`Conductor$hide()`](#method-hide)
+
+-   [`Conductor$getCurrentStep()`](#method-getCurrentStep)
+
+-   [`Conductor$isActive()`](#method-isActive)
 
 -   [`Conductor$clone()`](#method-clone)
 
@@ -176,6 +190,7 @@ Start `Conductor`.
       cancelIcon = NULL,
       when = NULL,
       showOn = NULL,
+      id = NULL,
       buttons = NULL
     )
 
@@ -221,19 +236,170 @@ label to add for `aria-label`.
 Either a boolean or a JavaScript expression that returns `true` or
 `false`. It indicates whether the step should be displayed in the tour.
 
+`id`  
+Name of the step (optional).
+
 ##### Details
 
 Add a step in a `Conductor` tour.
 
 ------------------------------------------------------------------------
 
-<span id="method-is_active"></span>
+<span id="method-show"></span>
 
-#### Method `is_active()`
+#### Method `show()`
 
 ##### Usage
 
-    Conductor$is_active(session = NULL)
+    Conductor$show(step = NULL, session = NULL)
+
+##### Arguments
+
+`step`  
+Either the id of the step to show (defined in `$step()`) or its number.
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Show a specific step.
+
+------------------------------------------------------------------------
+
+<span id="method-remove"></span>
+
+#### Method `remove()`
+
+##### Usage
+
+    Conductor$remove(step = NULL, session = NULL)
+
+##### Arguments
+
+`step`  
+A character vector with the id(s) of the step(s) to remove (defined in
+`$step()`).
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Remove specific step(s).
+
+------------------------------------------------------------------------
+
+<span id="method-moveNext"></span>
+
+#### Method `moveNext()`
+
+##### Usage
+
+    Conductor$moveNext(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Advances the tour to the next step.
+
+------------------------------------------------------------------------
+
+<span id="method-moveBack"></span>
+
+#### Method `moveBack()`
+
+##### Usage
+
+    Conductor$moveBack(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Shows the previous step.
+
+------------------------------------------------------------------------
+
+<span id="method-cancel"></span>
+
+#### Method `cancel()`
+
+##### Usage
+
+    Conductor$cancel(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Cancels the tour.
+
+------------------------------------------------------------------------
+
+<span id="method-hide"></span>
+
+#### Method `hide()`
+
+##### Usage
+
+    Conductor$hide(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Hides the current step.
+
+------------------------------------------------------------------------
+
+<span id="method-getCurrentStep"></span>
+
+#### Method `getCurrentStep()`
+
+##### Usage
+
+    Conductor$getCurrentStep(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Get the id of the current step. If no `id` was specified in `$step()`, a
+random id is generated.
+
+------------------------------------------------------------------------
+
+<span id="method-isActive"></span>
+
+#### Method `isActive()`
+
+##### Usage
+
+    Conductor$isActive(session = NULL)
 
 ------------------------------------------------------------------------
 

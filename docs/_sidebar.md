@@ -10,6 +10,7 @@
   * [Navbar & tabs](articles/navbar-tabs.md)
   * [Use in modules](articles/use-modules.md)
   * [JavaScript functions](articles/javascript.md)
+  * [Methods](articles/methods.md)
   
 * Misc
 
