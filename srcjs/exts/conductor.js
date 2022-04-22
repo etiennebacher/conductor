@@ -39,6 +39,27 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
     ]
   }
 
+  // Add step counter
+  // https://github.com/shipshapecode/shepherd/issues/1269#issuecomment-742129621
+  if (opts.globals.progress == true) {
+    opts.globals.defaultStepOptions.when =  {
+      show() {
+        const currentStep = Shepherd.activeTour?.getCurrentStep()
+        if (!currentStep)
+          return
+        const currentStepElement = currentStep.getElement()
+        if (!currentStepElement)
+          return
+        const header = currentStepElement.querySelector('.shepherd-header')
+        if (!header)
+          return
+        const progress = document.createElement('span')
+        progress.innerText = `${tour[opts.id].steps.indexOf(currentStep) + 1}/${tour[opts.id].steps.length}`
+        header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'))
+      }
+    }
+  }
+
   // Default popperOptions
   opts.globals.defaultStepOptions.popperOptions = {
     modifiers: [{ name: 'offset', options: { offset: [0, 12] } }]

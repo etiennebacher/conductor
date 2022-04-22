@@ -42,6 +42,7 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
   confirmCancelMessage = NULL,
   defaultStepOptions = NULL,
   mathjax = FALSE,
+  progress = FALSE,
   onComplete = NULL,
   onCancel = NULL,
   onHide = NULL,
@@ -80,6 +81,8 @@ tour. See \code{Details}.}
 
 \item{\code{mathjax}}{Enable MathJax? Default is \code{FALSE}. This requires importing
 MathJax, for example with \code{shiny::withMathJax()}.}
+
+\item{\code{progress}}{Show a step counter in each step? Default is \code{FALSE}.}
 
 \item{\code{onComplete}}{A JavaScript code to run when the tour is completed.}
 

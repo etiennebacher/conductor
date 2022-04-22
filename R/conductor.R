@@ -63,6 +63,7 @@ Conductor <- R6::R6Class(
     #' tour. See `Details`.
     #' @param mathjax Enable MathJax? Default is `FALSE`. This requires importing
     #' MathJax, for example with `shiny::withMathJax()`.
+    #' @param progress Show a step counter in each step? Default is `FALSE`.
     #' @param onComplete A JavaScript code to run when the tour is completed.
     #' @param onCancel A JavaScript code to run when the tour is cancelled
     #' @param onHide A JavaScript code to run when the tour is hidden
@@ -77,8 +78,8 @@ Conductor <- R6::R6Class(
                           modalContainer = NULL, confirmCancel = FALSE,
                           confirmCancelMessage = NULL,
                           defaultStepOptions = NULL, mathjax = FALSE,
-                          onComplete = NULL, onCancel = NULL, onHide = NULL,
-                          onShow = NULL, onStart = NULL,
+                          progress = FALSE, onComplete = NULL, onCancel = NULL,
+                          onHide = NULL, onShow = NULL, onStart = NULL,
                           onActive = NULL, onInactive = NULL) {
 
       private$globals <- list(
@@ -98,7 +99,8 @@ Conductor <- R6::R6Class(
         onShow = onShow,
         onStart = onStart,
         onActive = onActive,
-        onInactive = onInactive
+        onInactive = onInactive,
+        progress = progress
       )
 
       private$mathjax <- mathjax
