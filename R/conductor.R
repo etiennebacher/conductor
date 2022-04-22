@@ -395,6 +395,26 @@ Conductor <- R6::R6Class(
     },
 
 
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Get a list of two elements about the highlighted element: its `id` and
+    #' its `class`.
+    #' @export
+    getHighlightedElement = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-getHighlightedElement", list(id = private$id)
+      )
+      list(
+        id = session$input[[paste0(private$id, "_current_target_id")]],
+        class = session$input[[paste0(private$id, "_current_target_class")]]
+      )
+    },
+
+
 
     isActive = function(session = NULL) {
       if(is.null(session)) {

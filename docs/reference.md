@@ -33,6 +33,8 @@ of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
 
 -   [`Conductor$getCurrentStep()`](#method-getCurrentStep)
 
+-   [`Conductor$getHighlightedElement()`](#method-getHighlightedElement)
+
 -   [`Conductor$isActive()`](#method-isActive)
 
 -   [`Conductor$clone()`](#method-clone)
@@ -394,6 +396,27 @@ the session with `shiny::getDefaultReactiveDomain()`.
 
 Get the id of the current step. If no `id` was specified in `$step()`, a
 random id is generated.
+
+------------------------------------------------------------------------
+
+<span id="method-getHighlightedElement"></span>
+
+#### Method `getHighlightedElement()`
+
+##### Usage
+
+    Conductor$getHighlightedElement(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Get a list of two elements about the highlighted element: its `id` and
+its `class`.
 
 ------------------------------------------------------------------------
 

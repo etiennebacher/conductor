@@ -21,6 +21,7 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 \item \href{#method-cancel}{\code{Conductor$cancel()}}
 \item \href{#method-hide}{\code{Conductor$hide()}}
 \item \href{#method-getCurrentStep}{\code{Conductor$getCurrentStep()}}
+\item \href{#method-getHighlightedElement}{\code{Conductor$getHighlightedElement()}}
 \item \href{#method-isActive}{\code{Conductor$isActive()}}
 \item \href{#method-clone}{\code{Conductor$clone()}}
 }
@@ -368,6 +369,28 @@ attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 \subsection{Details}{
 Get the id of the current step. If no \code{id} was specified in \verb{$step()},
 a random id is generated.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getHighlightedElement"></a>}}
+\if{latex}{\out{\hypertarget{method-getHighlightedElement}{}}}
+\subsection{Method \code{getHighlightedElement()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$getHighlightedElement(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Get a list of two elements about the highlighted element: its \code{id} and
+its \code{class}.
 }
 
 }

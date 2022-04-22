@@ -146,9 +146,19 @@ Shiny.addCustomMessageHandler('conductor-hide', (opts) => {
 })
 
 Shiny.addCustomMessageHandler('conductor-getCurrentStep', (opts) => {
-  console.log(tour[opts.id].getCurrentStep().id)
+  var currentStep = tour[opts.id].getCurrentStep()
   Shiny.setInputValue(
-    opts.id + '_current_step', tour[opts.id].getCurrentStep().id, {priority: 'event'}
+    opts.id + '_current_step', currentStep.id, {priority: 'event'}
+  );
+})
+
+Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
+  var currentStep = tour[opts.id].getCurrentStep()
+  Shiny.setInputValue(
+    opts.id + '_current_target_id', currentStep.getTarget().id, {priority: 'event'}
+  );
+  Shiny.setInputValue(
+    opts.id + '_current_target_class', currentStep.getTarget().className, {priority: 'event'}
   );
 })
 

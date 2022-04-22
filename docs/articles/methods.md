@@ -1,6 +1,6 @@
 # Methods
 
-There are several available methods, that you can call with `$<method>()`: `show()`, `hide()`, `cancel()`, `moveBack()`, `moveNext()`, `getCurrentStep()`, `remove()`.
+There are several available methods, that you can call with `$<method>()`: `show()`, `hide()`, `cancel()`, `moveBack()`, `moveNext()`, `getCurrentStep()`, `getHighlightedElement()`, `remove()`.
 
 Below are some examples for some of these methods.
 
