@@ -108,6 +108,8 @@ Conductor <- R6::R6Class(
     },
 
 
+
+
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #'
@@ -259,6 +261,145 @@ Conductor <- R6::R6Class(
     },
 
 
+    #' @param step Id of the step (optional). If `NULL` (default), the current
+    #' step is used.
+    #' @param title Title of the popover.
+    #' @param text Text of the popover.
+    #' @param el The element to highlight. It can be an id (for example `#mynav`),
+    #' a class (for instance `.navbar`), or a general tag (for example `button`).
+    #' If `NULL` (default) or if the selector is not found, the popover will appear
+    #' in the center of the page.
+    #' @param id Name of the step (optional).
+    #' @param position Position of the popover relative to the element. Possible
+    #' values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
+    #' 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
+    #' 'left', 'left-start', 'left-end'.
+    #' @param arrow Add an arrow pointing towards the highlighted element. Default
+    #' is `TRUE`.
+    #' @param canClickTarget Allow the highlighted element to be clicked. Default
+    #' is `TRUE`.
+    #' @param advanceOn
+    #' @param scrollTo
+    #' @param cancelIcon A list of two elements: `enabled` is a boolean indicating
+    #' whether a "close" icon should be displayed (default is `TRUE`); `label` is
+    #' the label to add for `aria-label`.
+    #' @param when
+    #' @param showOn Either a boolean or a JavaScript expression that returns `true`
+    #' or `false`. It indicates whether the step should be displayed in the tour.
+    #' @param buttons
+    #' @param tabId Id of the `tabsetPanel()`.
+    #' @param tab Name of the tab that contains the element.
+    #'
+    #' @details
+    #' Add a step in a `Conductor` tour.
+
+    updateStepOptions = function(step = NULL,
+                                 title = NULL,
+                                 text = NULL,
+                                 el = NULL,
+                                 position = NULL,
+                                 arrow = TRUE,
+                                 tabId = NULL,
+                                 tab = NULL,
+                                 canClickTarget = TRUE,
+                                 advanceOn = NULL,
+                                 scrollTo = TRUE,
+                                 cancelIcon = NULL,
+                                 when = NULL,
+                                 showOn = NULL,
+                                 id = NULL,
+                                 buttons = NULL,
+                                 session = NULL) {
+
+      if (is.numeric(step)) {
+        stop("Method `updateStepOptions()`: numeric values not supported in arg `step`.")
+      }
+
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+
+      if (!is.null(advanceOn)) {
+        if (!is.list(advanceOn) | (is.list(advanceOn) &
+                                   length(advanceOn) != 2)) {
+          warning("Argument `advanceOn` must be a list of a two elements.",
+                  call. = TRUE)
+        }
+      }
+
+      if (!is.null(cancelIcon)) {
+        if (!is.list(cancelIcon)) {
+          warning("Argument `cancelIcon` must be a list.",
+                  call. = TRUE)
+        }
+      }
+
+      call <- sys.call()
+
+      popover <- list()
+
+      if(!is.null(el)) {
+        if ("el" %in% names(call)) {
+          el_in_module <- grepl("^ns\\(", deparse(sys.call()[["el"]]))
+        } else {
+          el_in_module <- grepl("^ns\\(", deparse(sys.call()[[4]]))
+        }
+        if (el_in_module) {
+          el <- paste0("#", el)
+        }
+        if (is.null(position)) {
+          position <- "auto"
+        }
+        popover$attachTo <- list(
+          element = el,
+          on = position
+        )
+      }
+      if(!is.null(title)) popover$title <- as.character(title)
+      if(!is.null(text)) popover$text <- as.character(text)
+      popover$canClickTarget <- canClickTarget
+      popover$arrow <- arrow
+      popover$scrollTo <- scrollTo
+      popover$showOn <- showOn
+      popover$tab <- tab
+      popover$tabId <- tabId
+      popover$id <- id
+      if (!is.null(cancelIcon)) {
+        popover$cancelIcon <- list(
+          enabled = cancelIcon[[1]],
+          label = cancelIcon[[2]]
+        )
+      }
+      if (!is.null(advanceOn)) {
+        popover$advanceOn <- list(
+          selector = advanceOn[[1]],
+          event = advanceOn[[2]]
+        )
+      }
+
+      # if(private$mathjax) {
+      #   popover$when <- paste0("function(element){setTimeout(function(){
+      #     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+      #   }, 300);", when, "}")
+      # } else {
+      #   if(!is.null(when)) popover$when <- when
+      # }
+      #
+      session$sendCustomMessage(
+        "conductor-updateStepOptions",
+        list(
+          id = private$id,
+          step = step,
+          new = popover
+        )
+      )
+      invisible(self)
+    },
+
+
+
+
+
     #' @param step Either the id of the step to show (defined in `$step()`) or
     #' its number.
     #' @param session A valid Shiny session. If `NULL` (default), the function
@@ -376,6 +517,7 @@ Conductor <- R6::R6Class(
       )
       invisible(self)
     },
+
 
 
     #' @param session A valid Shiny session. If `NULL` (default), the function

@@ -157,6 +157,8 @@ let stepUsed;
 let targetId;
 let targetClass;
 
+// Doesn't work when step specified
+// Wait for https://github.com/shipshapecode/shepherd/issues/1891
 Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
   if (opts.step != null) {
     stepUsed = tour[opts.id].getById(opts.step)
@@ -208,4 +210,15 @@ Shiny.addCustomMessageHandler('conductor-isActive', (opts) => {
   Shiny.setInputValue(
     opts.id + '_is_active', tour[opts.id].isActive(), {priority: 'event'}
   );
+})
+
+// Doesn't work when step specified
+// Wait for https://github.com/shipshapecode/shepherd/issues/1891
+Shiny.addCustomMessageHandler('conductor-updateStepOptions', (opts) => {
+  if (opts.step != null) {
+    stepUsed = tour[opts.id].getById(opts.step)
+  } else {
+    stepUsed = tour[opts.id].getCurrentStep()
+  }
+  tour[opts.id].stepUsed.updateStepOptions(opts.new);
 })

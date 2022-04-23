@@ -14,6 +14,7 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 \item \href{#method-init}{\code{Conductor$init()}}
 \item \href{#method-start}{\code{Conductor$start()}}
 \item \href{#method-step}{\code{Conductor$step()}}
+\item \href{#method-updateStepOptions}{\code{Conductor$updateStepOptions()}}
 \item \href{#method-show}{\code{Conductor$show()}}
 \item \href{#method-remove}{\code{Conductor$remove()}}
 \item \href{#method-moveNext}{\code{Conductor$moveNext()}}
@@ -180,6 +181,78 @@ Start \code{Conductor}.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{title}}{Title of the popover.}
+
+\item{\code{text}}{Text of the popover.}
+
+\item{\code{el}}{The element to highlight. It can be an id (for example \verb{#mynav}),
+a class (for instance \code{.navbar}), or a general tag (for example \code{button}).
+If \code{NULL} (default) or if the selector is not found, the popover will appear
+in the center of the page.}
+
+\item{\code{position}}{Position of the popover relative to the element. Possible
+values are: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
+'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end',
+'left', 'left-start', 'left-end'.}
+
+\item{\code{arrow}}{Add an arrow pointing towards the highlighted element. Default
+is \code{TRUE}.}
+
+\item{\code{tabId}}{Id of the \code{tabsetPanel()}.}
+
+\item{\code{tab}}{Name of the tab that contains the element.}
+
+\item{\code{canClickTarget}}{Allow the highlighted element to be clicked. Default
+is \code{TRUE}.}
+
+\item{\code{cancelIcon}}{A list of two elements: \code{enabled} is a boolean indicating
+whether a "close" icon should be displayed (default is \code{TRUE}); \code{label} is
+the label to add for \code{aria-label}.}
+
+\item{\code{showOn}}{Either a boolean or a JavaScript expression that returns \code{true}
+or \code{false}. It indicates whether the step should be displayed in the tour.}
+
+\item{\code{id}}{Name of the step (optional).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Add a step in a \code{Conductor} tour.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-updateStepOptions"></a>}}
+\if{latex}{\out{\hypertarget{method-updateStepOptions}{}}}
+\subsection{Method \code{updateStepOptions()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$updateStepOptions(
+  step = NULL,
+  title = NULL,
+  text = NULL,
+  el = NULL,
+  position = NULL,
+  arrow = TRUE,
+  tabId = NULL,
+  tab = NULL,
+  canClickTarget = TRUE,
+  advanceOn = NULL,
+  scrollTo = TRUE,
+  cancelIcon = NULL,
+  when = NULL,
+  showOn = NULL,
+  id = NULL,
+  buttons = NULL,
+  session = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{step}}{Id of the step (optional). If \code{NULL} (default), the current
+step is used.}
+
 \item{\code{title}}{Title of the popover.}
 
 \item{\code{text}}{Text of the popover.}
