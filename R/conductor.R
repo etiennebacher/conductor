@@ -295,7 +295,7 @@ Conductor <- R6::R6Class(
       if (is.null(step)) {
         stop("Method `remove()` needs a specific step.")
       } else if (is.numeric(step)) {
-        stop("Method `remove()` only works with character.")
+        stop("Method `remove()`: numeric values not supported in arg `step`.")
       }
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
@@ -395,25 +395,71 @@ Conductor <- R6::R6Class(
     },
 
 
+    #' @param step Id of the step (optional). If `NULL` (default), the current
+    #' step is used.
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
-    #' Get a list of two elements about the highlighted element: its `id` and
-    #' its `class`.
+    #' Get a list of two elements about the highlighted element of a specific
+    #' step: its `id` and its `class`.
     #' @export
-    getHighlightedElement = function(session = NULL) {
+    getHighlightedElement = function(step = NULL, session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
+      if (is.numeric(step)) {
+        stop("Method `getHighlightedElement()`: numeric values not supported in arg `step`.")
+      }
       session$sendCustomMessage(
-        "conductor-getHighlightedElement", list(id = private$id)
+        "conductor-getHighlightedElement", list(id = private$id, step = step)
       )
       list(
-        id = session$input[[paste0(private$id, "_current_target_id")]],
-        class = session$input[[paste0(private$id, "_current_target_class")]]
+        id = session$input[[paste0(private$id, "_target_id")]],
+        class = session$input[[paste0(private$id, "_target_class")]]
       )
     },
 
+    #' @param step Id of the step (optional). If `NULL` (default), the current
+    #' step is used.
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Returns a value `TRUE` or `FALSE` indicating whether the step is centered.
+    #' @export
+    isCentered = function(step = NULL, session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      if (is.numeric(step)) {
+        stop("Method `isCentered()`: numeric values not supported in arg `step`.")
+      }
+      session$sendCustomMessage(
+        "conductor-isCentered", list(id = private$id, step = step)
+      )
+      session$input[[paste0(private$id, "_step_is_centered")]]
+    },
+
+
+
+    #' @param step Id of the step (optional). If `NULL` (default), the current
+    #' step is used.
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Returns a value `TRUE` or `FALSE` indicating whether the step is open.
+    #' @export
+    isOpen = function(step = NULL, session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      if (is.numeric(step)) {
+        stop("Method `isOpen()`: numeric values not supported in arg `step`.")
+      }
+      session$sendCustomMessage(
+        "conductor-isOpen", list(id = private$id, step = step)
+      )
+      session$input[[paste0(private$id, "_step_is_open")]]
+    },
 
 
     isActive = function(session = NULL) {

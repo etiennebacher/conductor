@@ -22,6 +22,8 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 \item \href{#method-hide}{\code{Conductor$hide()}}
 \item \href{#method-getCurrentStep}{\code{Conductor$getCurrentStep()}}
 \item \href{#method-getHighlightedElement}{\code{Conductor$getHighlightedElement()}}
+\item \href{#method-isCentered}{\code{Conductor$isCentered()}}
+\item \href{#method-isOpen}{\code{Conductor$isOpen()}}
 \item \href{#method-isActive}{\code{Conductor$isActive()}}
 \item \href{#method-clone}{\code{Conductor$clone()}}
 }
@@ -377,20 +379,71 @@ a random id is generated.
 \if{latex}{\out{\hypertarget{method-getHighlightedElement}{}}}
 \subsection{Method \code{getHighlightedElement()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Conductor$getHighlightedElement(session = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$getHighlightedElement(step = NULL, session = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{step}}{Id of the step (optional). If \code{NULL} (default), the current
+step is used.}
+
 \item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
 attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-Get a list of two elements about the highlighted element: its \code{id} and
-its \code{class}.
+Get a list of two elements about the highlighted element of a specific
+step: its \code{id} and its \code{class}.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isCentered"></a>}}
+\if{latex}{\out{\hypertarget{method-isCentered}{}}}
+\subsection{Method \code{isCentered()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$isCentered(step = NULL, session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{step}}{Id of the step (optional). If \code{NULL} (default), the current
+step is used.}
+
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Returns a value \code{TRUE} or \code{FALSE} indicating whether the step is centered.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isOpen"></a>}}
+\if{latex}{\out{\hypertarget{method-isOpen}{}}}
+\subsection{Method \code{isOpen()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$isOpen(step = NULL, session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{step}}{Id of the step (optional). If \code{NULL} (default), the current
+step is used.}
+
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Returns a value \code{TRUE} or \code{FALSE} indicating whether the step is open.
 }
 
 }

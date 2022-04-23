@@ -1,6 +1,9 @@
 # Methods
 
-There are several available methods, that you can call with `$<method>()`: `show()`, `hide()`, `cancel()`, `moveBack()`, `moveNext()`, `getCurrentStep()`, `getHighlightedElement()`, `remove()`.
+There are several available methods, that you can call with `$<method>()`: 
+
+* edit the tour/step: `show()`, `hide()`, `remove()`, `cancel()`, `moveBack()`, `moveNext()`;
+* get information on the tour/step: `getCurrentStep()`, `getHighlightedElement()`, `isActive()`, `isOpen()`, `isCentered()`.
 
 Below are some examples for some of these methods.
 

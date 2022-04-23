@@ -35,6 +35,10 @@ of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
 
 -   [`Conductor$getHighlightedElement()`](#method-getHighlightedElement)
 
+-   [`Conductor$isCentered()`](#method-isCentered)
+
+-   [`Conductor$isOpen()`](#method-isOpen)
+
 -   [`Conductor$isActive()`](#method-isActive)
 
 -   [`Conductor$clone()`](#method-clone)
@@ -405,9 +409,13 @@ random id is generated.
 
 ##### Usage
 
-    Conductor$getHighlightedElement(session = NULL)
+    Conductor$getHighlightedElement(step = NULL, session = NULL)
 
 ##### Arguments
+
+`step`  
+Id of the step (optional). If `NULL` (default), the current step is
+used.
 
 `session`  
 A valid Shiny session. If `NULL` (default), the function attempts to get
@@ -415,8 +423,57 @@ the session with `shiny::getDefaultReactiveDomain()`.
 
 ##### Details
 
-Get a list of two elements about the highlighted element: its `id` and
-its `class`.
+Get a list of two elements about the highlighted element of a specific
+step: its `id` and its `class`.
+
+------------------------------------------------------------------------
+
+<span id="method-isCentered"></span>
+
+#### Method `isCentered()`
+
+##### Usage
+
+    Conductor$isCentered(step = NULL, session = NULL)
+
+##### Arguments
+
+`step`  
+Id of the step (optional). If `NULL` (default), the current step is
+used.
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Returns a value `TRUE` or `FALSE` indicating whether the step is
+centered.
+
+------------------------------------------------------------------------
+
+<span id="method-isOpen"></span>
+
+#### Method `isOpen()`
+
+##### Usage
+
+    Conductor$isOpen(step = NULL, session = NULL)
+
+##### Arguments
+
+`step`  
+Id of the step (optional). If `NULL` (default), the current step is
+used.
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Returns a value `TRUE` or `FALSE` indicating whether the step is open.
 
 ------------------------------------------------------------------------
 

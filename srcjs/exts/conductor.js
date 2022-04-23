@@ -152,22 +152,60 @@ Shiny.addCustomMessageHandler('conductor-getCurrentStep', (opts) => {
   );
 })
 
+
+let stepUsed;
+let targetId;
+let targetClass;
+
 Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
-  var currentStep = tour[opts.id].getCurrentStep()
+  if (opts.step != null) {
+    stepUsed = tour[opts.id].getById(opts.step)
+  } else {
+    stepUsed = tour[opts.id].getCurrentStep()
+  }
+
+  try {
+    targetId = stepUsed.getTarget().id
+    targetClass = stepUsed.getTarget().className
+  }
+  catch(err) {
+    targetId = null
+    targetClass = null
+  }
+
   Shiny.setInputValue(
-    opts.id + '_current_target_id', currentStep.getTarget().id, {priority: 'event'}
+    opts.id + '_target_id', targetId, {priority: 'event'}
   );
   Shiny.setInputValue(
-    opts.id + '_current_target_class', currentStep.getTarget().className, {priority: 'event'}
+    opts.id + '_target_class', targetClass, {priority: 'event'}
+  );
+})
+
+Shiny.addCustomMessageHandler('conductor-isCentered', (opts) => {
+  if (opts.step != null) {
+    stepUsed = tour[opts.id].getById(opts.step)
+  } else {
+    stepUsed = tour[opts.id].getCurrentStep()
+  }
+  console.log(stepUsed.isCentered())
+  Shiny.setInputValue(
+    opts.id + '_step_is_centered', stepUsed.isCentered(), {priority: 'event'}
+  );
+})
+
+Shiny.addCustomMessageHandler('conductor-isOpen', (opts) => {
+  if (opts.step != null) {
+    stepUsed = tour[opts.id].getById(opts.step)
+  } else {
+    stepUsed = tour[opts.id].getCurrentStep()
+  }
+  Shiny.setInputValue(
+    opts.id + '_step_is_open', stepUsed.isOpen(), {priority: 'event'}
   );
 })
 
 Shiny.addCustomMessageHandler('conductor-isActive', (opts) => {
-  console.log("hi")
-
-  ["active", "inactive"].forEach(event => tour[opts.id].on(event, () => {
-     Shiny.setInputValue(
-      opts.id + '_is_active', tour[opts.id].isActive(), {priority: 'event'}
-     );
-  }))
+  Shiny.setInputValue(
+    opts.id + '_is_active', tour[opts.id].isActive(), {priority: 'event'}
+  );
 })
