@@ -212,13 +212,11 @@ Shiny.addCustomMessageHandler('conductor-isActive', (opts) => {
   );
 })
 
-// Doesn't work when step specified
-// Wait for https://github.com/shipshapecode/shepherd/issues/1891
 Shiny.addCustomMessageHandler('conductor-updateStepOptions', (opts) => {
   if (opts.step != null) {
     stepUsed = tour[opts.id].getById(opts.step)
   } else {
     stepUsed = tour[opts.id].getCurrentStep()
   }
-  tour[opts.id].stepUsed.updateStepOptions(opts.new);
+  stepUsed.updateStepOptions(opts.new);
 })
