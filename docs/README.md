@@ -3,6 +3,7 @@
 # conductor
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/etiennebacher/conductor/workflows/R-CMD-check/badge.svg)](https://github.com/etiennebacher/conductor/actions)
 <!-- badges: end -->
 
 Create tours in Shiny apps using [shepherd.js](https://shepherdjs.dev/).

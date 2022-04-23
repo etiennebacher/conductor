@@ -3,6 +3,7 @@
 export(Conductor)
 export(useConductor)
 export(use_conductor)
+importFrom(R6,R6Class)
 importFrom(htmltools,htmlDependency)
 importFrom(shiny,singleton)
 importFrom(shiny,tags)

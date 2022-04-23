@@ -10,3 +10,5 @@
 ^LICENSE\.md$
 ^docs$
 ^\.github$
+test.R
+hex-conductor.png
