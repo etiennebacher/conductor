@@ -19,6 +19,8 @@ of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
 
 -   [`Conductor$step()`](#method-step)
 
+-   [`Conductor$updateStepOptions()`](#method-updateStepOptions)
+
 -   [`Conductor$show()`](#method-show)
 
 -   [`Conductor$remove()`](#method-remove)
@@ -205,6 +207,87 @@ Start `Conductor`.
     )
 
 ##### Arguments
+
+`title`  
+Title of the popover.
+
+`text`  
+Text of the popover.
+
+`el`  
+The element to highlight. It can be an id (for example `#mynav`), a
+class (for instance `.navbar`), or a general tag (for example `button`).
+If `NULL` (default) or if the selector is not found, the popover will
+appear in the center of the page.
+
+`position`  
+Position of the popover relative to the element. Possible values are:
+'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end',
+'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start',
+'right-end', 'left', 'left-start', 'left-end'.
+
+`arrow`  
+Add an arrow pointing towards the highlighted element. Default is
+`TRUE`.
+
+`tabId`  
+Id of the `tabsetPanel()`.
+
+`tab`  
+Name of the tab that contains the element.
+
+`canClickTarget`  
+Allow the highlighted element to be clicked. Default is `TRUE`.
+
+`cancelIcon`  
+A list of two elements: `enabled` is a boolean indicating whether a
+"close" icon should be displayed (default is `TRUE`); `label` is the
+label to add for `aria-label`.
+
+`showOn`  
+Either a boolean or a JavaScript expression that returns `true` or
+`false`. It indicates whether the step should be displayed in the tour.
+
+`id`  
+Name of the step (optional).
+
+##### Details
+
+Add a step in a `Conductor` tour.
+
+------------------------------------------------------------------------
+
+<span id="method-updateStepOptions"></span>
+
+#### Method `updateStepOptions()`
+
+##### Usage
+
+    Conductor$updateStepOptions(
+      step = NULL,
+      title = NULL,
+      text = NULL,
+      el = NULL,
+      position = NULL,
+      arrow = TRUE,
+      tabId = NULL,
+      tab = NULL,
+      canClickTarget = TRUE,
+      advanceOn = NULL,
+      scrollTo = TRUE,
+      cancelIcon = NULL,
+      when = NULL,
+      showOn = NULL,
+      id = NULL,
+      buttons = NULL,
+      session = NULL
+    )
+
+##### Arguments
+
+`step`  
+Id of the step (optional). If `NULL` (default), the current step is
+used.
 
 `title`  
 Title of the popover.
