@@ -1,36 +1,72 @@
 library(shiny)
+library(lorem) # gadenbuie/lorem
 
-guide <- Docent$
+x = 0.6
+guide <- Conductor$
   new(
-    exitOnEsc = FALSE,
-    keyboardNavigation = FALSE
+    mathjax = TRUE,
+    defaultStepOptions = list(
+      cancelIcon = list(
+        enabled = FALSE,
+        label = "foo"
+      )
+    )
   )$
   step(
-    title = "Hello there"
+    title = "hello welcome on this tour bla blabla bla bla bla",
+    # title = 'The busy Cauchy distribution
+    #            $$\\frac{1}{\\pi\\gamma\\,\\left[1 +
+    #            \\left(\\frac{x-x_0}{\\gamma}\\right)^2\\right]}\\!$$',
+    text = 'You do not see me initially: $$e^{i \\pi} + 1 = 0$$',
+    showOn = TRUE
   )$
   step(
-    el = "test",
-    title = "This is a button",
-    text = "This button has no purpose. Its only goal is to serve as support for demo.",
+    el = "#summary",
+    text = "hi",
     position = "bottom",
-    can_click_target = FALSE,
-    advance_on = list("#next_step", "click")
+    tabId = "tabz",
+    tab = "Plot"
+  )$
+  step(
+    el = "#summary",
+    title = "This is a button $$\\frac{1}{\\pi\\gamma\\,\\left[1 +
+               \\left(\\frac{x-x_0}{\\gamma}\\right)^2\\right]}\\!$$",
+    text = ipsum_words(30),
+    position = "bottom",
+    canClickTarget = FALSE,
+    showOn = x < 0.5
   )
 
 ui <- fluidPage(
-  useDocent(),
-  actionButton("test", "Test"),
-  actionButton("next_step", "Next step"),
-  verbatimTextOutput("foo")
+  tags$head(
+    withMathJax(),
+    useConductor(),
+    tags$style(
+      HTML(".longdiv {height: 100vh}")
+    )
+  ),
+  tabsetPanel(
+    id = "tabz",
+    tabPanel("plot_tab", h2("show plot here", id = "plot")),
+    tabPanel("Plot", h2("show summary here", id = "summary"))
+  )
 )
 
 server <- function(input, output, session){
   guide$init()$start()
 
   output$foo <- renderText({
-    guide$is_active()
-    input$docent_is_active
+    guide$isActive()
   })
+
+  # observe({
+  #   if (!isTRUE(guide$isActive())) {
+  #     showModal(modalDialog(
+  #       title = "Important message",
+  #       "This is an important message!"
+  #     ))
+  #   }
+  # })
 }
 
 shinyApp(ui, server)
