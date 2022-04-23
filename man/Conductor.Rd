@@ -90,9 +90,9 @@ MathJax, for example with \code{shiny::withMathJax()}.}
 
 \item{\code{onComplete}}{A JavaScript code to run when the tour is completed.}
 
-\item{\code{onCancel}}{A JavaScript code to run when the tour is cancelled}
+\item{\code{onCancel}}{A JavaScript code to run when the tour is cancelled.}
 
-\item{\code{onHide}}{A JavaScript code to run when the tour is hidden}
+\item{\code{onHide}}{A JavaScript code to run when the tour is hidden.}
 
 \item{\code{onShow}}{A JavaScript code to run when the tour is shown.}
 
@@ -213,6 +213,12 @@ the label to add for \code{aria-label}.}
 or \code{false}. It indicates whether the step should be displayed in the tour.}
 
 \item{\code{id}}{Name of the step (optional).}
+
+\item{\code{buttons}}{A list of lists. Each "sublist" contains the information
+for one button. There are six possible arguments for each button: action
+("back" or "next"), text (name of the button), secondary (\code{TRUE}/\code{FALSE}),
+disabled (\code{TRUE}/\code{FALSE}), label (aria-label of the button), and classes
+(for finer CSS customization).}
 }
 \if{html}{\out{</div>}}
 }
@@ -285,6 +291,12 @@ the label to add for \code{aria-label}.}
 or \code{false}. It indicates whether the step should be displayed in the tour.}
 
 \item{\code{id}}{Name of the step (optional).}
+
+\item{\code{buttons}}{A list of lists. Each "sublist" contains the information
+for one button. There are six possible arguments for each button: action
+("back" or "next"), text (name of the button), secondary (\code{TRUE}/\code{FALSE}),
+disabled (\code{TRUE}/\code{FALSE}), label (aria-label of the button), and classes
+(for finer CSS customization).}
 }
 \if{html}{\out{</div>}}
 }

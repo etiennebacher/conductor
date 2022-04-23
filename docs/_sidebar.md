@@ -14,7 +14,8 @@
   
 * Misc
 
-  * [Misc](articles/misc.md)
+  * [Buttons](articles/buttons.md)
+  * [HTML formatting](articles/html-formatting.md)
   
 * [Reference](reference.md)
 * [License](LICENSE.md)

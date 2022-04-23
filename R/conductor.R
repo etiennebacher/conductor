@@ -65,8 +65,8 @@ Conductor <- R6::R6Class(
     #' MathJax, for example with `shiny::withMathJax()`.
     #' @param progress Show a step counter in each step? Default is `FALSE`.
     #' @param onComplete A JavaScript code to run when the tour is completed.
-    #' @param onCancel A JavaScript code to run when the tour is cancelled
-    #' @param onHide A JavaScript code to run when the tour is hidden
+    #' @param onCancel A JavaScript code to run when the tour is cancelled.
+    #' @param onHide A JavaScript code to run when the tour is hidden.
     #' @param onShow A JavaScript code to run when the tour is shown.
     #' @param onStart A JavaScript code to run when the tour starts.
     #' @param onActive A JavaScript code to run when the tour is active.
@@ -171,7 +171,11 @@ Conductor <- R6::R6Class(
     #' @param when
     #' @param showOn Either a boolean or a JavaScript expression that returns `true`
     #' or `false`. It indicates whether the step should be displayed in the tour.
-    #' @param buttons
+    #' @param buttons A list of lists. Each "sublist" contains the information
+    #' for one button. There are six possible arguments for each button: action
+    #' ("back" or "next"), text (name of the button), secondary (`TRUE`/`FALSE`),
+    #' disabled (`TRUE`/`FALSE`), label (aria-label of the button), and classes
+    #' (for finer CSS customization).
     #' @param tabId Id of the `tabsetPanel()`.
     #' @param tab Name of the tab that contains the element.
     #'
@@ -205,11 +209,10 @@ Conductor <- R6::R6Class(
         }
       }
 
-      call <- sys.call()
-
       popover <- list()
 
       if(!is.null(el)) {
+        call <- sys.call()
         if ("el" %in% names(call)) {
           el_in_module <- grepl("^ns\\(", deparse(sys.call()[["el"]]))
         } else {
@@ -247,6 +250,13 @@ Conductor <- R6::R6Class(
           event = advanceOn[[2]]
         )
       }
+
+      all_buttons <- unlist(buttons)
+      all_buttons <- unique(all_buttons[names(all_buttons) == "action"])
+      if (any(!all_buttons %in% c("back", "next"))) {
+        stop("Buttons in Conductor only work with actions 'back' or 'next'.")
+      }
+      popover$buttons <- buttons
 
       # if(private$mathjax) {
       #   popover$when <- paste0("function(element){setTimeout(function(){
@@ -286,7 +296,11 @@ Conductor <- R6::R6Class(
     #' @param when
     #' @param showOn Either a boolean or a JavaScript expression that returns `true`
     #' or `false`. It indicates whether the step should be displayed in the tour.
-    #' @param buttons
+    #' @param buttons A list of lists. Each "sublist" contains the information
+    #' for one button. There are six possible arguments for each button: action
+    #' ("back" or "next"), text (name of the button), secondary (`TRUE`/`FALSE`),
+    #' disabled (`TRUE`/`FALSE`), label (aria-label of the button), and classes
+    #' (for finer CSS customization).
     #' @param tabId Id of the `tabsetPanel()`.
     #' @param tab Name of the tab that contains the element.
     #'
@@ -377,6 +391,13 @@ Conductor <- R6::R6Class(
         )
       }
 
+      all_buttons <- unlist(buttons)
+      all_buttons <- unique(all_buttons[names(all_buttons) == "action"])
+      if (any(!all_buttons %in% c("back", "next"))) {
+        stop("Buttons in Conductor only work with actions 'back' or 'next'.")
+      }
+      popover$buttons <- buttons
+
       # if(private$mathjax) {
       #   popover$when <- paste0("function(element){setTimeout(function(){
       #     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
@@ -406,7 +427,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Show a specific step.
-    #' @export
+    #'
 
     show = function(step = NULL, session = NULL) {
       if (is.null(step)) {
@@ -430,7 +451,7 @@ Conductor <- R6::R6Class(
     #'
     #' @details
     #' Remove specific step(s).
-    #' @export
+    #'
 
     remove = function(step = NULL, session = NULL) {
       if (is.null(step)) {
@@ -452,7 +473,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Advances the tour to the next step.
-    #' @export
+    #'
 
     moveNext = function(session = NULL) {
       if(is.null(session)) {
@@ -470,7 +491,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Shows the previous step.
-    #' @export
+    #'
 
     moveBack = function(session = NULL) {
       if(is.null(session)) {
@@ -488,7 +509,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Cancels the tour.
-    #' @export
+    #'
 
     cancel = function(session = NULL) {
       if(is.null(session)) {
@@ -506,7 +527,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Hides the current step.
-    #' @export
+    #'
 
     hide = function(session = NULL) {
       if(is.null(session)) {
@@ -525,7 +546,7 @@ Conductor <- R6::R6Class(
     #' @details
     #' Get the id of the current step. If no `id` was specified in `$step()`,
     #' a random id is generated.
-    #' @export
+    #'
     getCurrentStep = function(session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
@@ -544,7 +565,7 @@ Conductor <- R6::R6Class(
     #' @details
     #' Get a list of two elements about the highlighted element of a specific
     #' step: its `id` and its `class`.
-    #' @export
+    #'
     getHighlightedElement = function(step = NULL, session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
@@ -567,7 +588,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Returns a value `TRUE` or `FALSE` indicating whether the step is centered.
-    #' @export
+    #'
     isCentered = function(step = NULL, session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
@@ -589,7 +610,7 @@ Conductor <- R6::R6Class(
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
     #' Returns a value `TRUE` or `FALSE` indicating whether the step is open.
-    #' @export
+    #'
     isOpen = function(step = NULL, session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()

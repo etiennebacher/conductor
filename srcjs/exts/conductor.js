@@ -7,6 +7,9 @@ import './custom.css';
 let tour = [];
 let tourEvents = ["complete", "cancel", "start", "hide", "show", "active", "inactive"];
 let stepEvents = ["before-show", "show", "before-hide", "hide", "complete", "cancel", "destroy"];
+let stepUsed;
+let targetId;
+let targetClass;
 
 // https://stackoverflow.com/a/196991/11598948
 function toTitleCase(str) {
@@ -21,10 +24,11 @@ function toTitleCase(str) {
 
 Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
-  // Put default buttons
   if (opts.globals.defaultStepOptions == null) {
     opts.globals.defaultStepOptions = {}
   }
+
+  // If no buttons specified, put default buttons
   if (opts.globals.defaultStepOptions.buttons === undefined) {
     opts.globals.defaultStepOptions.buttons =  [
       {
@@ -37,7 +41,17 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
         text: 'Next'
       }
     ]
+  } else {
+    opts.globals.defaultStepOptions.buttons.forEach((value, id) => {
+      if (opts.globals.defaultStepOptions.buttons[id].action == "back") {
+        opts.globals.defaultStepOptions.buttons[id].action = function() { return this.back();}
+      }
+      if (opts.globals.defaultStepOptions.buttons[id].action == "next") {
+        opts.globals.defaultStepOptions.buttons[id].action = function() { return this.next();}
+      }
+    })
   }
+
 
   // Add step counter
   // https://github.com/shipshapecode/shepherd/issues/1269#issuecomment-742129621
@@ -106,6 +120,20 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
       }
       opts.steps[index].showOn = new Function("return " + opts.steps[index].showOn)()
     }
+
+    // Replace buttons
+    // Can't directly pass Javascript functions from R so I need to use "back"
+    // and "next" as keywords
+    if (typeof opts.steps[index].buttons !== "undefined") {
+      opts.steps[index].buttons.forEach((value, id) => {
+        if (opts.steps[index].buttons[id].action == "back") {
+          opts.steps[index].buttons[id].action = function() { return this.back();}
+        }
+        if (opts.steps[index].buttons[id].action == "next") {
+          opts.steps[index].buttons[id].action = function() { return this.next();}
+        }
+      })
+    }
   });
 
   tour[opts.id].addSteps(opts.steps)
@@ -151,11 +179,6 @@ Shiny.addCustomMessageHandler('conductor-getCurrentStep', (opts) => {
     opts.id + '_current_step', currentStep.id, {priority: 'event'}
   );
 })
-
-
-let stepUsed;
-let targetId;
-let targetClass;
 
 // Doesn't work when step specified
 // Wait for https://github.com/shipshapecode/shepherd/issues/1891

@@ -115,10 +115,10 @@ Show a step counter in each step? Default is `FALSE`.
 A JavaScript code to run when the tour is completed.
 
 `onCancel`  
-A JavaScript code to run when the tour is cancelled
+A JavaScript code to run when the tour is cancelled.
 
 `onHide`  
-A JavaScript code to run when the tour is hidden
+A JavaScript code to run when the tour is hidden.
 
 `onShow`  
 A JavaScript code to run when the tour is shown.
@@ -251,6 +251,13 @@ Either a boolean or a JavaScript expression that returns `true` or
 `id`  
 Name of the step (optional).
 
+`buttons`  
+A list of lists. Each "sublist" contains the information for one button.
+There are six possible arguments for each button: action ("back" or
+"next"), text (name of the button), secondary (`TRUE`/`FALSE`), disabled
+(`TRUE`/`FALSE`), label (aria-label of the button), and classes (for
+finer CSS customization).
+
 ##### Details
 
 Add a step in a `Conductor` tour.
@@ -331,6 +338,13 @@ Either a boolean or a JavaScript expression that returns `true` or
 
 `id`  
 Name of the step (optional).
+
+`buttons`  
+A list of lists. Each "sublist" contains the information for one button.
+There are six possible arguments for each button: action ("back" or
+"next"), text (name of the button), secondary (`TRUE`/`FALSE`), disabled
+(`TRUE`/`FALSE`), label (aria-label of the button), and classes (for
+finer CSS customization).
 
 ##### Details
 
