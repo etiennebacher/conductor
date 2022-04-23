@@ -1,4 +1,4 @@
-<img src="hex-conductor.png" style="max-width:30%!important;" align="right">
+<img src="hex-conductor.png" style="max-width:10px!important;" align="right">
 
 # conductor
 
