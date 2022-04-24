@@ -20,6 +20,7 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 \item \href{#method-moveNext}{\code{Conductor$moveNext()}}
 \item \href{#method-moveBack}{\code{Conductor$moveBack()}}
 \item \href{#method-cancel}{\code{Conductor$cancel()}}
+\item \href{#method-complete}{\code{Conductor$complete()}}
 \item \href{#method-hide}{\code{Conductor$hide()}}
 \item \href{#method-getCurrentStep}{\code{Conductor$getCurrentStep()}}
 \item \href{#method-getHighlightedElement}{\code{Conductor$getHighlightedElement()}}
@@ -174,7 +175,9 @@ Start \code{Conductor}.
   when = NULL,
   showOn = NULL,
   id = NULL,
-  buttons = NULL
+  buttons = NULL,
+  classes = NULL,
+  highlightClass = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -219,6 +222,12 @@ for one button. There are six possible arguments for each button: action
 ("back" or "next"), text (name of the button), secondary (\code{TRUE}/\code{FALSE}),
 disabled (\code{TRUE}/\code{FALSE}), label (aria-label of the button), and classes
 (for finer CSS customization).}
+
+\item{\code{classes}}{A character vector of extra classes to add to the step's
+content element.}
+
+\item{\code{highlightClass}}{An extra class to apply to \code{el} when it is highlighted.
+Only one extra class is accepted.}
 }
 \if{html}{\out{</div>}}
 }
@@ -249,6 +258,8 @@ Add a step in a \code{Conductor} tour.
   showOn = NULL,
   id = NULL,
   buttons = NULL,
+  classes = NULL,
+  highlightClass = NULL,
   session = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -297,11 +308,17 @@ for one button. There are six possible arguments for each button: action
 ("back" or "next"), text (name of the button), secondary (\code{TRUE}/\code{FALSE}),
 disabled (\code{TRUE}/\code{FALSE}), label (aria-label of the button), and classes
 (for finer CSS customization).}
+
+\item{\code{classes}}{A character vector of extra classes to add to the step's
+content element.}
+
+\item{\code{highlightClass}}{An extra class to apply to \code{el} when it is highlighted.
+Only one extra class is accepted.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-Add a step in a \code{Conductor} tour.
+Modify the options of a specific step.
 }
 
 }
@@ -413,6 +430,27 @@ attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \subsection{Details}{
 Cancels the tour.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-complete"></a>}}
+\if{latex}{\out{\hypertarget{method-complete}{}}}
+\subsection{Method \code{complete()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$complete(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Completes the tour.
 }
 
 }

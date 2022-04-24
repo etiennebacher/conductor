@@ -91,6 +91,11 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
   // Check at each step
   opts.steps.forEach((step, index) => {
 
+    // Collapse classes
+    if (opts.steps[index].classes != undefined) {
+      opts.steps[index].classes = opts.steps[index].classes.join(" ")
+    }
+
     // Mathjax rendering
     if (opts.mathjax) {
       opts.steps[index].when = {

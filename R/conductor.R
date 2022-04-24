@@ -178,6 +178,10 @@ Conductor <- R6::R6Class(
     #' (for finer CSS customization).
     #' @param tabId Id of the `tabsetPanel()`.
     #' @param tab Name of the tab that contains the element.
+    #' @param classes A character vector of extra classes to add to the step's
+    #' content element.
+    #' @param highlightClass An extra class to apply to `el` when it is highlighted.
+    #' Only one extra class is accepted.
     #'
     #' @details
     #' Add a step in a `Conductor` tour.
@@ -185,7 +189,8 @@ Conductor <- R6::R6Class(
     step = function(title = NULL, text = NULL, el = NULL, position = NULL,
                     arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
-                    when = NULL, showOn = NULL, id = NULL, buttons = NULL) {
+                    when = NULL, showOn = NULL, id = NULL, buttons = NULL,
+                    classes = NULL, highlightClass = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -238,6 +243,11 @@ Conductor <- R6::R6Class(
       popover$tab <- tab
       popover$tabId <- tabId
       popover$id <- id
+      popover$classes <- classes
+      if (length(highlightClass) > 1) {
+        stop("Argument `highlightClass` must be of length 1 or NULL.")
+      }
+      popover$highlightClass <- highlightClass
       if (!is.null(cancelIcon)) {
         popover$cancelIcon <- list(
           enabled = cancelIcon[[1]],
@@ -303,9 +313,13 @@ Conductor <- R6::R6Class(
     #' (for finer CSS customization).
     #' @param tabId Id of the `tabsetPanel()`.
     #' @param tab Name of the tab that contains the element.
+    #' @param classes A character vector of extra classes to add to the step's
+    #' content element.
+    #' @param highlightClass An extra class to apply to `el` when it is highlighted.
+    #' Only one extra class is accepted.
     #'
     #' @details
-    #' Add a step in a `Conductor` tour.
+    #' Modify the options of a specific step.
 
     updateStepOptions = function(step = NULL,
                                  title = NULL,
@@ -323,6 +337,8 @@ Conductor <- R6::R6Class(
                                  showOn = NULL,
                                  id = NULL,
                                  buttons = NULL,
+                                 classes = NULL,
+                                 highlightClass = NULL,
                                  session = NULL) {
 
       if (is.numeric(step)) {
@@ -378,6 +394,11 @@ Conductor <- R6::R6Class(
       popover$tab <- tab
       popover$tabId <- tabId
       popover$id <- id
+      popover$classes <- classes
+      if (length(highlightClass) > 1) {
+        stop("Argument `highlightClass` must be of length 1 or NULL.")
+      }
+      popover$highlightClass <- highlightClass
       if (!is.null(cancelIcon)) {
         popover$cancelIcon <- list(
           enabled = cancelIcon[[1]],

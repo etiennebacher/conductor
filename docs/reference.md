@@ -31,6 +31,8 @@ of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
 
 -   [`Conductor$cancel()`](#method-cancel)
 
+-   [`Conductor$complete()`](#method-complete)
+
 -   [`Conductor$hide()`](#method-hide)
 
 -   [`Conductor$getCurrentStep()`](#method-getCurrentStep)
@@ -203,7 +205,9 @@ Start `Conductor`.
       when = NULL,
       showOn = NULL,
       id = NULL,
-      buttons = NULL
+      buttons = NULL,
+      classes = NULL,
+      highlightClass = NULL
     )
 
 ##### Arguments
@@ -258,6 +262,14 @@ There are six possible arguments for each button: action ("back" or
 (`TRUE`/`FALSE`), label (aria-label of the button), and classes (for
 finer CSS customization).
 
+`classes`  
+A character vector of extra classes to add to the step's content
+element.
+
+`highlightClass`  
+An extra class to apply to `el` when it is highlighted. Only one extra
+class is accepted.
+
 ##### Details
 
 Add a step in a `Conductor` tour.
@@ -287,6 +299,8 @@ Add a step in a `Conductor` tour.
       showOn = NULL,
       id = NULL,
       buttons = NULL,
+      classes = NULL,
+      highlightClass = NULL,
       session = NULL
     )
 
@@ -346,9 +360,17 @@ There are six possible arguments for each button: action ("back" or
 (`TRUE`/`FALSE`), label (aria-label of the button), and classes (for
 finer CSS customization).
 
+`classes`  
+A character vector of extra classes to add to the step's content
+element.
+
+`highlightClass`  
+An extra class to apply to `el` when it is highlighted. Only one extra
+class is accepted.
+
 ##### Details
 
-Add a step in a `Conductor` tour.
+Modify the options of a specific step.
 
 ------------------------------------------------------------------------
 
@@ -456,6 +478,26 @@ the session with `shiny::getDefaultReactiveDomain()`.
 ##### Details
 
 Cancels the tour.
+
+------------------------------------------------------------------------
+
+<span id="method-complete"></span>
+
+#### Method `complete()`
+
+##### Usage
+
+    Conductor$complete(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Completes the tour.
 
 ------------------------------------------------------------------------
 
