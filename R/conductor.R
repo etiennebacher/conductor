@@ -569,7 +569,7 @@ Conductor <- R6::R6Class(
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-getHighlightedElement", list(id = private$id, step = step)
+        "conductor-getHighlightedElement", list(id = private$id)
       )
       session$input[[paste0(private$id, "_target")]]
     },
