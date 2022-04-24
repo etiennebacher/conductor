@@ -522,6 +522,23 @@ Conductor <- R6::R6Class(
     },
 
 
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Completes the tour.
+    #'
+
+    complete = function(session = NULL) {
+      if(is.null(session)) {
+        session <- shiny::getDefaultReactiveDomain()
+      }
+      session$sendCustomMessage(
+        "conductor-complete", list(id = private$id)
+      )
+      invisible(self)
+    },
+
+
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.

@@ -2,7 +2,7 @@
 
 There are several available methods, that you can call with `$<method>()`: 
 
-* edit the tour/step: `show()`, `hide()`, `remove()`, `cancel()`, `moveBack()`, `moveNext()`, `updateStepOptions()`;
+* edit the tour/step: `show()`, `hide()`, `remove()`, `cancel()`, `complete()`, `moveBack()`, `moveNext()`, `updateStepOptions()`;
 * get information on the tour/step: `getCurrentStep()`, `getHighlightedElement()`, `isActive()`, `isOpen()`, `isCentered()`.
 
 Below are some examples for some of these methods.

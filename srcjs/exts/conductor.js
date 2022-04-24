@@ -167,6 +167,10 @@ Shiny.addCustomMessageHandler('conductor-cancel', (opts) => {
   tour[opts.id].cancel();
 })
 
+Shiny.addCustomMessageHandler('conductor-complete', (opts) => {
+  tour[opts.id].complete();
+})
+
 Shiny.addCustomMessageHandler('conductor-hide', (opts) => {
   tour[opts.id].hide();
 })
