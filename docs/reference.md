@@ -94,7 +94,15 @@ Add a prefix to the classes of the tour. This allows having different
 CSS for each tour.
 
 `tourName`  
-An (optional) id to give to the tour.
+An (optional) name to give to the tour.
+
+`stepsContainer`  
+An optional container element for the steps. If `NULL` (default), the
+steps will be appended to `document.body`.
+
+`modalContainer`  
+An optional container element for the modal. If `NULL` (default), the
+modal will be appended to `document.body`.
 
 `confirmCancel`  
 Ask confirmation to cancel the tour. Default is `FALSE`.
@@ -202,7 +210,6 @@ Start `Conductor`.
       advanceOn = NULL,
       scrollTo = TRUE,
       cancelIcon = NULL,
-      when = NULL,
       showOn = NULL,
       id = NULL,
       buttons = NULL,
@@ -242,6 +249,14 @@ Name of the tab that contains the element.
 
 `canClickTarget`  
 Allow the highlighted element to be clicked. Default is `TRUE`.
+
+`advanceOn`  
+An action on the page which should advance the tour to the next step. It
+should be a list with a string selector and an event name.
+
+`scrollTo`  
+Should the element be scrolled to when this step is shown? Default is
+`TRUE`.
 
 `cancelIcon`  
 A list of two elements: `enabled` is a boolean indicating whether a
@@ -295,7 +310,6 @@ Add a step in a `Conductor` tour.
       advanceOn = NULL,
       scrollTo = TRUE,
       cancelIcon = NULL,
-      when = NULL,
       showOn = NULL,
       id = NULL,
       buttons = NULL,
@@ -341,6 +355,14 @@ Name of the tab that contains the element.
 `canClickTarget`  
 Allow the highlighted element to be clicked. Default is `TRUE`.
 
+`advanceOn`  
+An action on the page which should advance shepherd to the next step. It
+should be a list with a string selector and an event name.
+
+`scrollTo`  
+Should the element be scrolled to when this step is shown? Default is
+`TRUE`.
+
 `cancelIcon`  
 A list of two elements: `enabled` is a boolean indicating whether a
 "close" icon should be displayed (default is `TRUE`); `label` is the
@@ -367,6 +389,10 @@ element.
 `highlightClass`  
 An extra class to apply to `el` when it is highlighted. Only one extra
 class is accepted.
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
 
 ##### Details
 
@@ -619,6 +645,16 @@ Returns a value `TRUE` or `FALSE` indicating whether the step is open.
 ##### Usage
 
     Conductor$isActive(session = NULL)
+
+##### Arguments
+
+`session`  
+A valid Shiny session. If `NULL` (default), the function attempts to get
+the session with `shiny::getDefaultReactiveDomain()`.
+
+##### Details
+
+Returns a value `TRUE` or `FALSE` indicating whether the tour is active.
 
 ------------------------------------------------------------------------
 

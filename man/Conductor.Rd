@@ -73,7 +73,13 @@ specified). Default is \code{TRUE}.}
 \item{\code{classPrefix}}{Add a prefix to the classes of the tour. This allows
 having different CSS for each tour.}
 
-\item{\code{tourName}}{An (optional) id to give to the tour.}
+\item{\code{tourName}}{An (optional) name to give to the tour.}
+
+\item{\code{stepsContainer}}{An optional container element for the steps. If \code{NULL}
+(default), the steps will be appended to \code{document.body}.}
+
+\item{\code{modalContainer}}{An optional container element for the modal. If \code{NULL}
+(default), the modal will be appended to \code{document.body}.}
 
 \item{\code{confirmCancel}}{Ask confirmation to cancel the tour. Default is
 \code{FALSE}.}
@@ -172,7 +178,6 @@ Start \code{Conductor}.
   advanceOn = NULL,
   scrollTo = TRUE,
   cancelIcon = NULL,
-  when = NULL,
   showOn = NULL,
   id = NULL,
   buttons = NULL,
@@ -207,6 +212,13 @@ is \code{TRUE}.}
 
 \item{\code{canClickTarget}}{Allow the highlighted element to be clicked. Default
 is \code{TRUE}.}
+
+\item{\code{advanceOn}}{An action on the page which should advance the tour to
+the next step. It should be a list with a string selector and an event
+name.}
+
+\item{\code{scrollTo}}{Should the element be scrolled to when this step is shown?
+Default is \code{TRUE}.}
 
 \item{\code{cancelIcon}}{A list of two elements: \code{enabled} is a boolean indicating
 whether a "close" icon should be displayed (default is \code{TRUE}); \code{label} is
@@ -254,7 +266,6 @@ Add a step in a \code{Conductor} tour.
   advanceOn = NULL,
   scrollTo = TRUE,
   cancelIcon = NULL,
-  when = NULL,
   showOn = NULL,
   id = NULL,
   buttons = NULL,
@@ -294,6 +305,12 @@ is \code{TRUE}.}
 \item{\code{canClickTarget}}{Allow the highlighted element to be clicked. Default
 is \code{TRUE}.}
 
+\item{\code{advanceOn}}{An action on the page which should advance shepherd to the
+next step. It should be a list with a string selector and an event name.}
+
+\item{\code{scrollTo}}{Should the element be scrolled to when this step is shown?
+Default is \code{TRUE}.}
+
 \item{\code{cancelIcon}}{A list of two elements: \code{enabled} is a boolean indicating
 whether a "close" icon should be displayed (default is \code{TRUE}); \code{label} is
 the label to add for \code{aria-label}.}
@@ -314,6 +331,9 @@ content element.}
 
 \item{\code{highlightClass}}{An extra class to apply to \code{el} when it is highlighted.
 Only one extra class is accepted.}
+
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -573,6 +593,18 @@ Returns a value \code{TRUE} or \code{FALSE} indicating whether the step is open.
 \subsection{Method \code{isActive()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$isActive(session = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
+attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Returns a value \code{TRUE} or \code{FALSE} indicating whether the tour is active.
 }
 
 }

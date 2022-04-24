@@ -52,9 +52,7 @@ Conductor <- R6::R6Class(
     #' specified). Default is `TRUE`.
     #' @param classPrefix Add a prefix to the classes of the tour. This allows
     #' having different CSS for each tour.
-    #' @param tourName An (optional) id to give to the tour.
-    #' @param stepsContainer
-    #' @param modalContainer
+    #' @param tourName An (optional) name to give to the tour.
     #' @param confirmCancel Ask confirmation to cancel the tour. Default is
     #' `FALSE`.
     #' @param confirmCancelMessage Message in the popup that ask confirmation to
@@ -64,6 +62,10 @@ Conductor <- R6::R6Class(
     #' @param mathjax Enable MathJax? Default is `FALSE`. This requires importing
     #' MathJax, for example with `shiny::withMathJax()`.
     #' @param progress Show a step counter in each step? Default is `FALSE`.
+    #' @param stepsContainer An optional container element for the steps. If `NULL`
+    #' (default), the steps will be appended to `document.body`.
+    #' @param modalContainer An optional container element for the modal. If `NULL`
+    #' (default), the modal will be appended to `document.body`.
     #' @param onComplete A JavaScript code to run when the tour is completed.
     #' @param onCancel A JavaScript code to run when the tour is cancelled.
     #' @param onHide A JavaScript code to run when the tour is hidden.
@@ -163,12 +165,14 @@ Conductor <- R6::R6Class(
     #' is `TRUE`.
     #' @param canClickTarget Allow the highlighted element to be clicked. Default
     #' is `TRUE`.
-    #' @param advanceOn
-    #' @param scrollTo
+    #' @param advanceOn An action on the page which should advance the tour to
+    #' the next step. It should be a list with a string selector and an event
+    #' name.
+    #' @param scrollTo Should the element be scrolled to when this step is shown?
+    #' Default is `TRUE`.
     #' @param cancelIcon A list of two elements: `enabled` is a boolean indicating
     #' whether a "close" icon should be displayed (default is `TRUE`); `label` is
     #' the label to add for `aria-label`.
-    #' @param when
     #' @param showOn Either a boolean or a JavaScript expression that returns `true`
     #' or `false`. It indicates whether the step should be displayed in the tour.
     #' @param buttons A list of lists. Each "sublist" contains the information
@@ -189,7 +193,7 @@ Conductor <- R6::R6Class(
     step = function(title = NULL, text = NULL, el = NULL, position = NULL,
                     arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
-                    when = NULL, showOn = NULL, id = NULL, buttons = NULL,
+                    showOn = NULL, id = NULL, buttons = NULL,
                     classes = NULL, highlightClass = NULL) {
 
       if (is.null(el)) {
@@ -298,12 +302,13 @@ Conductor <- R6::R6Class(
     #' is `TRUE`.
     #' @param canClickTarget Allow the highlighted element to be clicked. Default
     #' is `TRUE`.
-    #' @param advanceOn
-    #' @param scrollTo
+    #' @param advanceOn An action on the page which should advance shepherd to the
+    #' next step. It should be a list with a string selector and an event name.
+    #' @param scrollTo Should the element be scrolled to when this step is shown?
+    #' Default is `TRUE`.
     #' @param cancelIcon A list of two elements: `enabled` is a boolean indicating
     #' whether a "close" icon should be displayed (default is `TRUE`); `label` is
     #' the label to add for `aria-label`.
-    #' @param when
     #' @param showOn Either a boolean or a JavaScript expression that returns `true`
     #' or `false`. It indicates whether the step should be displayed in the tour.
     #' @param buttons A list of lists. Each "sublist" contains the information
@@ -317,6 +322,8 @@ Conductor <- R6::R6Class(
     #' content element.
     #' @param highlightClass An extra class to apply to `el` when it is highlighted.
     #' Only one extra class is accepted.
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #'
     #' @details
     #' Modify the options of a specific step.
@@ -333,7 +340,6 @@ Conductor <- R6::R6Class(
                                  advanceOn = NULL,
                                  scrollTo = TRUE,
                                  cancelIcon = NULL,
-                                 when = NULL,
                                  showOn = NULL,
                                  id = NULL,
                                  buttons = NULL,
@@ -654,7 +660,11 @@ Conductor <- R6::R6Class(
       session$input[[paste0(private$id, "_step_is_open")]]
     },
 
-
+    #' @param session A valid Shiny session. If `NULL` (default), the function
+    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @details
+    #' Returns a value `TRUE` or `FALSE` indicating whether the tour is active.
+    #'
     isActive = function(session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
