@@ -32,10 +32,7 @@ conductor <- Conductor$new()
 This can be done anywhere, not necessarily in the `ui` or `server` parts of the app. You can also add some options in `$new()`. To add steps in the tour, use `$step()`. Steps can be attached to specific elements with `el`, but if no `el` is specified then the popover will be displayed in the center of the screen.
 ```r
 conductor <- Conductor$
-  new(
-    exitOnEsc = FALSE,
-    keyboardNavigation = FALSE
-  )$
+  new()$
   step(
     title = "Hello there",
     text = "This popover is displayed in the center of the screen."
