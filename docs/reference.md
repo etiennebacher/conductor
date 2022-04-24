@@ -506,13 +506,9 @@ random id is generated.
 
 ##### Usage
 
-    Conductor$getHighlightedElement(step = NULL, session = NULL)
+    Conductor$getHighlightedElement(session = NULL)
 
 ##### Arguments
-
-`step`  
-Id of the step (optional). If `NULL` (default), the current step is
-used.
 
 `session`  
 A valid Shiny session. If `NULL` (default), the function attempts to get
@@ -520,8 +516,8 @@ the session with `shiny::getDefaultReactiveDomain()`.
 
 ##### Details
 
-Get a list of two elements about the highlighted element of a specific
-step: its `id` and its `class`.
+Returns the id of the highlighted element of the current step. If this
+element has no id, it returns its class.
 
 ------------------------------------------------------------------------
 

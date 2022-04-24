@@ -464,23 +464,20 @@ a random id is generated.
 \if{latex}{\out{\hypertarget{method-getHighlightedElement}{}}}
 \subsection{Method \code{getHighlightedElement()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Conductor$getHighlightedElement(step = NULL, session = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Conductor$getHighlightedElement(session = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{step}}{Id of the step (optional). If \code{NULL} (default), the current
-step is used.}
-
 \item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
 attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-Get a list of two elements about the highlighted element of a specific
-step: its \code{id} and its \code{class}.
+Returns the id of the highlighted element of the current step. If this
+element has no id, it returns its class.
 }
 
 }

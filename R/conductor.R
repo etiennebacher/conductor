@@ -558,28 +558,20 @@ Conductor <- R6::R6Class(
     },
 
 
-    #' @param step Id of the step (optional). If `NULL` (default), the current
-    #' step is used.
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #' @details
-    #' Get a list of two elements about the highlighted element of a specific
-    #' step: its `id` and its `class`.
+    #' Returns the id of the highlighted element of the current step. If this
+    #' element has no id, it returns its class.
     #'
-    getHighlightedElement = function(step = NULL, session = NULL) {
+    getHighlightedElement = function(session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
-      }
-      if (is.numeric(step)) {
-        stop("Method `getHighlightedElement()`: numeric values not supported in arg `step`.")
       }
       session$sendCustomMessage(
         "conductor-getHighlightedElement", list(id = private$id, step = step)
       )
-      list(
-        id = session$input[[paste0(private$id, "_target_id")]],
-        class = session$input[[paste0(private$id, "_target_class")]]
-      )
+      session$input[[paste0(private$id, "_target")]]
     },
 
     #' @param step Id of the step (optional). If `NULL` (default), the current

@@ -8,8 +8,7 @@ let tour = [];
 let tourEvents = ["complete", "cancel", "start", "hide", "show", "active", "inactive"];
 let stepEvents = ["before-show", "show", "before-hide", "hide", "complete", "cancel", "destroy"];
 let stepUsed;
-let targetId;
-let targetClass;
+let target;
 
 // https://stackoverflow.com/a/196991/11598948
 function toTitleCase(str) {
@@ -107,7 +106,6 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
       opts.steps[index].when = {
         show: function(element){
           var tabs = $('#' + opts.steps[index].tabId);
-          console.log(tabs);
           Shiny.inputBindings.bindingNames['shiny.bootstrapTabInput'].binding.setValue(tabs, opts.steps[index].tab);
         }
       }
@@ -180,29 +178,19 @@ Shiny.addCustomMessageHandler('conductor-getCurrentStep', (opts) => {
   );
 })
 
-// Doesn't work when step specified
-// Wait for https://github.com/shipshapecode/shepherd/issues/1891
 Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
-  if (opts.step != null) {
-    stepUsed = tour[opts.id].getById(opts.step)
+  stepUsed = tour[opts.id].getCurrentStep().getTarget()
+  if (stepUsed == undefined) {
+    target = null
   } else {
-    stepUsed = tour[opts.id].getCurrentStep()
-  }
-
-  try {
-    targetId = stepUsed.getTarget().id
-    targetClass = stepUsed.getTarget().className
-  }
-  catch(err) {
-    targetId = null
-    targetClass = null
+    target = stepUsed.id
+    if (stepUsed.id == "" | stepUsed.id == null | stepUsed.id == undefined) {
+      target = stepUsed.className
+    }
   }
 
   Shiny.setInputValue(
-    opts.id + '_target_id', targetId, {priority: 'event'}
-  );
-  Shiny.setInputValue(
-    opts.id + '_target_class', targetClass, {priority: 'event'}
+    opts.id + '_target', target, {priority: 'event'}
   );
 })
 
@@ -212,7 +200,6 @@ Shiny.addCustomMessageHandler('conductor-isCentered', (opts) => {
   } else {
     stepUsed = tour[opts.id].getCurrentStep()
   }
-  console.log(stepUsed.isCentered())
   Shiny.setInputValue(
     opts.id + '_step_is_centered', stepUsed.isCentered(), {priority: 'event'}
   );
