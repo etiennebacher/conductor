@@ -186,6 +186,8 @@ Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
     target = stepUsed.id
     if (stepUsed.id == "" | stepUsed.id == null | stepUsed.id == undefined) {
       target = stepUsed.className
+    } else {
+      target = "#" + target
     }
   }
 
