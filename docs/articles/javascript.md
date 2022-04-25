@@ -5,7 +5,7 @@ There are several events occurring during a tour: the tour starts, is cancelled,
 ## Tour events
 
 There are 7 tour events available: start, show, hide, cancel, complete, active, inactive. You can pass JS code at each of these events with the arguments starting with `on` in `$new()`. For example, let's say I want the page body to be red during the tour but white when the tour is not active. Then I can use `onStart` and `onShow` to make it red, and `onHide`, `onCancel` and `onComplete` to make it back to white:
-```
+```r
 library(shiny)
 library(conductor)
 
