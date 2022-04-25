@@ -35,8 +35,6 @@ conductor <- Conductor$
     text = "Only the first p tag is highlighted."
   )
 
-
-
 ui <- fluidPage(
   useConductor(),
   actionButton("mybutton", "Test"),
@@ -47,11 +45,9 @@ ui <- fluidPage(
 
 server <- function(input, output, session){
   conductor$init()$start()
-  
 }
 
 shinyApp(ui, server)
-
 ```
 
 ## Step events
