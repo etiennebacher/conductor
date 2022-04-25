@@ -51,13 +51,8 @@
             var url = 'https://github.com/etiennebacher/conductor/blob/master/docs' + vm.router.getFile()
             var editHtml = '\n📝 [Edit this page](' + url + ')\n'
 
-            let currentDate = new Date();
-            let date = [currentDate.getDate(), currentDate.getMonth() + 1, currentDate.getFullYear()]
-            let time = currentDate.getHours() + ":" + currentDate.getMinutes();
-
             return html
               + '\n----\n'
-              + 'Last modified: ' + date.join("/") + " at " + time + '\n'
               + editHtml
           })
         },
