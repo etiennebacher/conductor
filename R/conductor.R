@@ -186,6 +186,11 @@ Conductor <- R6::R6Class(
     #' content element.
     #' @param highlightClass An extra class to apply to `el` when it is highlighted.
     #' Only one extra class is accepted.
+    #' @param onShow Some JavaScript code to run when the step is shown.
+    #' @param onHide Some JavaScript code to run when the step is hidden.
+    #' @param onCancel Some JavaScript code to run when the step is cancelled.
+    #' @param onComplete Some JavaScript code to run when the step is complete
+    #' (only for the last step).
     #'
     #' @details
     #' Add a step in a `Conductor` tour.
@@ -194,7 +199,8 @@ Conductor <- R6::R6Class(
                     arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
                     advanceOn = NULL, scrollTo = TRUE, cancelIcon = NULL,
                     showOn = NULL, id = NULL, buttons = NULL,
-                    classes = NULL, highlightClass = NULL) {
+                    classes = NULL, highlightClass = NULL, onComplete = NULL,
+                    onCancel = NULL, onHide = NULL, onShow = NULL) {
 
       if (is.null(el)) {
         if(!is.null(position)) {
@@ -265,20 +271,17 @@ Conductor <- R6::R6Class(
         )
       }
 
+      popover$onShow <- onShow
+      popover$onHide <- onHide
+      popover$onCancel <- onCancel
+      popover$onComplete <- onComplete
+
       all_buttons <- unlist(buttons)
       all_buttons <- unique(all_buttons[names(all_buttons) == "action"])
       if (any(!all_buttons %in% c("back", "next"))) {
         stop("Buttons in Conductor only work with actions 'back' or 'next'.")
       }
       popover$buttons <- buttons
-
-      # if(private$mathjax) {
-      #   popover$when <- paste0("function(element){setTimeout(function(){
-      #     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-      #   }, 300);", when, "}")
-      # } else {
-      #   if(!is.null(when)) popover$when <- when
-      # }
 
       private$steps <- append(private$steps, list(popover))
       invisible(self)
@@ -324,6 +327,11 @@ Conductor <- R6::R6Class(
     #' Only one extra class is accepted.
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
+    #' @param onShow Some JavaScript code to run when the step is shown.
+    #' @param onHide Some JavaScript code to run when the step is hidden.
+    #' @param onCancel Some JavaScript code to run when the step is cancelled.
+    #' @param onComplete Some JavaScript code to run when the step is complete
+    #' (only for the last step).
     #'
     #' @details
     #' Modify the options of a specific step.
@@ -418,6 +426,11 @@ Conductor <- R6::R6Class(
         )
       }
 
+      popover$onShow <- onShow
+      popover$onHide <- onHide
+      popover$onCancel <- onCancel
+      popover$onComplete <- onComplete
+
       all_buttons <- unlist(buttons)
       all_buttons <- unique(all_buttons[names(all_buttons) == "action"])
       if (any(!all_buttons %in% c("back", "next"))) {
@@ -425,14 +438,6 @@ Conductor <- R6::R6Class(
       }
       popover$buttons <- buttons
 
-      # if(private$mathjax) {
-      #   popover$when <- paste0("function(element){setTimeout(function(){
-      #     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-      #   }, 300);", when, "}")
-      # } else {
-      #   if(!is.null(when)) popover$when <- when
-      # }
-      #
       session$sendCustomMessage(
         "conductor-updateStepOptions",
         list(

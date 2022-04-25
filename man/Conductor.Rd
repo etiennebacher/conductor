@@ -182,7 +182,11 @@ Start \code{Conductor}.
   id = NULL,
   buttons = NULL,
   classes = NULL,
-  highlightClass = NULL
+  highlightClass = NULL,
+  onComplete = NULL,
+  onCancel = NULL,
+  onHide = NULL,
+  onShow = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -240,6 +244,15 @@ content element.}
 
 \item{\code{highlightClass}}{An extra class to apply to \code{el} when it is highlighted.
 Only one extra class is accepted.}
+
+\item{\code{onComplete}}{Some JavaScript code to run when the step is complete
+(only for the last step).}
+
+\item{\code{onCancel}}{Some JavaScript code to run when the step is cancelled.}
+
+\item{\code{onHide}}{Some JavaScript code to run when the step is hidden.}
+
+\item{\code{onShow}}{Some JavaScript code to run when the step is shown.}
 }
 \if{html}{\out{</div>}}
 }
@@ -334,6 +347,15 @@ Only one extra class is accepted.}
 
 \item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
 attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
+
+\item{\code{onShow}}{Some JavaScript code to run when the step is shown.}
+
+\item{\code{onHide}}{Some JavaScript code to run when the step is hidden.}
+
+\item{\code{onCancel}}{Some JavaScript code to run when the step is cancelled.}
+
+\item{\code{onComplete}}{Some JavaScript code to run when the step is complete
+(only for the last step).}
 }
 \if{html}{\out{</div>}}
 }

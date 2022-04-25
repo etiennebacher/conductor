@@ -52,3 +52,29 @@ shinyApp(ui, server)
 
 ## Step events
 
+There are 4 step events available: `onShow`, `onHide`, `onCancel`, `onComplete`. Just like tour events, they also only accept JavaScript code that is supposed to run when the step gets the event. For example, if you want to change the background of the page when a specific step is show, you can do:
+```r
+library(shiny)
+library(conductor)
+
+guide <- Conductor$new()$
+  step("hello")$
+  step(
+    el = "#foo",
+    "hello welcome on this tour",
+    onShow = "document.body.style.background = 'red';",
+    onHide = "document.body.style.background = 'white';"
+  )$
+  step("hi")
+
+ui <- fluidPage(
+  useConductor(),
+  textInput("foo", "foo")
+)
+
+server <- function(input, output, session){
+  guide$init()$start()
+}
+
+shinyApp(ui, server)
+```

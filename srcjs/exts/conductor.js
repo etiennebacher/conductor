@@ -6,7 +6,7 @@ import './custom.css';
 
 let tour = [];
 let tourEvents = ["complete", "cancel", "start", "hide", "show", "active", "inactive"];
-let stepEvents = ["before-show", "show", "before-hide", "hide", "complete", "cancel", "destroy"];
+let stepEvents = ["show", "hide", "complete", "cancel"];
 let stepUsed;
 let target;
 
@@ -123,6 +123,21 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
       }
       opts.steps[index].showOn = new Function("return " + opts.steps[index].showOn)()
     }
+
+    // Step events
+    stepEvents.forEach(event => {
+      if (opts.steps[index]["on" + toTitleCase(event)] != undefined) {
+        if (opts.steps[index].when === undefined) {
+          opts.steps[index].when = {}
+        }
+        opts.steps[index].when[event] = new Function(
+          "return " + opts.steps[index]["on" + toTitleCase(event)]
+        )
+        // delete onShow, onHide, etc. that don't exist in Shepherd
+        delete opts.steps[index]["on" + toTitleCase(event)]
+      }
+    })
+
 
     // Replace buttons
     // Can't directly pass Javascript functions from R so I need to use "back"

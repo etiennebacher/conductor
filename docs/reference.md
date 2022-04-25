@@ -214,7 +214,11 @@ Start `Conductor`.
       id = NULL,
       buttons = NULL,
       classes = NULL,
-      highlightClass = NULL
+      highlightClass = NULL,
+      onComplete = NULL,
+      onCancel = NULL,
+      onHide = NULL,
+      onShow = NULL
     )
 
 ##### Arguments
@@ -284,6 +288,19 @@ element.
 `highlightClass`  
 An extra class to apply to `el` when it is highlighted. Only one extra
 class is accepted.
+
+`onComplete`  
+Some JavaScript code to run when the step is complete (only for the last
+step).
+
+`onCancel`  
+Some JavaScript code to run when the step is cancelled.
+
+`onHide`  
+Some JavaScript code to run when the step is hidden.
+
+`onShow`  
+Some JavaScript code to run when the step is shown.
 
 ##### Details
 
@@ -393,6 +410,19 @@ class is accepted.
 `session`  
 A valid Shiny session. If `NULL` (default), the function attempts to get
 the session with `shiny::getDefaultReactiveDomain()`.
+
+`onShow`  
+Some JavaScript code to run when the step is shown.
+
+`onHide`  
+Some JavaScript code to run when the step is hidden.
+
+`onCancel`  
+Some JavaScript code to run when the step is cancelled.
+
+`onComplete`  
+Some JavaScript code to run when the step is complete (only for the last
+step).
 
 ##### Details
 
