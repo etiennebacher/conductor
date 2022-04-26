@@ -17,11 +17,6 @@ Imports:
     htmltools,
     R6,
     shiny
-Suggests: 
-    shinytest2,
-    testthat (>= 3.0.0)
-Remotes:
-    rstudio/shinytest2
 RoxygenNote: 7.1.2
 URL: https://github.com/etiennebacher/conductor
 BugReports: https://github.com/etiennebacher/conductor/issues
