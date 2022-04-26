@@ -1,4 +1,8 @@
 * [Home](/)
+* Demo
+
+  * [Demo](articles/demo.md)
+  
 * Get started
 
   * [Your first tour](articles/first-tour.md)
