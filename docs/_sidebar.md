@@ -17,5 +17,6 @@
   * [Buttons](articles/buttons.md)
   * [HTML formatting](articles/html-formatting.md)
   
+* [Changelog](NEWS.md)
 * [Reference](reference.md)
 * [License](LICENSE.md)

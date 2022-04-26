@@ -38,7 +38,7 @@ conductor <- Conductor$
     text = "This popover is displayed in the center of the screen."
   )$
   step(
-    el = "test",
+    el = "#test",
     title = "This is a button",
     text = "This button has no purpose. Its only goal is to serve as support for demo."
   )
