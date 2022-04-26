@@ -12,3 +12,4 @@
 ^\.github$
 test.R
 hex-conductor.png
+^cran-comments\.md$
