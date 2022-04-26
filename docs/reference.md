@@ -208,7 +208,7 @@ Start `Conductor`.
       tab = NULL,
       canClickTarget = TRUE,
       advanceOn = NULL,
-      scrollTo = TRUE,
+      scrollTo = NULL,
       cancelIcon = NULL,
       showOn = NULL,
       id = NULL,
