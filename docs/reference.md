@@ -717,5 +717,22 @@ Include dependencies, place anywhere in the shiny UI.
 
     use_conductor()
 
+### Examples
+
+```r
+library(shiny)
+library(conductor)
+
+ui <- fluidPage(
+ useConductor()
+ # also works:
+ # use_conductor()
+)
+
+server <- function(input, output){}
+
+if(interactive()) shinyApp(ui, server)
+```
+
 
 ---

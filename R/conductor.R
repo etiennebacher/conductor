@@ -6,6 +6,20 @@
 #' @importFrom shiny singleton tags
 #' @importFrom htmltools htmlDependency
 #' @export
+#' @examples
+#' library(shiny)
+#' library(conductor)
+#'
+#' ui <- fluidPage(
+#'  useConductor()
+#'  # also works:
+#'  # use_conductor()
+#' )
+#'
+#' server <- function(input, output){}
+#'
+#' if(interactive()) shinyApp(ui, server)
+
 useConductor <- function(){
   htmlDependency(
     "conductor",
