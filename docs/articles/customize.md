@@ -8,8 +8,8 @@ library(conductor)
 
 guide <- Conductor$new()$
   step(
-    "hello welcome on this tour",
-    "This is the content of the modal"
+  "hello welcome on this tour",
+  "This is the content of the modal"
   )
 
 ui <- fluidPage(
@@ -25,9 +25,9 @@ shinyApp(ui, server)
 You will only have to add the following code in `fluidPage()` to test the CSS:
 ```r
 tags$head(
-    tags$style(
-        HTML("<CSS code here>")
-    )
+  tags$style(
+    HTML("<CSS code here>")
+  )
 )
 ```
 
@@ -43,16 +43,16 @@ The classes `shepherd-header`, `shepherd-element`, `shepherd-title`, and `shephe
 
 ```css
 .shepherd-header {
-    background-color: red !important;
+  background-color: red !important;
 }
 .shepherd-element {
-    background-color: black;
+  background-color: black;
 }
 .shepherd-title {
-    color: white
+  color: white
 }
 .shepherd-text {
-    color: white
+  color: white
 }
 ```
 <!-- panels:end -->
@@ -73,17 +73,17 @@ You can also modify the entire footer with the class `shepherd-footer`, for inst
 
 ```css
 .shepherd-button {
-    background-color: red 
+  background-color: red 
 }
 
 .shepherd-button-secondary {
-    background-color: green !important;
-    color: white !important;
+  background-color: green !important;
+  color: white !important;
 }
 
 .shepherd-footer {
-	  display: flex;
-	  justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 ```
 <!-- panels:end -->
@@ -100,16 +100,16 @@ The style of the arrow can be modified with the class `shepherd-arrow`.
 
 ```css
 .shepherd-element {
-    background-color: black;
+  background-color: black;
 }
 .shepherd-header {
-    background-color: black !important;
+  background-color: black !important;
 }
 .shepherd-title, .shepherd-text {
-    color: white
+  color: white
 }
 .shepherd-arrow:before {
-	  background-color: black !important;
+  background-color: black !important;
 }
 ```
 <!-- panels:end -->
@@ -127,15 +127,15 @@ The cancel icon can be customized with the class `shepherd-cancel-icon`. Finally
 
 ```css
 .shepherd-title {
-    padding-left: 2.5rem
+  padding-left: 2.5rem
 }
 
 .shepherd-cancel-icon > span {
-    border-radius: 50%;
-    background-color: #bfbfbf;
-    opacity: 0.8;
-    display: block;
-    width: 2.8rem !important;
+  border-radius: 50%;
+  background-color: #bfbfbf;
+  opacity: 0.8;
+  display: block;
+  width: 2.8rem !important;
 }
 ```
 <!-- panels:end -->
