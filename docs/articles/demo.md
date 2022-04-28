@@ -6,6 +6,10 @@ Below is a general demo of a `Conductor` tour. It shows several features and opt
 * tabs
 * custom buttons
 
+(Code below the gif)
+
+![](assets/demo.gif)
+
 ```r
 library(conductor)
 library(DT)
