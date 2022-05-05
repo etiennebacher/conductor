@@ -230,7 +230,7 @@ Title of the popover.
 Text of the popover.
 
 `el`  
-The element to highlight. It can be an id (for example `#mynav`), a
+The element to highlight. It can be an id (for example `⁠#mynav⁠`), a
 class (for instance `.navbar`), or a general tag (for example `button`).
 If `NULL` (default) or if the selector is not found, the popover will
 appear in the center of the page.
@@ -348,7 +348,7 @@ Title of the popover.
 Text of the popover.
 
 `el`  
-The element to highlight. It can be an id (for example `#mynav`), a
+The element to highlight. It can be an id (for example `⁠#mynav⁠`), a
 class (for instance `.navbar`), or a general tag (for example `button`).
 If `NULL` (default) or if the selector is not found, the popover will
 appear in the center of the page.
@@ -441,7 +441,8 @@ Modify the options of a specific step.
 ##### Arguments
 
 `step`  
-Either the id of the step to show (defined in `$step()`) or its number.
+Either the id of the step to show (defined in `⁠$step()⁠`) or its
+number.
 
 `session`  
 A valid Shiny session. If `NULL` (default), the function attempts to get
@@ -465,7 +466,7 @@ Show a specific step.
 
 `step`  
 A character vector with the id(s) of the step(s) to remove (defined in
-`$step()`).
+`⁠$step()⁠`).
 
 `session`  
 A valid Shiny session. If `NULL` (default), the function attempts to get
@@ -593,8 +594,8 @@ the session with `shiny::getDefaultReactiveDomain()`.
 
 ##### Details
 
-Get the id of the current step. If no `id` was specified in `$step()`, a
-random id is generated.
+Get the id of the current step. If no `id` was specified in `⁠$step()⁠`,
+a random id is generated.
 
 ------------------------------------------------------------------------
 

@@ -13,3 +13,5 @@
 test.R
 hex-conductor.png
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
+^CODE_OF_CONDUCT\.md$
