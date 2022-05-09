@@ -12,6 +12,7 @@
 ^\.github$
 test.R
 hex-conductor.png
+_\.new\.png$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
 ^CODE_OF_CONDUCT\.md$
