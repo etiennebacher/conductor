@@ -13,3 +13,4 @@
 test.R
 hex-conductor.png
 _\.new\.png$
+^cran-comments\.md$

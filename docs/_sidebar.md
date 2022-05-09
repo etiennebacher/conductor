@@ -1,4 +1,8 @@
 * [Home](/)
+* Demo
+
+  * [Demo](articles/demo.md)
+  
 * Get started
 
   * [Your first tour](articles/first-tour.md)
@@ -17,5 +21,6 @@
   * [Buttons](articles/buttons.md)
   * [HTML formatting](articles/html-formatting.md)
   
+* [Changelog](NEWS.md)
 * [Reference](reference.md)
 * [License](LICENSE.md)

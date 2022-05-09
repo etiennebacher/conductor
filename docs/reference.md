@@ -208,7 +208,7 @@ Start `Conductor`.
       tab = NULL,
       canClickTarget = TRUE,
       advanceOn = NULL,
-      scrollTo = TRUE,
+      scrollTo = NULL,
       cancelIcon = NULL,
       showOn = NULL,
       id = NULL,
@@ -716,6 +716,23 @@ Include dependencies, place anywhere in the shiny UI.
     useConductor()
 
     use_conductor()
+
+### Examples
+
+```r
+library(shiny)
+library(conductor)
+
+ui <- fluidPage(
+ useConductor()
+ # also works:
+ # use_conductor()
+)
+
+server <- function(input, output){}
+
+if(interactive()) shinyApp(ui, server)
+```
 
 
 ---
