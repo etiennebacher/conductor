@@ -1,7 +1,7 @@
 Package: conductor
 Type: Package
 Title: Create Tours in 'Shiny' Apps Using 'Shepherd.js'
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person(given = "Etienne",
            family = "Bacher",
