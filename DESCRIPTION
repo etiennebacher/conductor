@@ -17,8 +17,11 @@ Imports:
     htmltools,
     R6,
     shiny
+Suggests: 
+    shinytest2
 RoxygenNote: 7.1.2
 URL: https://github.com/etiennebacher/conductor
 BugReports: https://github.com/etiennebacher/conductor/issues
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
+
