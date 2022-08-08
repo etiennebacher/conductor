@@ -21,7 +21,10 @@ jobs:
 
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
-
+        with:
+          extra-packages: any::packer
+          needs: check
+          
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
