@@ -11,45 +11,43 @@ of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
 
 #### Public methods
 
--   [`Conductor$new()`](#method-new)
+-   [`Conductor$new()`](#method-Conductor-new)
 
--   [`Conductor$init()`](#method-init)
+-   [`Conductor$init()`](#method-Conductor-init)
 
--   [`Conductor$start()`](#method-start)
+-   [`Conductor$start()`](#method-Conductor-start)
 
--   [`Conductor$step()`](#method-step)
+-   [`Conductor$step()`](#method-Conductor-step)
 
--   [`Conductor$updateStepOptions()`](#method-updateStepOptions)
+-   [`Conductor$updateStepOptions()`](#method-Conductor-updateStepOptions)
 
--   [`Conductor$show()`](#method-show)
+-   [`Conductor$show()`](#method-Conductor-show)
 
--   [`Conductor$remove()`](#method-remove)
+-   [`Conductor$remove()`](#method-Conductor-remove)
 
--   [`Conductor$moveNext()`](#method-moveNext)
+-   [`Conductor$moveNext()`](#method-Conductor-moveNext)
 
--   [`Conductor$moveBack()`](#method-moveBack)
+-   [`Conductor$moveBack()`](#method-Conductor-moveBack)
 
--   [`Conductor$cancel()`](#method-cancel)
+-   [`Conductor$cancel()`](#method-Conductor-cancel)
 
--   [`Conductor$complete()`](#method-complete)
+-   [`Conductor$complete()`](#method-Conductor-complete)
 
--   [`Conductor$hide()`](#method-hide)
+-   [`Conductor$hide()`](#method-Conductor-hide)
 
--   [`Conductor$getCurrentStep()`](#method-getCurrentStep)
+-   [`Conductor$getCurrentStep()`](#method-Conductor-getCurrentStep)
 
--   [`Conductor$getHighlightedElement()`](#method-getHighlightedElement)
+-   [`Conductor$getHighlightedElement()`](#method-Conductor-getHighlightedElement)
 
--   [`Conductor$isCentered()`](#method-isCentered)
+-   [`Conductor$isOpen()`](#method-Conductor-isOpen)
 
--   [`Conductor$isOpen()`](#method-isOpen)
+-   [`Conductor$isActive()`](#method-Conductor-isActive)
 
--   [`Conductor$isActive()`](#method-isActive)
-
--   [`Conductor$clone()`](#method-clone)
+-   [`Conductor$clone()`](#method-Conductor-clone)
 
 ------------------------------------------------------------------------
 
-<span id="method-new"></span>
+<span id="method-Conductor-new"></span>
 
 #### Method `new()`
 
@@ -152,7 +150,7 @@ A `Conductor` object.
 
 ------------------------------------------------------------------------
 
-<span id="method-init"></span>
+<span id="method-Conductor-init"></span>
 
 #### Method `init()`
 
@@ -172,7 +170,7 @@ Initialise `Conductor`.
 
 ------------------------------------------------------------------------
 
-<span id="method-start"></span>
+<span id="method-Conductor-start"></span>
 
 #### Method `start()`
 
@@ -192,7 +190,7 @@ Start `Conductor`.
 
 ------------------------------------------------------------------------
 
-<span id="method-step"></span>
+<span id="method-Conductor-step"></span>
 
 #### Method `step()`
 
@@ -308,7 +306,7 @@ Add a step in a `Conductor` tour.
 
 ------------------------------------------------------------------------
 
-<span id="method-updateStepOptions"></span>
+<span id="method-Conductor-updateStepOptions"></span>
 
 #### Method `updateStepOptions()`
 
@@ -430,7 +428,7 @@ Modify the options of a specific step.
 
 ------------------------------------------------------------------------
 
-<span id="method-show"></span>
+<span id="method-Conductor-show"></span>
 
 #### Method `show()`
 
@@ -441,8 +439,7 @@ Modify the options of a specific step.
 ##### Arguments
 
 `step`  
-Either the id of the step to show (defined in `⁠$step()⁠`) or its
-number.
+Either the id of the step to show (defined in `⁠$step()⁠`) or its number.
 
 `session`  
 A valid Shiny session. If `NULL` (default), the function attempts to get
@@ -454,7 +451,7 @@ Show a specific step.
 
 ------------------------------------------------------------------------
 
-<span id="method-remove"></span>
+<span id="method-Conductor-remove"></span>
 
 #### Method `remove()`
 
@@ -478,7 +475,7 @@ Remove specific step(s).
 
 ------------------------------------------------------------------------
 
-<span id="method-moveNext"></span>
+<span id="method-Conductor-moveNext"></span>
 
 #### Method `moveNext()`
 
@@ -498,7 +495,7 @@ Advances the tour to the next step.
 
 ------------------------------------------------------------------------
 
-<span id="method-moveBack"></span>
+<span id="method-Conductor-moveBack"></span>
 
 #### Method `moveBack()`
 
@@ -518,7 +515,7 @@ Shows the previous step.
 
 ------------------------------------------------------------------------
 
-<span id="method-cancel"></span>
+<span id="method-Conductor-cancel"></span>
 
 #### Method `cancel()`
 
@@ -538,7 +535,7 @@ Cancels the tour.
 
 ------------------------------------------------------------------------
 
-<span id="method-complete"></span>
+<span id="method-Conductor-complete"></span>
 
 #### Method `complete()`
 
@@ -558,7 +555,7 @@ Completes the tour.
 
 ------------------------------------------------------------------------
 
-<span id="method-hide"></span>
+<span id="method-Conductor-hide"></span>
 
 #### Method `hide()`
 
@@ -578,7 +575,7 @@ Hides the current step.
 
 ------------------------------------------------------------------------
 
-<span id="method-getCurrentStep"></span>
+<span id="method-Conductor-getCurrentStep"></span>
 
 #### Method `getCurrentStep()`
 
@@ -594,12 +591,12 @@ the session with `shiny::getDefaultReactiveDomain()`.
 
 ##### Details
 
-Get the id of the current step. If no `id` was specified in `⁠$step()⁠`,
-a random id is generated.
+Get the id of the current step. If no `id` was specified in `⁠$step()⁠`, a
+random id is generated.
 
 ------------------------------------------------------------------------
 
-<span id="method-getHighlightedElement"></span>
+<span id="method-Conductor-getHighlightedElement"></span>
 
 #### Method `getHighlightedElement()`
 
@@ -620,32 +617,7 @@ element has no id, it returns its class.
 
 ------------------------------------------------------------------------
 
-<span id="method-isCentered"></span>
-
-#### Method `isCentered()`
-
-##### Usage
-
-    Conductor$isCentered(step = NULL, session = NULL)
-
-##### Arguments
-
-`step`  
-Id of the step (optional). If `NULL` (default), the current step is
-used.
-
-`session`  
-A valid Shiny session. If `NULL` (default), the function attempts to get
-the session with `shiny::getDefaultReactiveDomain()`.
-
-##### Details
-
-Returns a value `TRUE` or `FALSE` indicating whether the step is
-centered.
-
-------------------------------------------------------------------------
-
-<span id="method-isOpen"></span>
+<span id="method-Conductor-isOpen"></span>
 
 #### Method `isOpen()`
 
@@ -669,7 +641,7 @@ Returns a value `TRUE` or `FALSE` indicating whether the step is open.
 
 ------------------------------------------------------------------------
 
-<span id="method-isActive"></span>
+<span id="method-Conductor-isActive"></span>
 
 #### Method `isActive()`
 
@@ -689,7 +661,7 @@ Returns a value `TRUE` or `FALSE` indicating whether the tour is active.
 
 ------------------------------------------------------------------------
 
-<span id="method-clone"></span>
+<span id="method-Conductor-clone"></span>
 
 #### Method `clone()`
 

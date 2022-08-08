@@ -644,27 +644,6 @@ Conductor <- R6::R6Class(
       session$input[[paste0(private$id, "_target")]]
     },
 
-    #' @param step Id of the step (optional). If `NULL` (default), the current
-    #' step is used.
-    #' @param session A valid Shiny session. If `NULL` (default), the function
-    #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
-    #' @details
-    #' Returns a value `TRUE` or `FALSE` indicating whether the step is centered.
-    #'
-    isCentered = function(step = NULL, session = NULL) {
-      if(is.null(session)) {
-        session <- shiny::getDefaultReactiveDomain()
-      }
-      if (is.numeric(step)) {
-        stop("Method `isCentered()`: numeric values not supported in arg `step`.")
-      }
-      session$sendCustomMessage(
-        "conductor-isCentered", list(id = private$id, step = step)
-      )
-      session$input[[paste0(private$id, "_step_is_centered")]]
-    },
-
-
 
     #' @param step Id of the step (optional). If `NULL` (default), the current
     #' step is used.

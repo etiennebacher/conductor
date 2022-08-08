@@ -10,29 +10,28 @@ of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Conductor$new()}}
-\item \href{#method-init}{\code{Conductor$init()}}
-\item \href{#method-start}{\code{Conductor$start()}}
-\item \href{#method-step}{\code{Conductor$step()}}
-\item \href{#method-updateStepOptions}{\code{Conductor$updateStepOptions()}}
-\item \href{#method-show}{\code{Conductor$show()}}
-\item \href{#method-remove}{\code{Conductor$remove()}}
-\item \href{#method-moveNext}{\code{Conductor$moveNext()}}
-\item \href{#method-moveBack}{\code{Conductor$moveBack()}}
-\item \href{#method-cancel}{\code{Conductor$cancel()}}
-\item \href{#method-complete}{\code{Conductor$complete()}}
-\item \href{#method-hide}{\code{Conductor$hide()}}
-\item \href{#method-getCurrentStep}{\code{Conductor$getCurrentStep()}}
-\item \href{#method-getHighlightedElement}{\code{Conductor$getHighlightedElement()}}
-\item \href{#method-isCentered}{\code{Conductor$isCentered()}}
-\item \href{#method-isOpen}{\code{Conductor$isOpen()}}
-\item \href{#method-isActive}{\code{Conductor$isActive()}}
-\item \href{#method-clone}{\code{Conductor$clone()}}
+\item \href{#method-Conductor-new}{\code{Conductor$new()}}
+\item \href{#method-Conductor-init}{\code{Conductor$init()}}
+\item \href{#method-Conductor-start}{\code{Conductor$start()}}
+\item \href{#method-Conductor-step}{\code{Conductor$step()}}
+\item \href{#method-Conductor-updateStepOptions}{\code{Conductor$updateStepOptions()}}
+\item \href{#method-Conductor-show}{\code{Conductor$show()}}
+\item \href{#method-Conductor-remove}{\code{Conductor$remove()}}
+\item \href{#method-Conductor-moveNext}{\code{Conductor$moveNext()}}
+\item \href{#method-Conductor-moveBack}{\code{Conductor$moveBack()}}
+\item \href{#method-Conductor-cancel}{\code{Conductor$cancel()}}
+\item \href{#method-Conductor-complete}{\code{Conductor$complete()}}
+\item \href{#method-Conductor-hide}{\code{Conductor$hide()}}
+\item \href{#method-Conductor-getCurrentStep}{\code{Conductor$getCurrentStep()}}
+\item \href{#method-Conductor-getHighlightedElement}{\code{Conductor$getHighlightedElement()}}
+\item \href{#method-Conductor-isOpen}{\code{Conductor$isOpen()}}
+\item \href{#method-Conductor-isActive}{\code{Conductor$isActive()}}
+\item \href{#method-Conductor-clone}{\code{Conductor$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Conductor-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$new(
@@ -120,8 +119,8 @@ A \code{Conductor} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-init"></a>}}
-\if{latex}{\out{\hypertarget{method-init}{}}}
+\if{html}{\out{<a id="method-Conductor-init"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-init}{}}}
 \subsection{Method \code{init()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$init(session = NULL)}\if{html}{\out{</div>}}
@@ -141,8 +140,8 @@ Initialise \code{Conductor}.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-start"></a>}}
-\if{latex}{\out{\hypertarget{method-start}{}}}
+\if{html}{\out{<a id="method-Conductor-start"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-start}{}}}
 \subsection{Method \code{start()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$start(session = NULL)}\if{html}{\out{</div>}}
@@ -162,8 +161,8 @@ Start \code{Conductor}.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-step"></a>}}
-\if{latex}{\out{\hypertarget{method-step}{}}}
+\if{html}{\out{<a id="method-Conductor-step"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-step}{}}}
 \subsection{Method \code{step()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$step(
@@ -262,8 +261,8 @@ Add a step in a \code{Conductor} tour.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-updateStepOptions"></a>}}
-\if{latex}{\out{\hypertarget{method-updateStepOptions}{}}}
+\if{html}{\out{<a id="method-Conductor-updateStepOptions"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-updateStepOptions}{}}}
 \subsection{Method \code{updateStepOptions()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$updateStepOptions(
@@ -365,8 +364,8 @@ Modify the options of a specific step.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-show"></a>}}
-\if{latex}{\out{\hypertarget{method-show}{}}}
+\if{html}{\out{<a id="method-Conductor-show"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-show}{}}}
 \subsection{Method \code{show()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$show(step = NULL, session = NULL)}\if{html}{\out{</div>}}
@@ -389,8 +388,8 @@ Show a specific step.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-remove"></a>}}
-\if{latex}{\out{\hypertarget{method-remove}{}}}
+\if{html}{\out{<a id="method-Conductor-remove"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-remove}{}}}
 \subsection{Method \code{remove()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$remove(step = NULL, session = NULL)}\if{html}{\out{</div>}}
@@ -413,8 +412,8 @@ Remove specific step(s).
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-moveNext"></a>}}
-\if{latex}{\out{\hypertarget{method-moveNext}{}}}
+\if{html}{\out{<a id="method-Conductor-moveNext"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-moveNext}{}}}
 \subsection{Method \code{moveNext()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$moveNext(session = NULL)}\if{html}{\out{</div>}}
@@ -434,8 +433,8 @@ Advances the tour to the next step.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-moveBack"></a>}}
-\if{latex}{\out{\hypertarget{method-moveBack}{}}}
+\if{html}{\out{<a id="method-Conductor-moveBack"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-moveBack}{}}}
 \subsection{Method \code{moveBack()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$moveBack(session = NULL)}\if{html}{\out{</div>}}
@@ -455,8 +454,8 @@ Shows the previous step.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-cancel"></a>}}
-\if{latex}{\out{\hypertarget{method-cancel}{}}}
+\if{html}{\out{<a id="method-Conductor-cancel"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-cancel}{}}}
 \subsection{Method \code{cancel()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$cancel(session = NULL)}\if{html}{\out{</div>}}
@@ -476,8 +475,8 @@ Cancels the tour.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-complete"></a>}}
-\if{latex}{\out{\hypertarget{method-complete}{}}}
+\if{html}{\out{<a id="method-Conductor-complete"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-complete}{}}}
 \subsection{Method \code{complete()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$complete(session = NULL)}\if{html}{\out{</div>}}
@@ -497,8 +496,8 @@ Completes the tour.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hide"></a>}}
-\if{latex}{\out{\hypertarget{method-hide}{}}}
+\if{html}{\out{<a id="method-Conductor-hide"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-hide}{}}}
 \subsection{Method \code{hide()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$hide(session = NULL)}\if{html}{\out{</div>}}
@@ -518,8 +517,8 @@ Hides the current step.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCurrentStep"></a>}}
-\if{latex}{\out{\hypertarget{method-getCurrentStep}{}}}
+\if{html}{\out{<a id="method-Conductor-getCurrentStep"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-getCurrentStep}{}}}
 \subsection{Method \code{getCurrentStep()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$getCurrentStep(session = NULL)}\if{html}{\out{</div>}}
@@ -540,8 +539,8 @@ a random id is generated.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getHighlightedElement"></a>}}
-\if{latex}{\out{\hypertarget{method-getHighlightedElement}{}}}
+\if{html}{\out{<a id="method-Conductor-getHighlightedElement"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-getHighlightedElement}{}}}
 \subsection{Method \code{getHighlightedElement()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$getHighlightedElement(session = NULL)}\if{html}{\out{</div>}}
@@ -562,32 +561,8 @@ element has no id, it returns its class.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isCentered"></a>}}
-\if{latex}{\out{\hypertarget{method-isCentered}{}}}
-\subsection{Method \code{isCentered()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Conductor$isCentered(step = NULL, session = NULL)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{step}}{Id of the step (optional). If \code{NULL} (default), the current
-step is used.}
-
-\item{\code{session}}{A valid Shiny session. If \code{NULL} (default), the function
-attempts to get the session with \code{shiny::getDefaultReactiveDomain()}.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-Returns a value \code{TRUE} or \code{FALSE} indicating whether the step is centered.
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isOpen"></a>}}
-\if{latex}{\out{\hypertarget{method-isOpen}{}}}
+\if{html}{\out{<a id="method-Conductor-isOpen"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-isOpen}{}}}
 \subsection{Method \code{isOpen()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$isOpen(step = NULL, session = NULL)}\if{html}{\out{</div>}}
@@ -610,8 +585,8 @@ Returns a value \code{TRUE} or \code{FALSE} indicating whether the step is open.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isActive"></a>}}
-\if{latex}{\out{\hypertarget{method-isActive}{}}}
+\if{html}{\out{<a id="method-Conductor-isActive"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-isActive}{}}}
 \subsection{Method \code{isActive()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Conductor$isActive(session = NULL)}\if{html}{\out{</div>}}
@@ -631,8 +606,8 @@ Returns a value \code{TRUE} or \code{FALSE} indicating whether the tour is activ
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Conductor-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Conductor-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

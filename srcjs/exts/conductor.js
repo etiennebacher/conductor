@@ -220,17 +220,6 @@ Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
   );
 })
 
-Shiny.addCustomMessageHandler('conductor-isCentered', (opts) => {
-  if (opts.step != null) {
-    stepUsed = tour[opts.id].getById(opts.step)
-  } else {
-    stepUsed = tour[opts.id].getCurrentStep()
-  }
-  Shiny.setInputValue(
-    opts.id + '_step_is_centered', stepUsed.isCentered(), {priority: 'event'}
-  );
-})
-
 Shiny.addCustomMessageHandler('conductor-isOpen', (opts) => {
   if (opts.step != null) {
     stepUsed = tour[opts.id].getById(opts.step)
