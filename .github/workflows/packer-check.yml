@@ -22,7 +22,9 @@ jobs:
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::packer, remotes
+          extra-packages: |
+              any::packer
+              any::remotes
           needs: check
           
       - name: Install system dependencies
