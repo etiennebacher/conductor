@@ -1,7 +1,9 @@
+skip_on_cran()
+
 library(shinytest2)
 
 test_that("foo", {
-  app <- AppDriver$new(app = "test-apps/basic")
+  app <- AppDriver$new(app = testthat::test_path("test-apps/basic"))
   # step 1
   app$expect_html(selector = "div.shepherd-has-title.shepherd-element.shepherd-enabled")
   # step 2

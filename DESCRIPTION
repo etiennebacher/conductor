@@ -1,7 +1,7 @@
 Package: conductor
 Type: Package
 Title: Create Tours in 'Shiny' Apps Using 'Shepherd.js'
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: c(
     person(given = "Etienne",
            family = "Bacher",
@@ -18,7 +18,8 @@ Imports:
     R6,
     shiny
 Suggests: 
-    shinytest2
+    shinytest2,
+    testthat
 RoxygenNote: 7.2.1
 URL: https://github.com/etiennebacher/conductor
 BugReports: https://github.com/etiennebacher/conductor/issues
