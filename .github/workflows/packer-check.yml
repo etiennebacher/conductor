@@ -22,7 +22,9 @@ jobs:
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::packer
+          extra-packages: |
+              any::packer
+              any::remotes
           needs: check
           
       - name: Install system dependencies
@@ -37,4 +39,4 @@ jobs:
         run: Rscript -e "packer:::engine_install()"
 
       - name: Check minification
-        run: Rscript -e "packer:::are_minified('inst')"
+        run: Rscript -e "packer:::are_minified_r('inst/packer')"
