@@ -89,15 +89,12 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
   }))
 
   // Set shiny input to active or inactive
+  Shiny.setInputValue(opts.id + '_is_active', false); // FALSE by default
   tour[opts.id].on("active", () => {
-    Shiny.setInputValue(
-      opts.id + '_is_active', true
-    );
+    Shiny.setInputValue(opts.id + '_is_active', true);
   })
   tour[opts.id].on("inactive", () => {
-    Shiny.setInputValue(
-      opts.id + '_is_active', false
-    );
+    Shiny.setInputValue(opts.id + '_is_active', false);
   })
 
   // Check at each step

@@ -200,7 +200,7 @@ server <- function(input, output, session) {
     toggleClass("element", "red")
   })
   
-  observeEvent(input$run_guide, conductor$start())
+  observeEvent(input$run_guide, guide$start())
   
 }
 
