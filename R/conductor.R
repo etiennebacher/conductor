@@ -674,7 +674,6 @@ Conductor <- R6::R6Class(
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      session$sendCustomMessage("conductor-isActive", list(id = private$id))
       session$input[[paste0(private$id, "_is_active")]]
     }
   )
