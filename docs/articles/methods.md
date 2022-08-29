@@ -169,3 +169,42 @@ server <- function(input, output, session){
 
 shinyApp(ui, server)
 ```
+
+## Misc
+
+It is also possible to know whether the tour is running or not with
+`guide$isActive()`. This can be used to apply different styles to certain
+elements when the tour is running and when it isn't.
+
+```r
+library(shiny)
+library(shinyjs)
+library(conductor)
+
+guide <- Conductor$new()$
+  step("Hello there")
+
+ui <- fluidPage(
+  useConductor(),
+  useShinyjs(),
+  inlineCSS(list(.red = "background: red")),
+  p(id = "element", "This is red when the tour is open."),
+  actionButton("run_guide", "Run guide")
+)
+
+server <- function(input, output, session) {
+  
+  guide$init()$start()
+  
+  observeEvent(guide$isActive(), {
+    toggleClass("element", "red")
+  })
+  
+  observeEvent(input$run_guide, conductor$start())
+  
+}
+
+shinyApp(ui, server)
+```
+
+?> For now, this is only available in the Github version (v 0.1.1.9000).

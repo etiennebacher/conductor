@@ -88,6 +88,18 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
     }
   }))
 
+  // Set shiny input to active or inactive
+  tour[opts.id].on("active", () => {
+    Shiny.setInputValue(
+      opts.id + '_is_active', true
+    );
+  })
+  tour[opts.id].on("inactive", () => {
+    Shiny.setInputValue(
+      opts.id + '_is_active', false
+    );
+  })
+
   // Check at each step
   opts.steps.forEach((step, index) => {
 
@@ -160,9 +172,6 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
 Shiny.addCustomMessageHandler('conductor-start', (opts) => {
   tour[opts.id].start();
-  Shiny.setInputValue(
-    opts.id + '_is_active', true
-  );
 })
 
 Shiny.addCustomMessageHandler('conductor-showStep', (opts) => {
@@ -228,12 +237,6 @@ Shiny.addCustomMessageHandler('conductor-isOpen', (opts) => {
   }
   Shiny.setInputValue(
     opts.id + '_step_is_open', stepUsed.isOpen(), {priority: 'event'}
-  );
-})
-
-Shiny.addCustomMessageHandler('conductor-isActive', (opts) => {
-  Shiny.setInputValue(
-    opts.id + '_is_active', tour[opts.id].isActive(), {priority: 'event'}
   );
 })
 
