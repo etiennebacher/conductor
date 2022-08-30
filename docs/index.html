@@ -8,11 +8,13 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
     * {
-      font-family: "Candara"
+      font-family: "Atkinson Hyperlegible"
     }
     :root {
-      --code-font-family: "Candara"
+      --code-font-family: "Source Code Pro"
     }
     .sidebar-nav > ul > li > p {
       font-weight: 700;
@@ -22,9 +24,6 @@
     }
     #hex-conductor {
     	width: 20%;
-    }
-    .markdown-section code[class*="lang-"], .markdown-section pre[data-lang] {
-    	word-spacing: 5px;
     }
   </style>
 </head>
@@ -61,7 +60,7 @@
         },
 
         function(hook) {
-          var footer = ["<hr/><a href='https://github.com/etiennebacher/conductor'> <code>conductor</code> v. 0.1.0 </a> | Documentation made with <a href='https://github.com/etiennebacher/altdoc'> <code>altdoc</code> v. 0.1.0</a>"].join('');
+          var footer = ["<hr/><a href='https://github.com/etiennebacher/conductor'> <code>conductor</code> v. 0.1.1 </a> | Documentation made with <a href='https://github.com/etiennebacher/altdoc'> <code>altdoc</code> v. 0.1.0</a>"].join('');
 
           hook.afterEach(function(html) {
             return html + footer;
