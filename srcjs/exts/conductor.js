@@ -43,21 +43,42 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
   } else {
     opts.globals.defaultStepOptions.buttons.forEach((value, id) => {
       if (opts.globals.defaultStepOptions.buttons[id].action == "back") {
-        opts.globals.defaultStepOptions.buttons[id].action = function() { return this.back();}
+        opts.globals.defaultStepOptions.buttons[id].action = function() {
+          return this.back();
+        }
       }
       if (opts.globals.defaultStepOptions.buttons[id].action == "next") {
-        opts.globals.defaultStepOptions.buttons[id].action = function() { return this.next();}
+        opts.globals.defaultStepOptions.buttons[id].action = function() {
+          return this.next();
+        }
       }
     })
   }
 
 
-  // Add step counter
-  // https://github.com/shipshapecode/shepherd/issues/1269#issuecomment-742129621
   if (opts.globals.progress == true) {
     opts.globals.defaultStepOptions.when =  {
       show() {
-        const currentStep = Shepherd.activeTour?.getCurrentStep()
+
+        // Find highlighted element and current step
+        var currentStep = tour[opts.id].getCurrentStep();
+        stepUsed = currentStep.getTarget();
+
+        if (stepUsed == undefined) {
+          target = null
+        } else {
+          target = stepUsed.id
+          if (target == "" | target == null | target == undefined) {
+            target = stepUsed.className
+          } else {
+            target = "#" + target
+          }
+        }
+        Shiny.setInputValue(opts.id + '_target', target);
+        Shiny.setInputValue(opts.id + '_current_step', currentStep.id);
+
+        // Add step counter
+        // https://github.com/shipshapecode/shepherd/issues/1269#issuecomment-742129621
         if (!currentStep)
           return
         const currentStepElement = currentStep.getElement()
@@ -71,6 +92,31 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
         header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'))
       }
     }
+  }
+
+
+
+  // Find highlighted element and step id
+  opts.globals.defaultStepOptions.when =  {
+      show() {
+        var currentStep = tour[opts.id].getCurrentStep();
+        stepUsed = currentStep.getTarget();
+
+        console.log(currentStep)
+
+        if (stepUsed == undefined) {
+          target = null
+        } else {
+          target = stepUsed.id
+          if (target == "" | target == null | target == undefined) {
+            target = stepUsed.className
+          } else {
+            target = "#" + target
+          }
+        }
+        Shiny.setInputValue(opts.id + '_target', target);
+        Shiny.setInputValue(opts.id + '_current_step', currentStep.id);
+      }
   }
 
   // Default popperOptions
@@ -199,31 +245,6 @@ Shiny.addCustomMessageHandler('conductor-complete', (opts) => {
 
 Shiny.addCustomMessageHandler('conductor-hide', (opts) => {
   tour[opts.id].hide();
-})
-
-Shiny.addCustomMessageHandler('conductor-getCurrentStep', (opts) => {
-  var currentStep = tour[opts.id].getCurrentStep()
-  Shiny.setInputValue(
-    opts.id + '_current_step', currentStep.id, {priority: 'event'}
-  );
-})
-
-Shiny.addCustomMessageHandler('conductor-getHighlightedElement', (opts) => {
-  stepUsed = tour[opts.id].getCurrentStep().getTarget()
-  if (stepUsed == undefined) {
-    target = null
-  } else {
-    target = stepUsed.id
-    if (stepUsed.id == "" | stepUsed.id == null | stepUsed.id == undefined) {
-      target = stepUsed.className
-    } else {
-      target = "#" + target
-    }
-  }
-
-  Shiny.setInputValue(
-    opts.id + '_target', target, {priority: 'event'}
-  );
 })
 
 Shiny.addCustomMessageHandler('conductor-isOpen', (opts) => {

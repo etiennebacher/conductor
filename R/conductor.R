@@ -273,6 +273,10 @@ Conductor <- R6::R6Class(
       popover$showOn <- showOn
       popover$tab <- tab
       popover$tabId <- tabId
+
+      if (is.null(id)) {
+        id <- paste(sample(letters, length(letters)), collapse = "")
+      }
       popover$id <- id
       popover$classes <- classes
       if (length(highlightClass) > 1) {
@@ -621,9 +625,6 @@ Conductor <- R6::R6Class(
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      session$sendCustomMessage(
-        "conductor-getCurrentStep", list(id = private$id)
-      )
       session$input[[paste0(private$id, "_current_step")]]
     },
 
@@ -638,9 +639,6 @@ Conductor <- R6::R6Class(
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      session$sendCustomMessage(
-        "conductor-getHighlightedElement", list(id = private$id)
-      )
       session$input[[paste0(private$id, "_target")]]
     },
 
