@@ -1,5 +1,3 @@
-<img src="README_assets/hex-conductor.png" id="hex-conductor" align="right">
-
 # conductor
 
 <!-- badges: start -->

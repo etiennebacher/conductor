@@ -705,7 +705,7 @@ ui <- fluidPage(
 server <- function(input, output){}
 
 if(interactive()) shinyApp(ui, server)
-```
 
 
 ---
+```
