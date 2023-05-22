@@ -16,10 +16,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "css-loader": "^6.7.3",
+  "devDependencies": 
     "style-loader": "^3.3.3",
-    "webpack": "^5.82.1",
+    "css-loader": "^6.7.4",
+    "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
     "webpack-merge": "^5.8.0"
   },
