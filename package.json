@@ -16,9 +16,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": 
+    "style-loader": "^3.3.3",
     "css-loader": "^6.7.4",
-    "style-loader": "^3.3.2",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
     "webpack-merge": "^5.8.0"
