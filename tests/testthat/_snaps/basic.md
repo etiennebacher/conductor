@@ -12,5 +12,5 @@
 
 ---
 
-    "<body class=\"\">\n  <div class=\"container-fluid\">\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" id=\"foo-label\" for=\"foo\">foo<\/label>\n      <input id=\"foo\" type=\"text\" class=\"form-control shiny-bound-input\" value=\"\">\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" id=\"foo2-label\" for=\"foo2\">foo2<\/label>\n      <input id=\"foo2\" type=\"text\" class=\"form-control shiny-bound-input\" value=\"\">\n    <\/div>\n    <div id=\"test\" class=\"shiny-text-output shiny-bound-output\" aria-live=\"polite\"><\/div>\n  <\/div>\n\n\n<\/body>"
+    "<body class=\"\">\n  <div class=\"container-fluid\">\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" id=\"foo-label\" for=\"foo\">foo<\/label>\n      <input id=\"foo\" type=\"text\" class=\"shiny-input-text form-control shiny-bound-input\" value=\"\">\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" id=\"foo2-label\" for=\"foo2\">foo2<\/label>\n      <input id=\"foo2\" type=\"text\" class=\"shiny-input-text form-control shiny-bound-input\" value=\"\">\n    <\/div>\n    <div id=\"test\" class=\"shiny-text-output shiny-bound-output\" aria-live=\"polite\"><\/div>\n  <\/div>\n\n\n<\/body>"
 
