@@ -1,27 +1,35 @@
 * [Home](/)
-* Demo
-
-  * [Demo](articles/demo.md)
-  
 * Get started
-
-  * [Your first tour](articles/first-tour.md)
-  * [Basic options](articles/basic-options.md)
-  * [Customize the tour](articles/customize.md)
+  * [Your first tour](vignettes/first-tour.md)
+  * [Basic options](vignettes/basic-options.md)
+  * [Customize the tour](vignettes/customize.md)
   
 * Advanced
-
-  * [Navbar & tabs](articles/navbar-tabs.md)
-  * [Use in modules](articles/use-modules.md)
-  * [JavaScript functions](articles/javascript.md)
-  * [Methods](articles/methods.md)
+  * [Navbar & tabs](vignettes/navbar-tabs.md)
+  * [Use in modules](vignettes/use-modules.md)
+  * [JavaScript functions](vignettes/javascript.md)
+  * [Methods](vignettes/methods.md)
   
 * Misc
-
-  * [Buttons](articles/buttons.md)
-  * [HTML formatting](articles/html-formatting.md)
+  * [Buttons](vignettes/buttons.md)
+  * [HTML formatting](vignettes/html-formatting.md)
   
-* [Changelog](NEWS.md)
-* [Reference](reference.md)
-* [License](LICENSE.md)
-* [Code of Conduct](CODE_OF_CONDUCT.md)
+* Reference: 
+  - [Conductor](man/Conductor)
+  - [use_conductor](man/use_conductor)
+* Reference: 
+  
+  * [HTML formatting](vignettes/html-formatting.md)
+  * [Buttons](vignettes/buttons.md)
+* Misc
+  
+  * [Methods](vignettes/methods.md)
+  * [JavaScript functions](vignettes/javascript.md)
+  * [Use in modules](vignettes/use-modules.md)
+  * [Navbar & tabs](vignettes/navbar-tabs.md)
+* Advanced
+  
+  * [Customize the tour](vignettes/customize.md)
+  * [Basic options](vignettes/basic-options.md)
+  * [Your first tour](vignettes/first-tour.md)
+* Get started

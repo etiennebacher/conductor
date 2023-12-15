@@ -1,4 +1,4 @@
-# conductor 0.1.1.9000
+## conductor 0.1.1.9000
 
 - Methods `isActive()`, `getCurrentStep()` and `getHighlightedElement()` now work
   correctly ([#13](https://github.com/etiennebacher/conductor/issues/13)).
@@ -13,3 +13,4 @@
 ## conductor 0.1.0
 
 - Initial version
+
