@@ -1,4 +1,6 @@
-# Run custom JavaScript during the tour
+---
+title: Run custom Javascript during the tour
+---
 
 There are several events occurring during a tour: the tour starts, is cancelled, is complete, etc. It is possible to run some JavaScript code during each of these events. Just like options, there are **tour events** and **step events**.
 

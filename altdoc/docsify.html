@@ -37,9 +37,8 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: 'conductor',
-      repo: 'https://github.com/etiennebacher/conductor',
-      logo: 'README_assets/hex-conductor.png',
+      name: '$ALTDOC_PACKAGE_NAME',
+      repo: '$ALTDOC_PACKAGE_URL_GITHUB',
       loadSidebar: true,
       subMaxLevel: 2,
       search: {
@@ -53,7 +52,6 @@
         successText: 'Copied'
       },
       plugins: [
-
         function(hook, vm) {
           hook.beforeEach(function (html) {
             var url = 'https://github.com/etiennebacher/conductor/blob/master/docs' + vm.router.getFile()
@@ -64,9 +62,8 @@
               + editHtml
           })
         },
-
         function(hook) {
-var footer = ["<hr/><a href='https://github.com/etiennebacher/conductor'> <code>conductor</code> v. 0.1.1 </a> | Documentation made with <a href='https://github.com/etiennebacher/altdoc'> <code>altdoc</code> v. 0.1.0.9000</a>"].join('');
+          var footer = ["<a href='$ALTDOC_PACKAGE_URL'> <code> $ALTDOC_PACKAGE_NAME </code> v. $ALTDOC_PACKAGE_VERSION </a> | Documentation made with <a href='https://altdoc.etiennebacher.com/'> <code> altdoc </code> v. $ALTDOC_VERSION</a>"].join('');
 
           hook.afterEach(function(html) {
             return html + footer;
@@ -75,7 +72,7 @@ var footer = ["<hr/><a href='https://github.com/etiennebacher/conductor'> <code>
       ]
     }
   </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-r.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
@@ -84,4 +81,3 @@ var footer = ["<hr/><a href='https://github.com/etiennebacher/conductor'> <code>
   <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 </body>
 </html>
-

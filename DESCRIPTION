@@ -18,8 +18,11 @@ Imports:
     R6,
     shiny
 Suggests: 
+    altdoc,
     shinytest2,
     testthat
+Remotes:
+    etiennebacher/altdoc
 RoxygenNote: 7.2.1
 URL: https://github.com/etiennebacher/conductor
 BugReports: https://github.com/etiennebacher/conductor/issues
