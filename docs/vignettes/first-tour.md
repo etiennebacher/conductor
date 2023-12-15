@@ -37,9 +37,11 @@ will be detailed in other articles.
 In each step, you can also define the argument `el`. This argument tells
 `Conductor` which element should be highlighted. By default,
 `el = NULL`, which means that steps will be displayed in the center of
-the screen. The argument `el` can take several types of value: \* an
-element id, e.g `#my-element` \* an element class, e.g `.my-element` \*
-a specific HTML tag, e.g `button`
+the screen. The argument `el` can take several types of value:
+
+-   an element id, e.g `#my-element`
+-   an element class, e.g `.my-element`
+-   a specific HTML tag, e.g `button`
 
 If you use a class or a tag that is shared by several elements, only the
 first one will be used.

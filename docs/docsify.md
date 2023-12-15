@@ -15,10 +15,8 @@
   * [Buttons](vignettes/buttons.md)
   * [HTML formatting](vignettes/html-formatting.md)
   
-* Reference: 
-  - [Conductor](man/Conductor)
-  - [use_conductor](man/use_conductor)
+* Reference: $ALTDOC_MAN_BLOCK
 
-* [Changelog](NEWS.md)
-* [Code of Conduct](CODE_OF_CONDUCT.md)
-* [License](LICENSE.md)
+* [Changelog]($ALTDOC_NEWS)
+* [Code of Conduct]($ALTDOC_CODE_OF_CONDUCT)
+* [License]($ALTDOC_LICENSE)

@@ -1,7 +1,7 @@
 
-# use_conductor
+# Dependencies
 
-Dependencies
+[**Source code**](https://github.com/etiennebacher/conductor/tree/switch-altdoc/R/#L)
 
 ## Description
 

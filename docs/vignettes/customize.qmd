@@ -40,7 +40,10 @@ tags$head(
 
 The classes `shepherd-header`, `shepherd-element`, `shepherd-title`, and `shepherd-text` control the style for the title and the content of the modal.
 
-<img src="articles/assets/title_and_content.png">
+![](assets/title_and_content.png)
+
+\ 
+
 <!-- div:right-panel -->
 
 ```css
@@ -70,7 +73,10 @@ The classes `shepherd-button` and `shepherd-button-secondary` control the style 
 
 You can also modify the entire footer with the class `shepherd-footer`, for instance to center the buttons.
 
-<img src="articles/assets/buttons.png">
+![](assets/buttons.png)
+
+\ 
+
 <!-- div:right-panel -->
 
 ```css
@@ -97,7 +103,10 @@ You can also modify the entire footer with the class `shepherd-footer`, for inst
 
 The style of the arrow can be modified with the class `shepherd-arrow`.
 
-<img src="articles/assets/arrow.png">
+![](assets/arrow.png)
+
+\ 
+
 <!-- div:right-panel -->
 
 ```css
@@ -123,7 +132,9 @@ The style of the arrow can be modified with the class `shepherd-arrow`.
 
 The cancel icon can be customized with the class `shepherd-cancel-icon`. Finally, you can simply start from the default CSS file and modify it as you want. The default CSS can be found here: https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/9.0.0/css/shepherd.css
 
-<img src="articles/assets/cancel-icon.png">
+![](assets/cancel-icon.png)
+
+\ 
 
 <!-- div:right-panel -->
 

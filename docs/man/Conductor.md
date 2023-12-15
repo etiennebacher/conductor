@@ -1,7 +1,7 @@
 
-# Conductor
+# Create a "conductor" tour
 
-Create a "conductor" tour
+[**Source code**](https://github.com/etiennebacher/conductor/tree/switch-altdoc/R/#L)
 
 ## Description
 

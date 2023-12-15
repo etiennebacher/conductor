@@ -7,7 +7,7 @@ customizing with CSS \* tabs \* custom buttons
 
 (Code below the gif)
 
-<img src="assets/demo.gif"
+<img src="vignettes/assets/demo.gif"
 id="fig-539a35d47e664c97a50115a146a7f1bd-1" />
 
 ``` r

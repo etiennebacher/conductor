@@ -31,6 +31,7 @@ conductor <- Conductor$new()
 This can be done anywhere, not necessarily in the `ui` or `server` parts of the app. To add steps in the tour, use `$step()`. In each `$step()`, you can specify a `title` and some `text`, along with other options that will be detailed in other articles. 
 
 In each step, you can also define the argument `el`. This argument tells `Conductor` which element should be highlighted. By default, `el = NULL`, which means that steps will be displayed in the center of the screen. The argument `el` can take several types of value:
+
 * an element id, e.g `#my-element`
 * an element class, e.g `.my-element`
 * a specific HTML tag, e.g `button`
