@@ -17,3 +17,4 @@ _\.new\.png$
 ^CRAN-SUBMISSION$
 ^CODE_OF_CONDUCT\.md$
 ^altdoc$
+^vignettes$
