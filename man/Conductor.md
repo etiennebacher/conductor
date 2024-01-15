@@ -112,7 +112,7 @@ Method <code>new()</code>
 Usage
 </h5>
 
-<pre>Conductor$new(
+<pre>Conductor\$new(
   exitOnEsc = TRUE,
   keyboardNavigation = TRUE,
   useModalOverlay = TRUE,
@@ -287,7 +287,7 @@ Method <code>init()</code>
 Usage
 </h5>
 
-<pre>Conductor$init(session = NULL)</pre>
+<pre>Conductor\$init(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -321,7 +321,7 @@ Method <code>start()</code>
 Usage
 </h5>
 
-<pre>Conductor$start(session = NULL)</pre>
+<pre>Conductor\$start(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -355,7 +355,7 @@ Method <code>step()</code>
 Usage
 </h5>
 
-<pre>Conductor$step(
+<pre>Conductor\$step(
   title = NULL,
   text = NULL,
   el = NULL,
@@ -399,8 +399,9 @@ Text of the popover.
 <code>el</code>
 </dt>
 <dd>
-The element to highlight. It can be an id (for example `#mynav`), a
-class (for instance <code>.navbar</code>), or a general tag (for example
+The element to highlight. It can be an id (for example
+<code style="white-space: pre;">#mynav</code>), a class (for instance
+<code>.navbar</code>), or a general tag (for example
 <code>button</code>). If <code>NULL</code> (default) or if the selector
 is not found, the popover will appear in the center of the page.
 </dd>
@@ -545,7 +546,7 @@ Method <code>updateStepOptions()</code>
 Usage
 </h5>
 
-<pre>Conductor$updateStepOptions(
+<pre>Conductor\$updateStepOptions(
   step = NULL,
   title = NULL,
   text = NULL,
@@ -594,8 +595,9 @@ Text of the popover.
 <code>el</code>
 </dt>
 <dd>
-The element to highlight. It can be an id (for example `#mynav`), a
-class (for instance <code>.navbar</code>), or a general tag (for example
+The element to highlight. It can be an id (for example
+<code style="white-space: pre;">#mynav</code>), a class (for instance
+<code>.navbar</code>), or a general tag (for example
 <code>button</code>). If <code>NULL</code> (default) or if the selector
 is not found, the popover will appear in the center of the page.
 </dd>
@@ -748,7 +750,7 @@ Method <code>show()</code>
 Usage
 </h5>
 
-<pre>Conductor$show(step = NULL, session = NULL)</pre>
+<pre>Conductor\$show(step = NULL, session = NULL)</pre>
 
 <h5>
 Arguments
@@ -759,7 +761,8 @@ Arguments
 <code>step</code>
 </dt>
 <dd>
-Either the id of the step to show (defined in `$step()`) or its number.
+Either the id of the step to show (defined in
+<code style="white-space: pre;">$step()</code>) or its number.
 </dd>
 <dt>
 <code>session</code>
@@ -788,7 +791,7 @@ Method <code>remove()</code>
 Usage
 </h5>
 
-<pre>Conductor$remove(step = NULL, session = NULL)</pre>
+<pre>Conductor\$remove(step = NULL, session = NULL)</pre>
 
 <h5>
 Arguments
@@ -800,7 +803,7 @@ Arguments
 </dt>
 <dd>
 A character vector with the id(s) of the step(s) to remove (defined in
-`$step()`).
+<code style="white-space: pre;">$step()</code>).
 </dd>
 <dt>
 <code>session</code>
@@ -829,7 +832,7 @@ Method <code>moveNext()</code>
 Usage
 </h5>
 
-<pre>Conductor$moveNext(session = NULL)</pre>
+<pre>Conductor\$moveNext(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -863,7 +866,7 @@ Method <code>moveBack()</code>
 Usage
 </h5>
 
-<pre>Conductor$moveBack(session = NULL)</pre>
+<pre>Conductor\$moveBack(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -897,7 +900,7 @@ Method <code>cancel()</code>
 Usage
 </h5>
 
-<pre>Conductor$cancel(session = NULL)</pre>
+<pre>Conductor\$cancel(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -931,7 +934,7 @@ Method <code>complete()</code>
 Usage
 </h5>
 
-<pre>Conductor$complete(session = NULL)</pre>
+<pre>Conductor\$complete(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -965,7 +968,7 @@ Method <code>hide()</code>
 Usage
 </h5>
 
-<pre>Conductor$hide(session = NULL)</pre>
+<pre>Conductor\$hide(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -999,7 +1002,7 @@ Method <code>getCurrentStep()</code>
 Usage
 </h5>
 
-<pre>Conductor$getCurrentStep(session = NULL)</pre>
+<pre>Conductor\$getCurrentStep(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -1021,7 +1024,8 @@ Details
 </h5>
 
 Get the id of the current step. If no <code>id</code> was specified in
-`$step()`, a random id is generated.
+<code style="white-space: pre;">$step()</code>, a random id is
+generated.
 
 <hr>
 
@@ -1034,7 +1038,7 @@ Method <code>getHighlightedElement()</code>
 Usage
 </h5>
 
-<pre>Conductor$getHighlightedElement(session = NULL)</pre>
+<pre>Conductor\$getHighlightedElement(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -1069,7 +1073,7 @@ Method <code>isOpen()</code>
 Usage
 </h5>
 
-<pre>Conductor$isOpen(step = NULL, session = NULL)</pre>
+<pre>Conductor\$isOpen(step = NULL, session = NULL)</pre>
 
 <h5>
 Arguments
@@ -1111,7 +1115,7 @@ Method <code>isActive()</code>
 Usage
 </h5>
 
-<pre>Conductor$isActive(session = NULL)</pre>
+<pre>Conductor\$isActive(session = NULL)</pre>
 
 <h5>
 Arguments
@@ -1149,7 +1153,7 @@ The objects of this class are cloneable with this method.
 Usage
 </h5>
 
-<pre>Conductor$clone(deep = FALSE)</pre>
+<pre>Conductor\$clone(deep = FALSE)</pre>
 
 <h5>
 Arguments
