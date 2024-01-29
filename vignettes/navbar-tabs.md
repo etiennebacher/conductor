@@ -1,5 +1,6 @@
 # Tabs & navbar
 
+
 Sometimes, you want the tour to navigate across tabs of a
 `tabsetPanel()` or a `navbarPage()`. This can be done with the arguments
 `tabId` and `tab`:

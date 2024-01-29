@@ -1,5 +1,6 @@
 # HTML formatting
 
+
 You can use HTML tags to format the `title` and `text` of `$step()`:
 
 ``` r

@@ -1,5 +1,6 @@
 # Customize the tour
 
+
 In this section, we will see how to customize the different elements of
 a tour with CSS. We will use the following example app throughout this
 article (except for the *Arrow* section, where I will add a simple

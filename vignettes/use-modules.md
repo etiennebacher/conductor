@@ -1,5 +1,6 @@
 # Use `conductor` in modules
 
+
 Using [Shiny modules](https://shiny.rstudio.com/articles/modules.html)
 is common in large Shiny apps. In modules, input names must be wrapped
 in `ns()` to avoid namespace collision.

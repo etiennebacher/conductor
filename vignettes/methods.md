@@ -1,5 +1,6 @@
 # Methods
 
+
 There are several available methods, that you can call with
 `$<method>()`:
 

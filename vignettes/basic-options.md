@@ -1,5 +1,6 @@
 # Basic options
 
+
 There are two types of options: tour options and step options.
 
 ## Tour options
