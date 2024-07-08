@@ -18,7 +18,7 @@ use_conductor()
 ## Examples
 
 ``` r
-library(conductor)
+library("conductor")
 
 library(shiny)
 library(conductor)
