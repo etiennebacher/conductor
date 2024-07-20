@@ -20,32 +20,6 @@ function toTitleCase(str) {
   );
 }
 
-/*
-var activeGuideBinding = new Shiny.InputBinding();
-$.extend(activeGuideBinding, {
-  find: function(scope) {
-    return $(scope).find(".increment");
-  },
-  getValue: function(el) {
-    return parseInt($(el).text());
-  },
-  setValue: function(el, value) {
-    $(el).text(value);
-  },
-  subscribe: function(el, callback) {
-    $(el).on("change.activeGuideBinding", function(e) {
-      callback();
-    });
-  },
-  unsubscribe: function(el) {
-    $(el).off(".activeGuideBinding");
-  }
-});
-
-Shiny.inputBindings.register(activeGuideBinding);
-*/
-
-
 
 Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
