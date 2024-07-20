@@ -668,11 +668,14 @@ Conductor <- R6::R6Class(
     #' @details
     #' Returns a value `TRUE` or `FALSE` indicating whether the tour is active.
     #'
-    isActive = function(session = NULL) {
-      if(is.null(session)) {
-        session <- shiny::getDefaultReactiveDomain()
+    isActive = function() {
+      session <- shiny::getDefaultReactiveDomain()
+      out <- session$input[[paste0(private$id, "_is_active")]]
+      if (is.null(out)) {
+        session <- session$userData$rootSession
+        out <- session$input[[paste0(private$id, "_is_active")]]
       }
-      session$input[[paste0(private$id, "_is_active")]]
+      out
     }
   )
 )

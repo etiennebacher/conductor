@@ -20,6 +20,32 @@ function toTitleCase(str) {
   );
 }
 
+/*
+var activeGuideBinding = new Shiny.InputBinding();
+$.extend(activeGuideBinding, {
+  find: function(scope) {
+    return $(scope).find(".increment");
+  },
+  getValue: function(el) {
+    return parseInt($(el).text());
+  },
+  setValue: function(el, value) {
+    $(el).text(value);
+  },
+  subscribe: function(el, callback) {
+    $(el).on("change.activeGuideBinding", function(e) {
+      callback();
+    });
+  },
+  unsubscribe: function(el) {
+    $(el).off(".activeGuideBinding");
+  }
+});
+
+Shiny.inputBindings.register(activeGuideBinding);
+*/
+
+
 
 Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
@@ -135,11 +161,12 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
   }))
 
   // Set shiny input to active or inactive
-  Shiny.setInputValue(opts.id + '_is_active', false); // FALSE by default
   tour[opts.id].on("active", () => {
+    console.log(opts.id)
     Shiny.setInputValue(opts.id + '_is_active', true);
   })
   tour[opts.id].on("inactive", () => {
+    console.log(opts.id)
     Shiny.setInputValue(opts.id + '_is_active', false);
   })
 
