@@ -96,7 +96,7 @@ Conductor <- R6::R6Class(
                           defaultStepOptions = NULL, mathjax = FALSE,
                           progress = FALSE, onComplete = NULL, onCancel = NULL,
                           onHide = NULL, onShow = NULL, onStart = NULL,
-                          onActive = NULL, onInactive = NULL) {
+                          onActive = NULL, onInactive = NULL, id = NULL) {
 
       private$globals <- list(
         exitOnEsc = exitOnEsc,
@@ -124,6 +124,10 @@ Conductor <- R6::R6Class(
           behavior = "smooth",
           block = "center"
         )
+      }
+
+      if (!is.null(id)) {
+        private$id <- id
       }
 
       private$mathjax <- mathjax
@@ -671,8 +675,17 @@ Conductor <- R6::R6Class(
     isActive = function(session = NULL) {
       if(is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
+      } else {
+        # If we pass a module session, then the id was wrapped in ns() so that
+        # the module detects it. However, it means that I have to remove the
+        # module prefix before session$input[[<id>]] since [[.reactivevalues
+        # already takes care of adding a prefix.
+        #
+        # I don't think I have a way to get the prefix from the session$input
+        # object so I remove everything before the first dash.
+        id <- gsub(".*-", "", private$id)
       }
-      session$input[[paste0(private$id, "_is_active")]]
+      session$input[[paste0(id, "_is_active")]]
     }
   )
 )
