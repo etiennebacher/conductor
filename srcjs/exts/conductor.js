@@ -55,54 +55,12 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
     })
   }
 
-
-  if (opts.globals.progress == true) {
-    opts.globals.defaultStepOptions.when =  {
-      show() {
-
-        // Find highlighted element and current step
-        var currentStep = tour[opts.id].getCurrentStep();
-        stepUsed = currentStep.getTarget();
-
-        if (stepUsed == undefined) {
-          target = null
-        } else {
-          target = stepUsed.id
-          if (target == "" | target == null | target == undefined) {
-            target = stepUsed.className
-          } else {
-            target = "#" + target
-          }
-        }
-        Shiny.setInputValue(opts.id + '_target', target);
-        Shiny.setInputValue(opts.id + '_current_step', currentStep.id);
-
-        // Add step counter
-        // https://github.com/shipshapecode/shepherd/issues/1269#issuecomment-742129621
-        if (!currentStep)
-          return
-        const currentStepElement = currentStep.getElement()
-        if (!currentStepElement)
-          return
-        const header = currentStepElement.querySelector('.shepherd-header')
-        if (!header)
-          return
-        const progress = document.createElement('span')
-        progress.innerText = `${tour[opts.id].steps.indexOf(currentStep) + 1}/${tour[opts.id].steps.length}`
-        header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'))
-      }
-    }
-  }
-
-
-
-  // Find highlighted element and step id
   opts.globals.defaultStepOptions.when =  {
-      show() {
+      show: function() {
+
+        // Find highlighted element and step id
         var currentStep = tour[opts.id].getCurrentStep();
         stepUsed = currentStep.getTarget();
-
-        console.log(currentStep)
 
         if (stepUsed == undefined) {
           target = null
@@ -116,6 +74,22 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
         }
         Shiny.setInputValue(opts.id + '_target', target);
         Shiny.setInputValue(opts.id + '_current_step', currentStep.id);
+
+        if (opts.globals.progress == true) {
+          // Add step counter
+          // https://github.com/shipshapecode/shepherd/issues/1269#issuecomment-742129621
+          if (!currentStep)
+            return
+          const currentStepElement = currentStep.getElement()
+          if (!currentStepElement)
+            return
+          const header = currentStepElement.querySelector('.shepherd-header')
+          if (!header)
+            return
+          const progress = document.createElement('span')
+          progress.innerText = `${tour[opts.id].steps.indexOf(currentStep) + 1}/${tour[opts.id].steps.length}`
+          header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'))
+        }
       }
   }
 
