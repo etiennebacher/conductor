@@ -20,6 +20,52 @@ function toTitleCase(str) {
   );
 }
 
+// Helper to get default code to prepend for each step event type
+// This ensures custom on* handlers don't lose the default behavior
+function getDefaultStepEventCode(event, tourId, progressEnabled) {
+  if (event === "show") {
+    let code = `
+      // Find highlighted element and step id
+      var currentStep = this.tour.getCurrentStep();
+      var stepUsed = currentStep.getTarget();
+      var target;
+      if (stepUsed == undefined) {
+        target = null;
+      } else {
+        target = stepUsed.id;
+        if (target == "" || target == null || target == undefined) {
+          target = stepUsed.className;
+        } else {
+          target = "#" + target;
+        }
+      }
+      Shiny.setInputValue('${tourId}_target', target);
+      Shiny.setInputValue('${tourId}_current_step', currentStep.id);
+    `;
+
+    if (progressEnabled) {
+      code += `
+      if (currentStep) {
+        var currentStepElement = currentStep.getElement();
+        if (currentStepElement) {
+          var header = currentStepElement.querySelector('.shepherd-header');
+          if (header) {
+            var progress = document.createElement('span');
+            progress.innerText = (this.tour.steps.indexOf(currentStep) + 1) + '/' + this.tour.steps.length;
+            header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
+          }
+        }
+      }
+      `;
+    }
+
+    return code;
+  }
+
+  // No default code for other events (hide, complete, cancel)
+  return "";
+}
+
 
 Shiny.addCustomMessageHandler('conductor-init', (opts) => {
 
@@ -159,9 +205,11 @@ Shiny.addCustomMessageHandler('conductor-init', (opts) => {
         if (opts.steps[index].when === undefined) {
           opts.steps[index].when = {}
         }
-        opts.steps[index].when[event] = new Function(
-          "return " + opts.steps[index]["on" + toTitleCase(event)]
-        )
+
+        let userCode = opts.steps[index]["on" + toTitleCase(event)];
+        let defaultCode = getDefaultStepEventCode(event, opts.id, opts.globals.progress === true);
+
+        opts.steps[index].when[event] = new Function(defaultCode + userCode);
         // delete onShow, onHide, etc. that don't exist in Shepherd
         delete opts.steps[index]["on" + toTitleCase(event)]
       }
