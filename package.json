@@ -24,6 +24,6 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "shepherd.js": "^14.5.1"
+    "shepherd.js": "^15.0.0"
   }
 }
