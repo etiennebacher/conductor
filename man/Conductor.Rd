@@ -5,7 +5,7 @@
 \title{Create a "conductor" tour}
 \description{
 In addition to this page, you can also directly access the documentation
-of shepherd.js here: \url{https://shepherdjs.dev/docs/index.html}.
+of shepherd.js here: \url{https://docs.shepherdjs.dev}.
 }
 \section{Methods}{
 \subsection{Public methods}{

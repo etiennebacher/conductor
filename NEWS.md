@@ -1,4 +1,4 @@
-# conductor 0.1.1.9000
+# conductor 0.1.2
 
 * Methods `isActive()`, `getCurrentStep()` and `getHighlightedElement()` now work
   correctly (#13).
