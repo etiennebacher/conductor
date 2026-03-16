@@ -20,7 +20,7 @@
 #'
 #' if(interactive()) shinyApp(ui, server)
 
-useConductor <- function(){
+useConductor <- function() {
   htmlDependency(
     "conductor",
     version = utils::packageVersion("conductor"),
@@ -38,7 +38,7 @@ use_conductor <- useConductor
 #' Create a "conductor" tour
 #'
 #' In addition to this page, you can also directly access the documentation
-#' of shepherd.js here: <https://shepherdjs.dev/docs/index.html>.
+#' of shepherd.js here: <https://docs.shepherdjs.dev>.
 #' @importFrom R6 R6Class
 #' @export
 Conductor <- R6::R6Class(
@@ -50,14 +50,12 @@ Conductor <- R6::R6Class(
     mathjax = FALSE
   ),
 
-
   #' @details
   #' Create a new `Conductor` object.
   #'
   #'
   #' @return A `Conductor` object.
   public = list(
-
     #' @param exitOnEsc Allow closing the tour by pressing "Escape". Default is
     #' `TRUE`.
     #' @param keyboardNavigation Allow navigating the tour with keyboard arrows.
@@ -88,16 +86,27 @@ Conductor <- R6::R6Class(
     #' @param onActive A JavaScript code to run when the tour is active.
     #' @param onInactive A JavaScript code to run when the tour is inactive.
 
-    initialize = function(exitOnEsc = TRUE, keyboardNavigation = TRUE,
-                          useModalOverlay = TRUE, classPrefix = NULL,
-                          tourName = NULL, stepsContainer = NULL,
-                          modalContainer = NULL, confirmCancel = FALSE,
-                          confirmCancelMessage = NULL,
-                          defaultStepOptions = NULL, mathjax = FALSE,
-                          progress = FALSE, onComplete = NULL, onCancel = NULL,
-                          onHide = NULL, onShow = NULL, onStart = NULL,
-                          onActive = NULL, onInactive = NULL) {
-
+    initialize = function(
+      exitOnEsc = TRUE,
+      keyboardNavigation = TRUE,
+      useModalOverlay = TRUE,
+      classPrefix = NULL,
+      tourName = NULL,
+      stepsContainer = NULL,
+      modalContainer = NULL,
+      confirmCancel = FALSE,
+      confirmCancelMessage = NULL,
+      defaultStepOptions = NULL,
+      mathjax = FALSE,
+      progress = FALSE,
+      onComplete = NULL,
+      onCancel = NULL,
+      onHide = NULL,
+      onShow = NULL,
+      onStart = NULL,
+      onActive = NULL,
+      onInactive = NULL
+    ) {
       private$globals <- list(
         exitOnEsc = exitOnEsc,
         keyboardNavigation = keyboardNavigation,
@@ -130,16 +139,13 @@ Conductor <- R6::R6Class(
       invisible(self)
     },
 
-
-
-
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #'
     #' @details
     #' Initialise `Conductor`.
     init = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
@@ -154,22 +160,18 @@ Conductor <- R6::R6Class(
       invisible(self)
     },
 
-
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
     #'
     #' @details
     #' Start `Conductor`.
     start = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage("conductor-start", list(id = private$id))
       invisible(self)
     },
-
-
-
 
     #' @param title Title of the popover.
     #' @param text Text of the popover.
@@ -216,38 +218,57 @@ Conductor <- R6::R6Class(
     #' @details
     #' Add a step in a `Conductor` tour.
 
-    step = function(title = NULL, text = NULL, el = NULL, position = NULL,
-                    arrow = TRUE, tabId = NULL, tab = NULL, canClickTarget = TRUE,
-                    advanceOn = NULL, scrollTo = NULL, cancelIcon = NULL,
-                    showOn = NULL, id = NULL, buttons = NULL,
-                    classes = NULL, highlightClass = NULL, onComplete = NULL,
-                    onCancel = NULL, onHide = NULL, onShow = NULL) {
-
+    step = function(
+      title = NULL,
+      text = NULL,
+      el = NULL,
+      position = NULL,
+      arrow = TRUE,
+      tabId = NULL,
+      tab = NULL,
+      canClickTarget = TRUE,
+      advanceOn = NULL,
+      scrollTo = NULL,
+      cancelIcon = NULL,
+      showOn = NULL,
+      id = NULL,
+      buttons = NULL,
+      classes = NULL,
+      highlightClass = NULL,
+      onComplete = NULL,
+      onCancel = NULL,
+      onHide = NULL,
+      onShow = NULL
+    ) {
       if (is.null(el)) {
-        if(!is.null(position)) {
+        if (!is.null(position)) {
           message("Argument `position` is not used. It requires argument `el`.")
         }
         arrow <- FALSE
       }
 
       if (!is.null(advanceOn)) {
-        if (!is.list(advanceOn) | (is.list(advanceOn) &
-                                    length(advanceOn) != 2)) {
-          warning("Argument `advanceOn` must be a list of a two elements.",
-                  call. = TRUE)
+        if (
+          !is.list(advanceOn) |
+            (is.list(advanceOn) &
+              length(advanceOn) != 2)
+        ) {
+          warning(
+            "Argument `advanceOn` must be a list of a two elements.",
+            call. = TRUE
+          )
         }
       }
 
       if (!is.null(cancelIcon)) {
         if (!is.list(cancelIcon)) {
-          warning("Argument `cancelIcon` must be a list.",
-                  call. = TRUE)
+          warning("Argument `cancelIcon` must be a list.", call. = TRUE)
         }
       }
 
       popover <- list()
 
-      if(!is.null(el)) {
+      if (!is.null(el)) {
         call <- sys.call()
         if ("el" %in% names(call)) {
           el_in_module <- grepl("^ns\\(", deparse(sys.call()[["el"]]))
@@ -265,9 +286,15 @@ Conductor <- R6::R6Class(
           on = position
         )
       }
-      if(!is.null(title)) popover$title <- as.character(title)
-      if(!is.null(text)) popover$text <- as.character(text)
-      if(!is.null(scrollTo)) popover$scrollTo <- scrollTo
+      if (!is.null(title)) {
+        popover$title <- as.character(title)
+      }
+      if (!is.null(text)) {
+        popover$text <- as.character(text)
+      }
+      if (!is.null(scrollTo)) {
+        popover$scrollTo <- scrollTo
+      }
       popover$canClickTarget <- canClickTarget
       popover$arrow <- arrow
       popover$showOn <- showOn
@@ -311,7 +338,6 @@ Conductor <- R6::R6Class(
       private$steps <- append(private$steps, list(popover))
       invisible(self)
     },
-
 
     #' @param step Id of the step (optional). If `NULL` (default), the current
     #' step is used.
@@ -361,45 +387,52 @@ Conductor <- R6::R6Class(
     #' @details
     #' Modify the options of a specific step.
 
-    updateStepOptions = function(step = NULL,
-                                 title = NULL,
-                                 text = NULL,
-                                 el = NULL,
-                                 position = NULL,
-                                 arrow = TRUE,
-                                 tabId = NULL,
-                                 tab = NULL,
-                                 canClickTarget = TRUE,
-                                 advanceOn = NULL,
-                                 scrollTo = TRUE,
-                                 cancelIcon = NULL,
-                                 showOn = NULL,
-                                 id = NULL,
-                                 buttons = NULL,
-                                 classes = NULL,
-                                 highlightClass = NULL,
-                                 session = NULL) {
-
+    updateStepOptions = function(
+      step = NULL,
+      title = NULL,
+      text = NULL,
+      el = NULL,
+      position = NULL,
+      arrow = TRUE,
+      tabId = NULL,
+      tab = NULL,
+      canClickTarget = TRUE,
+      advanceOn = NULL,
+      scrollTo = TRUE,
+      cancelIcon = NULL,
+      showOn = NULL,
+      id = NULL,
+      buttons = NULL,
+      classes = NULL,
+      highlightClass = NULL,
+      session = NULL
+    ) {
       if (is.numeric(step)) {
-        stop("Method `updateStepOptions()`: numeric values not supported in arg `step`.")
+        stop(
+          "Method `updateStepOptions()`: numeric values not supported in arg `step`."
+        )
       }
 
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
 
       if (!is.null(advanceOn)) {
-        if (!is.list(advanceOn) | (is.list(advanceOn) &
-                                   length(advanceOn) != 2)) {
-          warning("Argument `advanceOn` must be a list of a two elements.",
-                  call. = TRUE)
+        if (
+          !is.list(advanceOn) |
+            (is.list(advanceOn) &
+              length(advanceOn) != 2)
+        ) {
+          warning(
+            "Argument `advanceOn` must be a list of a two elements.",
+            call. = TRUE
+          )
         }
       }
 
       if (!is.null(cancelIcon)) {
         if (!is.list(cancelIcon)) {
-          warning("Argument `cancelIcon` must be a list.",
-                  call. = TRUE)
+          warning("Argument `cancelIcon` must be a list.", call. = TRUE)
         }
       }
 
@@ -407,7 +440,7 @@ Conductor <- R6::R6Class(
 
       popover <- list()
 
-      if(!is.null(el)) {
+      if (!is.null(el)) {
         if ("el" %in% names(call)) {
           el_in_module <- grepl("^ns\\(", deparse(sys.call()[["el"]]))
         } else {
@@ -424,9 +457,15 @@ Conductor <- R6::R6Class(
           on = position
         )
       }
-      if(!is.null(title)) popover$title <- as.character(title)
-      if(!is.null(text)) popover$text <- as.character(text)
-      if(!is.null(scrollTo)) popover$scrollTo <- scrollTo
+      if (!is.null(title)) {
+        popover$title <- as.character(title)
+      }
+      if (!is.null(text)) {
+        popover$text <- as.character(text)
+      }
+      if (!is.null(scrollTo)) {
+        popover$scrollTo <- scrollTo
+      }
       popover$canClickTarget <- canClickTarget
       popover$arrow <- arrow
       popover$showOn <- showOn
@@ -474,10 +513,6 @@ Conductor <- R6::R6Class(
       invisible(self)
     },
 
-
-
-
-
     #' @param step Either the id of the step to show (defined in `$step()`) or
     #' its number.
     #' @param session A valid Shiny session. If `NULL` (default), the function
@@ -490,16 +525,18 @@ Conductor <- R6::R6Class(
       if (is.null(step)) {
         stop("Method `show()` needs a specific step.")
       }
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
-      if (is.numeric(step)) step <- step - 1
+      if (is.numeric(step)) {
+        step <- step - 1
+      }
       session$sendCustomMessage(
-        "conductor-showStep", list(id = private$id, step = step)
+        "conductor-showStep",
+        list(id = private$id, step = step)
       )
       invisible(self)
     },
-
 
     #' @param step A character vector with the id(s) of the step(s) to remove
     #' (defined in `$step()`).
@@ -516,15 +553,15 @@ Conductor <- R6::R6Class(
       } else if (is.numeric(step)) {
         stop("Method `remove()`: numeric values not supported in arg `step`.")
       }
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-removeStep", list(id = private$id, step = step)
+        "conductor-removeStep",
+        list(id = private$id, step = step)
       )
       invisible(self)
     },
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -533,16 +570,15 @@ Conductor <- R6::R6Class(
     #'
 
     moveNext = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-next", list(id = private$id)
+        "conductor-next",
+        list(id = private$id)
       )
       invisible(self)
     },
-
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -551,16 +587,15 @@ Conductor <- R6::R6Class(
     #'
 
     moveBack = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-back", list(id = private$id)
+        "conductor-back",
+        list(id = private$id)
       )
       invisible(self)
     },
-
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -569,15 +604,15 @@ Conductor <- R6::R6Class(
     #'
 
     cancel = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-cancel", list(id = private$id)
+        "conductor-cancel",
+        list(id = private$id)
       )
       invisible(self)
     },
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -586,16 +621,15 @@ Conductor <- R6::R6Class(
     #'
 
     complete = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-complete", list(id = private$id)
+        "conductor-complete",
+        list(id = private$id)
       )
       invisible(self)
     },
-
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -604,16 +638,15 @@ Conductor <- R6::R6Class(
     #'
 
     hide = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$sendCustomMessage(
-        "conductor-hide", list(id = private$id)
+        "conductor-hide",
+        list(id = private$id)
       )
       invisible(self)
     },
-
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -622,12 +655,11 @@ Conductor <- R6::R6Class(
     #' a random id is generated.
     #'
     getCurrentStep = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$input[[paste0(private$id, "_current_step")]]
     },
-
 
     #' @param session A valid Shiny session. If `NULL` (default), the function
     #' attempts to get the session with `shiny::getDefaultReactiveDomain()`.
@@ -636,12 +668,11 @@ Conductor <- R6::R6Class(
     #' element has no id, it returns its class.
     #'
     getHighlightedElement = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$input[[paste0(private$id, "_target")]]
     },
-
 
     #' @param step Id of the step (optional). If `NULL` (default), the current
     #' step is used.
@@ -651,14 +682,15 @@ Conductor <- R6::R6Class(
     #' Returns a value `TRUE` or `FALSE` indicating whether the step is open.
     #'
     isOpen = function(step = NULL, session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       if (is.numeric(step)) {
         stop("Method `isOpen()`: numeric values not supported in arg `step`.")
       }
       session$sendCustomMessage(
-        "conductor-isOpen", list(id = private$id, step = step)
+        "conductor-isOpen",
+        list(id = private$id, step = step)
       )
       session$input[[paste0(private$id, "_step_is_open")]]
     },
@@ -669,7 +701,7 @@ Conductor <- R6::R6Class(
     #' Returns a value `TRUE` or `FALSE` indicating whether the tour is active.
     #'
     isActive = function(session = NULL) {
-      if(is.null(session)) {
+      if (is.null(session)) {
         session <- shiny::getDefaultReactiveDomain()
       }
       session$input[[paste0(private$id, "_is_active")]]
