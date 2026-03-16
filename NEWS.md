@@ -6,6 +6,8 @@
 * Using step events `onShow` and `onHide` no longer hides progress indicators
   shown with `progress = TRUE` in `$new()` ([#114](https://github.com/etiennebacher/conductor/issues/114)).
 
+* Updated `shepherd.js` to 15.2.2.
+
 
 # conductor 0.1.1
 
