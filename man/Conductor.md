@@ -8,7 +8,7 @@
 
 In addition to this page, you can also directly access the documentation
 of shepherd.js here:
-<a href="https://shepherdjs.dev/docs/index.html">https://shepherdjs.dev/docs/index.html</a>.
+<a href="https://docs.shepherdjs.dev">https://docs.shepherdjs.dev</a>.
 
 ## Methods
 
