@@ -9,13 +9,13 @@ Tour options are options that will be applied to every step. They are
 specified when the tour is created with `$new()`. The most useful tour
 options are the following (the default value is between parenthesis):
 
--   `exitOnEsc`: allow leaving the tour by pressing “Esc” (`TRUE`)
--   `keyboardNavigation`: allow navigating the tour with keyboard arrows
-    (`TRUE`)
--   `useModalOverlay`: darken the background to highlight the step and
-    the element (`TRUE`)
--   `mathjax`: enable MathJax (`FALSE`). This requires importing MathJax
-    dependencies, for example with `shiny::withMathJax()`.
+- `exitOnEsc`: allow leaving the tour by pressing “Esc” (`TRUE`)
+- `keyboardNavigation`: allow navigating the tour with keyboard arrows
+  (`TRUE`)
+- `useModalOverlay`: darken the background to highlight the step and the
+  element (`TRUE`)
+- `mathjax`: enable MathJax (`FALSE`). This requires importing MathJax
+  dependencies, for example with `shiny::withMathJax()`.
 
 Here’s an example with these options:
 
@@ -64,12 +64,12 @@ at “Method new()”.
 Step options are defined in each `$step()` and will be applied to one
 step only. The most useful ones are (default value between parenthesis):
 
--   `position`: where the popover should appear relative to the element
-    (`auto`)
--   `arrow`: show an arrow pointing towards the element (`TRUE`)
--   `cancelIcon`: a list of two elements: `enabled` is a boolean
-    indicating whether a “close” icon should be displayed (default is
-    TRUE); `label` is the label to add for aria-label (`NULL`).
+- `position`: where the popover should appear relative to the element
+  (`auto`)
+- `arrow`: show an arrow pointing towards the element (`TRUE`)
+- `cancelIcon`: a list of two elements: `enabled` is a boolean
+  indicating whether a “close” icon should be displayed (default is
+  TRUE); `label` is the label to add for aria-label (`NULL`).
 
 ``` r
 library(shiny)

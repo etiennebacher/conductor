@@ -2,7 +2,7 @@
 
 # Dependencies
 
-[**Source code**](https://github.com/etiennebacher/conductor/tree/8231dd1f7caab11ca8cb0fa45376dd906d8e3805/R/conductor.R#L23)
+[**Source code**](https://github.com/etiennebacher/conductor/tree/main/R/conductor.R#L23)
 
 ## Description
 

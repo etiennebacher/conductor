@@ -5,8 +5,8 @@ Sometimes, you want the tour to navigate across tabs of a
 `tabsetPanel()` or a `navbarPage()`. This can be done with the arguments
 `tabId` and `tab`:
 
--   `tabId` is the id of the `tabsetPanel()` or of the `navbarPage()`;
--   `tab` is the id of the specific tab you want to navigate to.
+- `tabId` is the id of the `tabsetPanel()` or of the `navbarPage()`;
+- `tab` is the id of the specific tab you want to navigate to.
 
 ?\> It is best to specify `tabId` and `tab` on the steps just before and
 after switching tabs. For example, if you want step 1 to be on tab A and

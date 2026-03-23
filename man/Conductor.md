@@ -2,7 +2,7 @@
 
 # Create a "conductor" tour
 
-[**Source code**](https://github.com/etiennebacher/conductor/tree/8231dd1f7caab11ca8cb0fa45376dd906d8e3805/R/#L)
+[**Source code**](https://github.com/etiennebacher/conductor/tree/main/R/#L)
 
 ## Description
 
